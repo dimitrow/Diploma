@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarRent/LoginViewController.m"
-            timestampString = "418682360.365002"
+            timestampString = "419013279.818353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "-logIn:"
             landmarkType = "5">
          </BreakpointContent>

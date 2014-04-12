@@ -41,13 +41,12 @@
         [PFUser logInWithUsernameInBackground:self.userTextField.text password:self.passWordTextField.text block:^(PFUser *user, NSError *error) {
             if (user) {
                 
-                [self performSegueWithIdentifier:@"LoginSuccesful" sender:self];
-
+                [self dismissViewControllerAnimated:YES completion:nil];
+                
             } else {
                 
                 NSString *message = [[error userInfo] objectForKey:@"error"];
                 ERROR_ALERT(ERROR, message, AW_BT_FAIL);
-                
             }
         }];
     });
@@ -71,6 +70,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    
     return YES;
 }
 

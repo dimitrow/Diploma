@@ -68,7 +68,7 @@
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 
-                [self performSegueWithIdentifier:@"SignupSuccesful" sender:self];
+                [self dismissViewControllerAnimated:YES completion:nil];
                 
             } else {
                 

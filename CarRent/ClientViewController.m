@@ -16,15 +16,38 @@
 
 @implementation ClientViewController
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [PFUser currentUser];
+    if ([PFUser currentUser]) {
+        NSLog(@"welcome dude");
+        _clientNameLabel.textColor = COLOR_MAIN_BLUE;
+        _clientNameLabel.text = [NSString stringWithFormat:@"%@ %@",
+                                 [[PFUser currentUser] valueForKey:@"firstName"],
+                                 [[PFUser currentUser] valueForKey:@"lastName"]];
+        
+    } else {
+        NSLog(@"get the fuck over there");
+        _clientNameLabel.text = [NSString stringWithFormat:@"%@ %@",
+                                 [[PFUser currentUser] valueForKey:@"---"],
+                                 [[PFUser currentUser] valueForKey:@"---"]];
+        [self performSegueWithIdentifier:@"loginSegue" sender:self];
+
+    }
+}
+
 - (void)viewDidLoad
 {
-    
+
     [super viewDidLoad];
-    _clientNameLabel.textColor = COLOR_MAIN_BLUE;
-    _clientNameLabel.text = [NSString stringWithFormat:@"%@ %@",
-                    [[PFUser currentUser] valueForKey:@"firstName"],
-                    [[PFUser currentUser] valueForKey:@"lastName"]];
+
     
+}
+
+- (void)getLoginWindow
+{
+    LoginViewController *loginView = [[LoginViewController alloc] init];
+    [self presentViewController:loginView animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,8 +58,7 @@
 - (IBAction)logOut:(id)sender
 {
     [PFUser logOut];
-    [self dismissViewControllerAnimated:YES completion:nil];
-
+    [self performSegueWithIdentifier:@"loginSegue" sender:self];
 
 }
 

@@ -60,11 +60,12 @@
                     <tabBarItem key="tabBarItem" title="Personal Info" image="first" id="u1e-5L-l1D"/>
                     <connections>
                         <outlet property="clientNameLabel" destination="Zhg-ve-WU7" id="Xog-jK-sVc"/>
+                        <segue destination="r15-4U-rOU" kind="modal" identifier="loginSegue" id="m7z-Va-50l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="-201"/>
+            <point key="canvasLocation" x="1248" y="-109"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="2d9-QP-Qlx">
@@ -136,12 +137,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xnV-mA-fkt">
-                                <rect key="frame" x="20" y="85" width="280" height="214"/>
+                                <rect key="frame" x="0.0" y="85" width="320" height="214"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fP4-Ar-QHo" customClass="PFImageView">
-                                        <rect key="frame" x="10" y="10" width="260" height="194"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fP4-Ar-QHo" customClass="PFImageView">
+                                        <rect key="frame" x="10" y="10" width="300" height="194"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.88000459509999995" blue="0.64569533079999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -204,13 +206,13 @@
                                     <segue destination="aaB-lW-1N1" kind="push" id="0JZ-w3-44D"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gtO-Ku-pVl">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gtO-Ku-pVl">
                                 <rect key="frame" x="36" y="195" width="250" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wmT-6f-PZA">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wmT-6f-PZA">
                                 <rect key="frame" x="36" y="233" width="250" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
@@ -245,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ml6-zb-UXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-25" y="-144"/>
+            <point key="canvasLocation" x="1271" y="-943"/>
         </scene>
         <!--Registration View Controller - Sign In-->
         <scene sceneID="cCc-6V-9AE">
@@ -453,7 +455,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYt-py-eIs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="269" y="807"/>
+            <point key="canvasLocation" x="2021" y="-943"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="isL-1l-tH4">
@@ -474,7 +476,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4iy-ax-bHr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="841" y="416"/>
+            <point key="canvasLocation" x="655" y="416"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bBo-AV-ukp">
@@ -492,13 +494,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ZL-mS-PYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-633" y="308"/>
+            <point key="canvasLocation" x="655" y="-943"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Car List-->
         <scene sceneID="zq0-r3-x69">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TBI-Fk-6f1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cOe-zC-72m"/>
+                    <tabBarItem key="tabBarItem" title="Car List" image="second" id="cOe-zC-72m"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="w4M-Tc-Qa0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -516,6 +518,7 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

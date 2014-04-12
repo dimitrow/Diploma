@@ -28,16 +28,16 @@
 
     self.title = _car.carName;
     
-    _mainPicture.layer.cornerRadius = 10.0;
-    _mainPicture.layer.masksToBounds = YES;
-    _mainPicture.layer.borderWidth = 2.0;
-    _mainPicture.layer.borderColor = COLOR_MAIN_BLUE.CGColor;
+//    _mainPicture.layer.cornerRadius = 10.0;
+//    _mainPicture.layer.masksToBounds = YES;
+//    _mainPicture.layer.borderWidth = 2.0;
+//    _mainPicture.layer.borderColor = COLOR_MAIN_BLUE.CGColor;
     
-    _mainPictureBack.backgroundColor = COLOR_CORRECT_INPUT;
-    _mainPictureBack.layer.cornerRadius = 15.0;
-    _mainPictureBack.layer.masksToBounds = YES;
-    _mainPictureBack.layer.borderWidth = 2.0;
-    _mainPictureBack.layer.borderColor = COLOR_MAIN_BLUE.CGColor;
+    _mainPictureBack.backgroundColor = [UIColor colorWithRed:.4 green:.4 blue:.4 alpha:.4];
+//    _mainPictureBack.layer.cornerRadius = 15.0;
+//    _mainPictureBack.layer.masksToBounds = YES;
+//    _mainPictureBack.layer.borderWidth = 2.0;
+//    _mainPictureBack.layer.borderColor = COLOR_MAIN_BLUE.CGColor;
     
 }
 

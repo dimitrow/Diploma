@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "LoginViewController.h"
+
 
 @interface ClientViewController : UIViewController 
 
