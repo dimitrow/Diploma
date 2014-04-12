@@ -67,24 +67,6 @@
             </objects>
             <point key="canvasLocation" x="1248" y="-109"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="2d9-QP-Qlx">
-            <objects>
-                <viewController id="TCF-fT-TU2" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uAW-yo-1NE"/>
-                        <viewControllerLayoutGuide type="bottom" id="O2O-ey-RyO"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kCW-QE-zCq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cgb-p5-hVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2517" y="-281"/>
-        </scene>
         <!--Cars List Table View Controller - Company Cars-->
         <scene sceneID="R8G-5r-yQh">
             <objects>

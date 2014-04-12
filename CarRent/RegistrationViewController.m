@@ -11,9 +11,11 @@
 @interface RegistrationViewController ()
 {
     UIDatePicker *_datePicker;
+    BOOL _uNameOK;
     BOOL _nameOK;
     BOOL _passOK;
     BOOL _mailOK;
+    BOOL _dateOK;
 }
 
 @end
@@ -63,7 +65,16 @@
     [user setObject:self.regMail.text forKey:@"email"];
     [user setObject:_datePicker.date forKey:@"birthDate"];
     
-    if (_passOK &&  _mailOK && _nameOK) {
+    NSArray *checkArray = @[@(_uNameOK), @(_passOK), @(_mailOK), @(_dateOK)];
+    
+    if (![checkArray containsObject:@0]) {
+        NSLog(@"You're ice cool mate");
+    }else{
+        NSLog(@"FU Dude");
+
+    }
+    
+    if (_passOK &&  _mailOK && _uNameOK) {
         
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
@@ -132,26 +143,31 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
-    if (textField.tag == 100) {
+    if (textField.tag == 100 || textField.tag == 105 || textField.tag == 106) {
         if ([textField validateUserNameWithString:textField.text]){
+            
             [textField fieldWithColor:COLOR_CORRECT_INPUT];
-            _nameOK = YES;
+            _uNameOK = YES;
+            
         }else{
+            
             [textField fieldWithColor:COLOR_WRONG_INPUT];
-            NSString *message = @"User Name should be more than 4 symbols long";
-            ERROR_ALERT(ERROR, message, AW_BT_FAIL);
-            _nameOK = NO;
+            _uNameOK = NO;
 
         }
     }else if (textField.tag == 101){
         if ([textField validatePasswordWithString:textField.text]){
+            
             [textField fieldWithColor:COLOR_CORRECT_INPUT];
             _passOK = YES;
+            
         }else{
+            
             [textField fieldWithColor:COLOR_WRONG_INPUT];
             NSString *message = @"Password should be more than 8 symbols long";
             ERROR_ALERT(ERROR, message, AW_BT_FAIL);
             _passOK = NO;
+            
         }
     }else if (textField.tag == 102){
         if ([self.repeatPassWord.text isEqualToString:self.regPassWord.text]){
@@ -159,57 +175,46 @@
             _passOK = YES;
         }else{
             [textField fieldWithColor:COLOR_WRONG_INPUT];
-            NSString *message = @"Password don't match";
-            ERROR_ALERT(ERROR, message, AW_BT_FAIL);
             _passOK = NO;
             return YES;
         }
     }else if (textField.tag == 103){
         if ([textField validateEmailWithString:textField.text]){
+            
             [textField fieldWithColor:COLOR_CORRECT_INPUT];
             _mailOK = YES;
+            
         }else{
+            
             [textField fieldWithColor:COLOR_WRONG_INPUT];
-            NSString *message = @"This is not a valid email";
-            ERROR_ALERT(ERROR, message, AW_BT_FAIL);
             _mailOK = NO;
+            
         }
     }else if (textField.tag == 104){
-        if ([self.repeatMail.text isEqualToString:self.regMail.text] ){
+        if ([self.repeatMail.text isEqualToString:self.regMail.text] && [textField validateEmailWithString:textField.text]){
+            
             [textField fieldWithColor:COLOR_CORRECT_INPUT];
             _mailOK = YES;
+            
         }else{
+            
             [textField fieldWithColor:COLOR_WRONG_INPUT];
-            NSString *message = @"email don't match";
-            ERROR_ALERT(ERROR, message, AW_BT_FAIL);
             _mailOK = NO;
-        }
-    }else if (textField.tag == 105){
-        if ([textField validateNameWithString:textField.text] ){
-            [textField fieldWithColor:COLOR_CORRECT_INPUT];
-        }else{
-            [textField fieldWithColor:COLOR_WRONG_INPUT];
-            NSString *message = @"Name has to contains letters, from 2 to 20 symbols long";
-            ERROR_ALERT(ERROR, message, AW_BT_FAIL);
-        }
-    }else if (textField.tag == 106){
-        if ([self.repeatMail.text isEqualToString:self.regMail.text] ){
-            [textField fieldWithColor:COLOR_CORRECT_INPUT];
-        }else{
-            [textField fieldWithColor:COLOR_WRONG_INPUT];
-            NSString *message = @"Last name has to contains letters, from 2 to 20 symbols long";
-            ERROR_ALERT(ERROR, message, AW_BT_FAIL);
+            
         }
     }else if (textField.tag == 107){
-        if (textField.text !=nil){
-            [textField fieldWithColor:COLOR_CORRECT_INPUT];
-        }else{
+        if (textField.text ==nil || [textField.text isEqualToString:@""]){
+            
             [textField fieldWithColor:COLOR_WRONG_INPUT];
+            _dateOK = NO;
+            
+        }else{
+            
+            [textField fieldWithColor:COLOR_CORRECT_INPUT];
+            _dateOK = YES;
         }
     }
     return YES;
 }
-
-
 
 @end
