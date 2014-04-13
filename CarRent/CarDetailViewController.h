@@ -17,7 +17,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *fullName;
 
-@property (weak, nonatomic) IBOutlet UIImageView *collectionCellImage;
+@property (weak, nonatomic) IBOutlet PFImageView *collectionCellImage;
 
 @property (nonatomic, strong) Car *car;
 

@@ -77,9 +77,10 @@
     UIImage *image;
     long row = [indexPath row];
     
-    //image = [UIImage imageNamed:_carImages[row]];
     
-    //myCell.imageView.image = image;
+    PFImageView *thumbImage = (PFImageView *)[myCell viewWithTag:131];
+    thumbImage.file = _car.mainPicture; //[UIImage imageNamed:[recipeImages objectAtIndex:indexPath.row]];
+    [thumbImage loadInBackground];
     
     return myCell;
 }
