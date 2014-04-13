@@ -10,13 +10,14 @@
 #import "Car.h"
 #import "Constants.h"
 
-@interface CarDetailViewController : UIViewController
+@interface CarDetailViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet PFImageView *mainPicture;
 @property (strong, nonatomic) IBOutlet UIView *mainPictureBack;
 
 @property (strong, nonatomic) IBOutlet UILabel *fullName;
 
+@property (weak, nonatomic) IBOutlet UIImageView *collectionCellImage;
 
 @property (nonatomic, strong) Car *car;
 

@@ -143,7 +143,7 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
-    if (textField.tag == 100 || textField.tag == 105 || textField.tag == 106) {
+    if (textField.tag == 100) {
         if ([textField validateUserNameWithString:textField.text]){
             
             [textField fieldWithColor:COLOR_CORRECT_INPUT];
@@ -170,7 +170,7 @@
             
         }
     }else if (textField.tag == 102){
-        if ([self.repeatPassWord.text isEqualToString:self.regPassWord.text]){
+        if ([self.repeatPassWord.text isEqualToString:self.regPassWord.text] && (self.repeatPassWord.text != nil) && (![self.repeatPassWord.text isEqualToString:@""])){
             [textField fieldWithColor:COLOR_CORRECT_INPUT];
             _passOK = YES;
         }else{
@@ -200,6 +200,18 @@
             
             [textField fieldWithColor:COLOR_WRONG_INPUT];
             _mailOK = NO;
+            
+        }
+    }else if (textField.tag == 105 || textField.tag == 106){
+        if ([textField validateNameWithString:textField.text]){
+        
+            [textField fieldWithColor:COLOR_CORRECT_INPUT];
+            _nameOK = YES;
+            
+        }else{
+            
+            [textField fieldWithColor:COLOR_WRONG_INPUT];
+            _nameOK = NO;
             
         }
     }else if (textField.tag == 107){

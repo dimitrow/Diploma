@@ -33,7 +33,7 @@
 //    _mainPicture.layer.borderWidth = 2.0;
 //    _mainPicture.layer.borderColor = COLOR_MAIN_BLUE.CGColor;
     
-    _mainPictureBack.backgroundColor = [UIColor colorWithRed:.4 green:.4 blue:.4 alpha:.4];
+//    _mainPictureBack.backgroundColor = [UIColor colorWithRed:.4 green:.4 blue:.4 alpha:.4];
 //    _mainPictureBack.layer.cornerRadius = 15.0;
 //    _mainPictureBack.layer.masksToBounds = YES;
 //    _mainPictureBack.layer.borderWidth = 2.0;
@@ -57,5 +57,31 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"selected %ld", (long)indexPath.row);
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 6;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *myCell = [collectionView
+                                    dequeueReusableCellWithReuseIdentifier:@"MyCell"
+                                    forIndexPath:indexPath];
+    
+    UIImage *image;
+    long row = [indexPath row];
+    
+    //image = [UIImage imageNamed:_carImages[row]];
+    
+    //myCell.imageView.image = image;
+    
+    return myCell;
+}
 
 @end
