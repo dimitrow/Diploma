@@ -68,13 +68,6 @@
     NSArray *checkArray = @[@(_uNameOK), @(_passOK), @(_mailOK), @(_dateOK)];
     
     if (![checkArray containsObject:@0]) {
-        NSLog(@"You're ice cool mate");
-    }else{
-        NSLog(@"FU Dude");
-
-    }
-    
-    if (_passOK &&  _mailOK && _uNameOK) {
         
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
