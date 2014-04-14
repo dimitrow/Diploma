@@ -12,15 +12,9 @@
 
 @interface CarDetailViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (weak, nonatomic) IBOutlet PFImageView *mainPicture;
-@property (strong, nonatomic) IBOutlet UIView *mainPictureBack;
-
 @property (strong, nonatomic) IBOutlet UILabel *fullName;
-
 @property (weak, nonatomic) IBOutlet PFImageView *collectionCellImage;
-
 @property (strong, nonatomic) IBOutlet UICollectionView *carsStrapView;
-
 
 @property (nonatomic, strong) Car *car;
 

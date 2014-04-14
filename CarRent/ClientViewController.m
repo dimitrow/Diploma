@@ -44,11 +44,11 @@
     
 }
 
-- (void)getLoginWindow
-{
-    LoginViewController *loginView = [[LoginViewController alloc] init];
-    [self presentViewController:loginView animated:YES completion:nil];
-}
+//- (void)getLoginWindow
+//{
+//    LoginViewController *loginView = [[LoginViewController alloc] init];
+//    [self presentViewController:loginView animated:YES completion:nil];
+//}
 
 - (void)didReceiveMemoryWarning
 {

@@ -22,15 +22,9 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.topItem.title = @"";
     _fullName.text = _car.carName;
-    if (_car.mainPicture == nil) {
-        _mainPicture = nil;
-    }else{
-        _mainPicture.file  = _car.mainPicture;
-        [_mainPicture loadInBackground];
-    }
-
     self.title = _car.carName;
     [self retrivePictures];
+    
 //    _mainPicture.layer.cornerRadius = 10.0;
 //    _mainPicture.layer.masksToBounds = YES;
 //    _mainPicture.layer.borderWidth = 2.0;
@@ -47,7 +41,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*
@@ -64,6 +57,9 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"selected %ld", (long)indexPath.row);
+    
+    [self performSegueWithIdentifier:@"showPictures" sender:self];
+    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -73,12 +69,11 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *myCell = [collectionView
-                                    dequeueReusableCellWithReuseIdentifier:@"MyCell"
-                                    forIndexPath:indexPath];
+    UICollectionViewCell *myCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCell"
+                                                                             forIndexPath:indexPath];
     
     PFImageView *thumbImage = (PFImageView *)[myCell viewWithTag:131];
-    thumbImage.file =  [_pics objectAtIndex:indexPath.row]; // _car.mainPicture; //[UIImage imageNamed:[recipeImages objectAtIndex:indexPath.row]];
+    thumbImage.file =  [_pics objectAtIndex:indexPath.row];
     [thumbImage loadInBackground];
     
     return myCell;
