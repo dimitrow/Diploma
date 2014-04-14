@@ -19,6 +19,9 @@
 
 @property (weak, nonatomic) IBOutlet PFImageView *collectionCellImage;
 
+@property (strong, nonatomic) IBOutlet UICollectionView *carsStrapView;
+
+
 @property (nonatomic, strong) Car *car;
 
 @end

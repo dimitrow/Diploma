@@ -9,6 +9,9 @@
 #import "CarDetailViewController.h"
 
 @interface CarDetailViewController ()
+{
+    NSArray *_pics;
+}
 
 @end
 
@@ -27,7 +30,7 @@
     }
 
     self.title = _car.carName;
-    
+    [self retrivePictures];
 //    _mainPicture.layer.cornerRadius = 10.0;
 //    _mainPicture.layer.masksToBounds = YES;
 //    _mainPicture.layer.borderWidth = 2.0;
@@ -65,7 +68,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 6;
+    return [_pics count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -74,15 +77,28 @@
                                     dequeueReusableCellWithReuseIdentifier:@"MyCell"
                                     forIndexPath:indexPath];
     
-    UIImage *image;
-    long row = [indexPath row];
-    
-    
     PFImageView *thumbImage = (PFImageView *)[myCell viewWithTag:131];
-    thumbImage.file = _car.mainPicture; //[UIImage imageNamed:[recipeImages objectAtIndex:indexPath.row]];
+    thumbImage.file =  [_pics objectAtIndex:indexPath.row]; // _car.mainPicture; //[UIImage imageNamed:[recipeImages objectAtIndex:indexPath.row]];
     [thumbImage loadInBackground];
     
     return myCell;
+}
+
+- (void)retrivePictures
+{
+    PFQuery *carsQuery = [PFQuery queryWithClassName:@"Pictures"];
+    [carsQuery whereKey:@"vehicle" equalTo:[PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID]];
+    [carsQuery setCachePolicy:kPFCachePolicyCacheThenNetwork];
+    
+    [carsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         
+         _pics = [objects valueForKey:@"photo"];
+         NSLog(@"%@",_pics);
+         [self.carsStrapView reloadData];
+
+     }];
+
 }
 
 @end

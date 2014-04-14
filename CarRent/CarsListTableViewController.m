@@ -148,6 +148,7 @@
         CarDetailViewController *destViewController = segue.destinationViewController;;
         
         NSString *modelName = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"modelName"] objectAtIndex:_indexPath.row];
+        NSString *objectID = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"objectId"] objectAtIndex:_indexPath.row];
         NSString *brandName = [[_vehicles allKeys] objectAtIndex:_indexPath.section];
         PFFile *modelImage = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"imageMain"] objectAtIndex:_indexPath.row];
 
@@ -155,8 +156,8 @@
         
         car.carName = [NSString stringWithFormat:@"%@ \"%@\"", brandName, modelName ];
         car.mainPicture = modelImage;
-
-
+        car.carID = objectID;
+        NSLog(@"%@", car.carID);
                 
         destViewController.car = car;
         

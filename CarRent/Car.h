@@ -13,6 +13,7 @@
 @interface Car : NSObject
 
 @property (nonatomic, strong) NSString *carName;
+@property (nonatomic, strong) NSString *carID;
 @property (nonatomic, strong) PFFile *mainPicture;
 
 @end
