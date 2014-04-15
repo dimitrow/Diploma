@@ -9,9 +9,7 @@
 #import "CarDetailViewController.h"
 
 @interface CarDetailViewController ()
-{
-    NSArray *_pics;
-}
+
 
 @end
 

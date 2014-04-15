@@ -205,7 +205,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdo-v9-rnU">
-                                <rect key="frame" x="106" y="477" width="108" height="30"/>
+                                <rect key="frame" x="106" y="427" width="108" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Dismiss">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -223,20 +223,20 @@
             </objects>
             <point key="canvasLocation" x="3569" y="807"/>
         </scene>
-        <!--Gallery View Controller-->
+        <!--Page View Controller-->
         <scene sceneID="X71-PE-WpG">
             <objects>
-                <pageViewController storyboardIdentifier="GalleryViewController" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="crossDissolve" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="wfM-OO-hWZ" customClass="GalleryViewController" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="crossDissolve" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="wfM-OO-hWZ" sceneMemberID="viewController">
                     <nil key="simulatedStatusBarMetrics"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hm7-7s-ySe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3775" y="1531"/>
         </scene>
-        <!--Content View Controller-->
+        <!--Page Content View Controller-->
         <scene sceneID="iDa-KM-gOl">
             <objects>
-                <viewController storyboardIdentifier="ContentViewController" id="4y2-wJ-Eyx" customClass="ContentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageContentViewController" id="4y2-wJ-Eyx" customClass="PageContentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iIU-SB-iFG"/>
                         <viewControllerLayoutGuide type="bottom" id="8Yq-uN-GcN"/>
@@ -244,8 +244,17 @@
                     <view key="view" contentMode="scaleToFill" id="eX0-xy-eCf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D23-oT-b8w" customClass="PFImageView">
+                                <rect key="frame" x="0.0" y="103" width="320" height="362"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.32916945019999999" green="0.51886085370000001" blue="0.59984799209999995" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="D23-oT-b8w" id="We9-Wu-g84"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ta-2l-E8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

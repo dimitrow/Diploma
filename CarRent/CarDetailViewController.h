@@ -11,6 +11,10 @@
 #import "Constants.h"
 
 @interface CarDetailViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+{
+    NSArray *_pics;
+
+}
 
 @property (strong, nonatomic) IBOutlet UILabel *fullName;
 @property (weak, nonatomic) IBOutlet PFImageView *collectionCellImage;

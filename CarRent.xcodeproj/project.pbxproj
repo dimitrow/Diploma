@@ -37,6 +37,7 @@
 		04B34F5018D82EFF00CD0A3F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B34F4F18D82EFF00CD0A3F /* StoreKit.framework */; };
 		04B34F5218D82F0E00CD0A3F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B34F5118D82F0E00CD0A3F /* SystemConfiguration.framework */; };
 		04D8320018F685720082B044 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D831FF18F685720082B044 /* Car.m */; };
+		169E0FDA18FDD6F9003286B0 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E0FD918FDD6F9003286B0 /* PageContentViewController.m */; };
 		16EF480718FD970200173EDD /* GalleryRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF480618FD970200173EDD /* GalleryRootViewController.m */; };
 		4490B36118DF7808006EE32F /* UITextField+Customised.m in Sources */ = {isa = PBXBuildFile; fileRef = 4490B36018DF7808006EE32F /* UITextField+Customised.m */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,8 @@
 		04B34F5118D82F0E00CD0A3F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		04D831FE18F685720082B044 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
 		04D831FF18F685720082B044 /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
+		169E0FD818FDD6F9003286B0 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
+		169E0FD918FDD6F9003286B0 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		16EF480518FD970200173EDD /* GalleryRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryRootViewController.h; path = ../GalleryRootViewController.h; sourceTree = "<group>"; };
 		16EF480618FD970200173EDD /* GalleryRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GalleryRootViewController.m; path = ../GalleryRootViewController.m; sourceTree = "<group>"; };
 		4490B35F18DF7808006EE32F /* UITextField+Customised.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Customised.h"; sourceTree = "<group>"; };
@@ -184,6 +187,8 @@
 				04B34F1018D829D500CD0A3F /* AppDelegate.h */,
 				04B34F1118D829D500CD0A3F /* AppDelegate.m */,
 				04B34F1318D829D500CD0A3F /* Main.storyboard */,
+				169E0FD818FDD6F9003286B0 /* PageContentViewController.h */,
+				169E0FD918FDD6F9003286B0 /* PageContentViewController.m */,
 				04B34F3C18D82BBF00CD0A3F /* CarsListTableViewController.h */,
 				04B34F3D18D82BBF00CD0A3F /* CarsListTableViewController.m */,
 				043D3C3018F431C800750854 /* CarDetailViewController.h */,
@@ -335,6 +340,7 @@
 			files = (
 				04D8320018F685720082B044 /* Car.m in Sources */,
 				04B34F3E18D82BBF00CD0A3F /* CarsListTableViewController.m in Sources */,
+				169E0FDA18FDD6F9003286B0 /* PageContentViewController.m in Sources */,
 				4490B36118DF7808006EE32F /* UITextField+Customised.m in Sources */,
 				040DABDF18D887B40041372F /* LoginViewController.m in Sources */,
 				04B34F1218D829D500CD0A3F /* AppDelegate.m in Sources */,
