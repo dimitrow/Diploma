@@ -37,6 +37,7 @@
 		04B34F5018D82EFF00CD0A3F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B34F4F18D82EFF00CD0A3F /* StoreKit.framework */; };
 		04B34F5218D82F0E00CD0A3F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B34F5118D82F0E00CD0A3F /* SystemConfiguration.framework */; };
 		04D8320018F685720082B044 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D831FF18F685720082B044 /* Car.m */; };
+		16EF480718FD970200173EDD /* GalleryRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF480618FD970200173EDD /* GalleryRootViewController.m */; };
 		4490B36118DF7808006EE32F /* UITextField+Customised.m in Sources */ = {isa = PBXBuildFile; fileRef = 4490B36018DF7808006EE32F /* UITextField+Customised.m */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,8 @@
 		04B34F5118D82F0E00CD0A3F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		04D831FE18F685720082B044 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
 		04D831FF18F685720082B044 /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
+		16EF480518FD970200173EDD /* GalleryRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryRootViewController.h; path = ../GalleryRootViewController.h; sourceTree = "<group>"; };
+		16EF480618FD970200173EDD /* GalleryRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GalleryRootViewController.m; path = ../GalleryRootViewController.m; sourceTree = "<group>"; };
 		4490B35F18DF7808006EE32F /* UITextField+Customised.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Customised.h"; sourceTree = "<group>"; };
 		4490B36018DF7808006EE32F /* UITextField+Customised.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Customised.m"; sourceTree = "<group>"; };
 		4490B36518DF7D63006EE32F /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 				04339F7818D9DACA008BCD87 /* RegistrationViewController.m */,
 				040DABDD18D887B40041372F /* LoginViewController.h */,
 				040DABDE18D887B40041372F /* LoginViewController.m */,
+				16EF480518FD970200173EDD /* GalleryRootViewController.h */,
+				16EF480618FD970200173EDD /* GalleryRootViewController.m */,
 				04B34F1C18D829D500CD0A3F /* Images.xcassets */,
 				04B34F0818D829D500CD0A3F /* Supporting Files */,
 			);
@@ -337,6 +342,7 @@
 				04B34F0E18D829D500CD0A3F /* main.m in Sources */,
 				04B34F3B18D82AE300CD0A3F /* ClientViewController.m in Sources */,
 				04339F7918D9DACA008BCD87 /* RegistrationViewController.m in Sources */,
+				16EF480718FD970200173EDD /* GalleryRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
