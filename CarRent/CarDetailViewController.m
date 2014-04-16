@@ -9,7 +9,9 @@
 #import "CarDetailViewController.h"
 
 @interface CarDetailViewController ()
-
+{
+    NSIndexPath *_indexPath;
+}
 
 @end
 
@@ -69,7 +71,7 @@
 {
     UICollectionViewCell *myCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCell"
                                                                              forIndexPath:indexPath];
-    
+    _indexPath = indexPath;
     PFImageView *thumbImage = (PFImageView *)[myCell viewWithTag:131];
     thumbImage.file =  [_pics objectAtIndex:indexPath.row];
     [thumbImage loadInBackground];
@@ -93,5 +95,21 @@
      }];
 
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showPictures"]) {
+        
+        GalleryRootViewController *destViewController = segue.destinationViewController;;
+        //PFFile *image = [_pics objectAtIndex:_indexPath.row];
+        
+        Car *car = [[Car alloc] init];
+        
+        car.pictures = _pics;
+        destViewController.car = car;
+        NSLog(@"%@", car.pictures);
+        
+    }
+}
+
 
 @end

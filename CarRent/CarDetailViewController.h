@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Car.h"
 #import "Constants.h"
+#import "GalleryRootViewController.h"
 
 @interface CarDetailViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
     NSArray *_pics;
-
 }
 
 @property (strong, nonatomic) IBOutlet UILabel *fullName;

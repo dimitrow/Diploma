@@ -18,8 +18,8 @@
 {
     [super viewDidLoad];
 	// Create the data model
-    _pageTitles = @[@"Over 200 Tips and Tricks", @"Discover Hidden Features", @"Bookmark Favorite Tip", @"Free Regular Update"];
-    _pageImages = @[@"page1.png", @"page2.png", @"page3.png", @"page4.png"];
+    //_pageTitles = @[@"Over 200 Tips and Tricks", @"Discover Hidden Features", @"Bookmark Favorite Tip", @"Free Regular Update", @"hhh"];
+    _pageImages = _car.pictures;
     
     
     // Create page view controller
@@ -58,16 +58,16 @@
 
 - (PageContentViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    if (([self.pageTitles count] == 0) || (index >= [self.pageTitles count])) {
+    if (([_pageImages count] == 0) || (index >= [_pageImages count])) {
         return nil;
     }
     
     // Create a new view controller and pass suitable data.
     PageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-    pageContentViewController.imageFile = self.pageImages[index];
-    pageContentViewController.titleText = self.pageTitles[index];
+    pageContentViewController.backgroundImageView.file = [_pageImages objectAtIndex:index];
+    //pageContentViewController.titleText = self.pageTitles[index];
     pageContentViewController.pageIndex = index;
-    
+    [pageContentViewController.backgroundImageView loadInBackground];
     return pageContentViewController;
 }
 
@@ -94,7 +94,7 @@
     }
     
     index++;
-    if (index == [self.pageTitles count]) {
+    if (index == [_pageImages count]) {
         return nil;
     }
     return [self viewControllerAtIndex:index];
@@ -102,7 +102,7 @@
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
-    return [self.pageTitles count];
+    return [_pageImages count];
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
