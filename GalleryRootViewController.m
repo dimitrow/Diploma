@@ -31,7 +31,7 @@
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 30);
+    self.pageViewController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, 504);
     
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
@@ -67,7 +67,8 @@
     pageContentViewController.backgroundImageView.file = [_pageImages objectAtIndex:index];
     //pageContentViewController.titleText = self.pageTitles[index];
     pageContentViewController.pageIndex = index;
-    [pageContentViewController.backgroundImageView loadInBackground];
+    //[pageContentViewController.backgroundImageView loadInBackground];
+    NSLog(@"!!!!!%@",pageContentViewController.backgroundImageView.file);
     return pageContentViewController;
 }
 
