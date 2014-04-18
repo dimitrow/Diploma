@@ -23,7 +23,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //[self performSelector:@selector(retriveData)];
+    [self performSelector:@selector(retriveData)];
         
     [_carsTableView reloadData];
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, [UIFont fontWithName:@"HelveticaNeue-CondensedBold"  size:25.0], NSFontAttributeName, nil]];
@@ -168,6 +168,8 @@
 {
     NSLog(@"!!! I'm HERE");
 }
+
+
 
 @end
 

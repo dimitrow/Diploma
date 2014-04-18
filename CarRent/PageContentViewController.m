@@ -18,7 +18,9 @@
 {
     [super viewDidLoad];
     
-    self.backgroundImageView.image = [UIImage imageNamed:self.imageFile];
+    //self.backgroundImageView.image = (PFImageView *) [UIImage imageNamed:self.imageFile];
+    _backgroundImageView.file = (PFFile *)_imageFile;
+    NSLog(@"maybe it's me: %@", self.backgroundImageView.image);
     //self.titleLabel.text = self.titleText;
     
 }

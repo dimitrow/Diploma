@@ -31,7 +31,7 @@
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, 504);
+    self.pageViewController.view.frame = CGRectMake(0, 54, self.view.frame.size.width,  self.view.frame.size.height-60);
     
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
@@ -62,13 +62,19 @@
         return nil;
     }
     
-    // Create a new view controller and pass suitable data.
     PageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-    pageContentViewController.backgroundImageView.file = [_pageImages objectAtIndex:index];
-    //pageContentViewController.titleText = self.pageTitles[index];
+
     pageContentViewController.pageIndex = index;
-    //[pageContentViewController.backgroundImageView loadInBackground];
-    NSLog(@"!!!!!%@",pageContentViewController.backgroundImageView.file);
+    
+    PFImageView *preview = [[PFImageView alloc] init];
+    preview.file = [_pageImages objectAtIndex:index];
+    [preview loadInBackground];
+    NSLog(@"main pic:%@", preview.file);
+    
+    pageContentViewController.imageFile = [_pageImages objectAtIndex:index];
+    
+    
+    
     return pageContentViewController;
 }
 
@@ -109,6 +115,16 @@
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
 {
     return 0;
+}
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscape;
 }
 
 @end
