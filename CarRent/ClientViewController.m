@@ -38,17 +38,10 @@
 
 - (void)viewDidLoad
 {
-
+    
     [super viewDidLoad];
 
-    
 }
-
-//- (void)getLoginWindow
-//{
-//    LoginViewController *loginView = [[LoginViewController alloc] init];
-//    [self presentViewController:loginView animated:YES completion:nil];
-//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -62,5 +55,9 @@
 
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
 
 @end

@@ -17,6 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Create the data model
     //_pageTitles = @[@"Over 200 Tips and Tricks", @"Discover Hidden Features", @"Bookmark Favorite Tip", @"Free Regular Update", @"hhh"];
     _pageImages = _car.pictures;
@@ -31,7 +32,7 @@
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + 34, self.view.frame.size.width,  self.view.frame.size.height - 60);
+    self.pageViewController.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + 44, self.view.frame.size.width,  self.view.frame.size.height - 40);
     
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
