@@ -19,11 +19,13 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     self.navigationController.navigationBar.topItem.title = @"";
     _fullName.text = _car.carName;
     self.title = _car.carName;
     [self retrivePictures];
+    [self retriveReviews];
     
 //    _mainPicture.layer.cornerRadius = 10.0;
 //    _mainPicture.layer.masksToBounds = YES;
@@ -36,6 +38,9 @@
 //    _mainPictureBack.layer.borderWidth = 2.0;
 //    _mainPictureBack.layer.borderColor = COLOR_MAIN_BLUE.CGColor;
     
+
+
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,6 +50,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    _car.photoIndex = (NSInteger *)indexPath.row;
     NSLog(@"selected %ld", (long)indexPath.row);
     [self performSegueWithIdentifier:@"showPictures" sender:self];
     
@@ -74,8 +80,7 @@
     [carsQuery setCachePolicy:kPFCachePolicyCacheThenNetwork];
     
     [carsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-     {
-         
+     {         
          _pics = [objects valueForKey:@"photo"];
          [self.carsStrapView reloadData];
 
@@ -83,17 +88,59 @@
 
 }
 
+- (void)retriveReviews
+{
+    PFQuery *carsQuery = [PFQuery queryWithClassName:@"Review"];
+    [carsQuery whereKey:@"vehicle" equalTo:[PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID]];
+    [carsQuery setCachePolicy:kPFCachePolicyCacheThenNetwork];
+    
+    [carsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         _reviews = [objects valueForKey:@"review"];
+        [_reviewsTable reloadData];
+     }];
+
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return ([_reviews count] == 0) ? 1 : [_reviews count];
+
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReviewCell" forIndexPath:indexPath];
+    
+    //NSString * modelName = [[_vehicles allKeys] objectAtIndex:indexPath.section];
+    //NSArray * vehicles = [[_vehicles objectForKey:modelName] valueForKey:@"modelName"];
+    
+    _reviewBack = (UIView *)[cell viewWithTag:500];
+    _reviewBack.layer.cornerRadius = 10.0f;
+    _reviewBack.layer.borderWidth = 1.5f;
+    _reviewBack.backgroundColor = COLOR_REVIEW_BACK;
+    _reviewBack.layer.borderColor = COLOR_MAIN_BLUE.CGColor;
+    
+    UILabel *comment = (UILabel *)[cell viewWithTag:556];
+      comment.text = @"TEST";
+    comment.text = ([_reviews count] == 0) ?  @"Sorry, there's no comments yet" : @"TEST";
+    
+    cell.textLabel.font = FONT_LIGHT;
+    cell.textLabel.textColor = COLOR_MAIN_BLUE;
+    //cell.textLabel.text = [[_reviews valueForKey:@"review" ] objectAtIndex:indexPath.row];
+    
+    
+    return cell;
+
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showPictures"]) {
         
-        GalleryRootViewController *destViewController = segue.destinationViewController;;
-        //PFFile *image = [_pics objectAtIndex:_indexPath.row];
-        
-        Car *car = [[Car alloc] init];
-        
-        car.pictures = _pics;
-        destViewController.car = car;
-        NSLog(@"%@", car.pictures);
+        GalleryRootViewController *destViewController = segue.destinationViewController;
+        _car.pictures = _pics;
+        destViewController.car = _car;
+        NSLog(@"%@", _car.pictures);
         
     }
 }

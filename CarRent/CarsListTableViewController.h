@@ -13,15 +13,12 @@
 #import <dispatch/dispatch.h>
 #import "LoginViewController.h"
 
-@interface CarsListTableViewController : UITableViewController <DataRetrivalDelegate>
+@interface CarsListTableViewController : UITableViewController
 {
     NSMutableDictionary *_vehicles;
-    NSArray *_brands;
-    
+    NSArray *_brands;    
 }
 
 @property (strong, nonatomic) IBOutlet UITableView *carsTableView;
-@property (weak, nonatomic) IBOutlet PFImageView *smallImage;
-
 
 @end

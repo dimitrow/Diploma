@@ -11,15 +11,19 @@
 #import "Constants.h"
 #import "GalleryRootViewController.h"
 
-@interface CarDetailViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface CarDetailViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *_pics;
+    NSDictionary *_reviews;
 }
 
 @property (strong, nonatomic) IBOutlet UILabel *fullName;
 @property (weak, nonatomic) IBOutlet PFImageView *collectionCellImage;
 @property (strong, nonatomic) IBOutlet UICollectionView *carsStrapView;
+@property (strong, nonatomic) IBOutlet UIView *reviewBack;
+@property (strong, nonatomic) IBOutlet UITableViewCell *messagesCell;
 
 @property (nonatomic, strong) Car *car;
+@property (strong, nonatomic) IBOutlet UITableView *reviewsTable;
 
 @end

@@ -12,19 +12,8 @@
 #import "Constants.h"
 #import <dispatch/dispatch.h>
 
-//---
-
-@protocol DataRetrivalDelegate <NSObject>
-
-- (void)retriveDatas;
-
-@end
-
-//---
 
 @interface LoginViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate>
-
-@property (nonatomic, weak) id <DataRetrivalDelegate> delegate;
 
 @property (strong, nonatomic) IBOutlet UITextField *userTextField;
 @property (strong, nonatomic) IBOutlet UITextField *passWordTextField;

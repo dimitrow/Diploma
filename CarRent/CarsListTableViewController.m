@@ -34,8 +34,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    LoginViewController *loginVC = [[LoginViewController alloc] init];
-    loginVC.delegate = self;
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
@@ -162,11 +160,6 @@
         destViewController.car = car;
         
     }
-}
-
-- (void)retriveDatas
-{
-    NSLog(@"!!! I'm HERE");
 }
 
 - (NSUInteger)supportedInterfaceOrientations {

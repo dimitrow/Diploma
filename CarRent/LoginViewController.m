@@ -64,7 +64,7 @@
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     [alert show];
     
-    [self.delegate retriveDatas];
+
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

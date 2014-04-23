@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *carName;
 @property (nonatomic, strong) NSString *carID;
 @property (nonatomic, strong) PFFile *mainPicture;
-@property (nonatomic, weak) NSArray *pictures;
+@property (nonatomic, strong) NSArray *pictures;
+@property (nonatomic, assign) NSInteger *photoIndex;
 
 @end

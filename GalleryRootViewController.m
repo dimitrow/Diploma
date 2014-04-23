@@ -18,8 +18,6 @@
 {
     [super viewDidLoad];
     
-	// Create the data model
-    //_pageTitles = @[@"Over 200 Tips and Tricks", @"Discover Hidden Features", @"Bookmark Favorite Tip", @"Free Regular Update", @"hhh"];
     _pageImages = _car.pictures;
     
     
@@ -51,11 +49,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)startWalkthrough:(id)sender {
-    PageContentViewController *startingViewController = [self viewControllerAtIndex:0];
-    NSArray *viewControllers = @[startingViewController];
-    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
-}
+//- (IBAction)startWalkthrough:(id)sender {
+//    PageContentViewController *startingViewController = [self viewControllerAtIndex:2];
+//    NSArray *viewControllers = @[startingViewController];
+//    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+//}
 
 - (PageContentViewController *)viewControllerAtIndex:(NSUInteger)index
 {
@@ -70,6 +68,7 @@
     PFImageView *preview = [[PFImageView alloc] init];
     preview.file = [_pageImages objectAtIndex:index];
     [preview loadInBackground];
+    
     NSLog(@"main pic:%@", preview.file);
     
     pageContentViewController.imageFile = [_pageImages objectAtIndex:index];
