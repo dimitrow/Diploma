@@ -38,6 +38,11 @@
 		04B34F5018D82EFF00CD0A3F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B34F4F18D82EFF00CD0A3F /* StoreKit.framework */; };
 		04B34F5218D82F0E00CD0A3F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B34F5118D82F0E00CD0A3F /* SystemConfiguration.framework */; };
 		04D8320018F685720082B044 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D831FF18F685720082B044 /* Car.m */; };
+		16246B2C19085E1200CB812E /* Diner-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16246B2B19085E1200CB812E /* Diner-Regular.ttf */; };
+		16246B2E19085ECB00CB812E /* HamburgerHeaven.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16246B2D19085ECB00CB812E /* HamburgerHeaven.ttf */; };
+		16246B301908668500CB812E /* DEFTONE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16246B2F1908668500CB812E /* DEFTONE.ttf */; };
+		16246B321908671100CB812E /* 20db.otf in Resources */ = {isa = PBXBuildFile; fileRef = 16246B311908671100CB812E /* 20db.otf */; };
+		16246B341908678C00CB812E /* DAYPBL__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16246B331908678C00CB812E /* DAYPBL__.ttf */; };
 		169E0FDA18FDD6F9003286B0 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E0FD918FDD6F9003286B0 /* PageContentViewController.m */; };
 		16EF480718FD970200173EDD /* GalleryRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF480618FD970200173EDD /* GalleryRootViewController.m */; };
 		4490B36118DF7808006EE32F /* UITextField+Customised.m in Sources */ = {isa = PBXBuildFile; fileRef = 4490B36018DF7808006EE32F /* UITextField+Customised.m */; };
@@ -96,6 +101,11 @@
 		04B34F5118D82F0E00CD0A3F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		04D831FE18F685720082B044 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
 		04D831FF18F685720082B044 /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
+		16246B2B19085E1200CB812E /* Diner-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Diner-Regular.ttf"; sourceTree = "<group>"; };
+		16246B2D19085ECB00CB812E /* HamburgerHeaven.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HamburgerHeaven.ttf; sourceTree = "<group>"; };
+		16246B2F1908668500CB812E /* DEFTONE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DEFTONE.ttf; sourceTree = "<group>"; };
+		16246B311908671100CB812E /* 20db.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 20db.otf; sourceTree = "<group>"; };
+		16246B331908678C00CB812E /* DAYPBL__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DAYPBL__.ttf; sourceTree = "<group>"; };
 		169E0FD818FDD6F9003286B0 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
 		169E0FD918FDD6F9003286B0 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		16EF480518FD970200173EDD /* GalleryRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryRootViewController.h; path = ../GalleryRootViewController.h; sourceTree = "<group>"; };
@@ -143,6 +153,7 @@
 		04B34EF518D829D500CD0A3F = {
 			isa = PBXGroup;
 			children = (
+				16246B2A19085DEF00CB812E /* Resources */,
 				04B34F0718D829D500CD0A3F /* CarRent */,
 				04B34F2918D829D500CD0A3F /* CarRentTests */,
 				04B34F0018D829D500CD0A3F /* Frameworks */,
@@ -184,12 +195,12 @@
 		04B34F0718D829D500CD0A3F /* CarRent */ = {
 			isa = PBXGroup;
 			children = (
+				04B34F1318D829D500CD0A3F /* Main.storyboard */,
 				4490B36518DF7D63006EE32F /* Constants.h */,
 				4490B35F18DF7808006EE32F /* UITextField+Customised.h */,
 				4490B36018DF7808006EE32F /* UITextField+Customised.m */,
 				04B34F1018D829D500CD0A3F /* AppDelegate.h */,
 				04B34F1118D829D500CD0A3F /* AppDelegate.m */,
-				04B34F1318D829D500CD0A3F /* Main.storyboard */,
 				0477D63819052F0100F200B2 /* TabRootViewController.h */,
 				0477D63919052F0100F200B2 /* TabRootViewController.m */,
 				04B34F3C18D82BBF00CD0A3F /* CarsListTableViewController.h */,
@@ -241,6 +252,18 @@
 				04B34F2C18D829D500CD0A3F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		16246B2A19085DEF00CB812E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				16246B331908678C00CB812E /* DAYPBL__.ttf */,
+				16246B311908671100CB812E /* 20db.otf */,
+				16246B2F1908668500CB812E /* DEFTONE.ttf */,
+				16246B2D19085ECB00CB812E /* HamburgerHeaven.ttf */,
+				16246B2B19085E1200CB812E /* Diner-Regular.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,7 +347,12 @@
 			files = (
 				04B34F1D18D829D500CD0A3F /* Images.xcassets in Resources */,
 				04B34F0C18D829D500CD0A3F /* InfoPlist.strings in Resources */,
+				16246B341908678C00CB812E /* DAYPBL__.ttf in Resources */,
+				16246B301908668500CB812E /* DEFTONE.ttf in Resources */,
+				16246B2C19085E1200CB812E /* Diner-Regular.ttf in Resources */,
+				16246B2E19085ECB00CB812E /* HamburgerHeaven.ttf in Resources */,
 				04B34F1518D829D500CD0A3F /* Main.storyboard in Resources */,
+				16246B321908671100CB812E /* 20db.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

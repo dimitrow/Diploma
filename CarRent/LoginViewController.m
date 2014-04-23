@@ -22,9 +22,6 @@
     _passWordTextField.text = @"receiver";
     
 
-    //[self.navigationController.navigationBar setBarTintColor:COLOR_MAIN_BLUE];
-    
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, [UIFont fontWithName:@"HelveticaNeue-CondensedBold"  size:25.0], NSFontAttributeName, nil]];
 
 }
 

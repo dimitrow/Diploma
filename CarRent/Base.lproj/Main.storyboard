@@ -112,7 +112,7 @@
             <objects>
                 <viewController id="oOD-va-2B0" customClass="CarDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2x7-5C-CjY"/>
+                        <viewControllerLayoutGuide type="top" id="2x7-5C-CjY" propertyAccessControl="all"/>
                         <viewControllerLayoutGuide type="bottom" id="SDQ-7G-bZE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Y4l-o5-v5m">
