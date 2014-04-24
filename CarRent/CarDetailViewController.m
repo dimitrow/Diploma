@@ -125,10 +125,20 @@
       comment.text = @"TEST";
     comment.text = ([_reviews count] == 0) ?  @"Sorry, there's no comments yet" : @"TEST";
     
+    //NSLog(@"!!!!! %i", [[_reviews allKeys] count]);
+    
     cell.textLabel.font = FONT_LIGHT;
     cell.textLabel.textColor = COLOR_MAIN_BLUE;
     //cell.textLabel.text = [[_reviews valueForKey:@"review" ] objectAtIndex:indexPath.row];
     
+    
+    
+//    NSString * modelName = [[_vehicles allKeys] objectAtIndex:indexPath.section];
+//    NSArray * vehicles = [[_vehicles objectForKey:modelName] valueForKey:@"modelName"];
+//    
+//    cell.textLabel.font = FONT_LIGHT;
+//    cell.textLabel.textColor = COLOR_MAIN_BLUE;
+//    cell.textLabel.text = [vehicles objectAtIndex:indexPath.row];
     
     return cell;
 
