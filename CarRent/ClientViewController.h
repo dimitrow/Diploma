@@ -14,6 +14,7 @@
 @interface ClientViewController : UIViewController 
 
 @property (strong, nonatomic) IBOutlet UILabel *clientNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *titleMain;
 
 
 @end

@@ -21,15 +21,17 @@
 {
     
     [super viewDidLoad];
-    self.navigationController.navigationBar.topItem.title = @"";
+    //self.navigationController.navigationBar.topItem.title = @"Description";
     _fullName.text = _car.carName;
-    self.title = @"Description";//_car.carName;
+    self.title = @"Description";
     [self retrivePictures];
     [self retriveReviews];
     
     
     UIFont *mainTitleFont = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:35];
     UIFont *authorTitleFont = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:10];
+
+    
     
 //    _mainPicture.layer.cornerRadius = 10.0;
 //    _mainPicture.layer.masksToBounds = YES;
@@ -41,9 +43,6 @@
 //    _mainPictureBack.layer.masksToBounds = YES;
 //    _mainPictureBack.layer.borderWidth = 2.0;
 //    _mainPictureBack.layer.borderColor = COLOR_MAIN_BLUE.CGColor;
-    
-
-
     
 }
 
@@ -121,9 +120,8 @@
     
     _reviewBack = (UIView *)[cell viewWithTag:500];
     _reviewBack.layer.cornerRadius = 10.0f;
-    //_reviewBack.layer.borderWidth = 1.5f;
     _reviewBack.backgroundColor = [UIColor colorWithRed:0.329 green:0.518 blue:0.600 alpha:0.15];
-    //_reviewBack.layer.borderColor = COLOR_MAIN_BLUE.CGColor;
+
     
     UILabel *comment = (UILabel *)[cell viewWithTag:556];
       comment.text = @"TEST";
@@ -133,10 +131,8 @@
     
     cell.textLabel.font = FONT_LIGHT;
     cell.textLabel.textColor = COLOR_MAIN_BLUE;
+    
     //cell.textLabel.text = [[_reviews valueForKey:@"review" ] objectAtIndex:indexPath.row];
-    
-    
-    
 //    NSString * modelName = [[_vehicles allKeys] objectAtIndex:indexPath.section];
 //    NSArray * vehicles = [[_vehicles objectForKey:modelName] valueForKey:@"modelName"];
 //    

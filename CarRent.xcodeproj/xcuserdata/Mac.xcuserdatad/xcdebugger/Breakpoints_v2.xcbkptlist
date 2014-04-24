@@ -95,8 +95,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
-            landmarkName = "-didReceiveMemoryWarning"
-            landmarkType = "5">
+            landmarkName = "@implementation CarsListTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -218,11 +218,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarRent/CarDetailViewController.m"
-            timestampString = "419955444.403168"
+            timestampString = "420010209.607721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162">
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "@implementation CarDetailViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -232,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarRent/CarDetailViewController.m"
-            timestampString = "419955444.403168"
+            timestampString = "420010209.607721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -312,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarRent/ClientViewController.m"
-            timestampString = "419769831.097528"
+            timestampString = "420037592.692834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
@@ -328,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarRent/CarDetailViewController.m"
-            timestampString = "419941558.39502"
+            timestampString = "420010209.607721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -344,12 +346,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarRent/CarDetailViewController.m"
-            timestampString = "419941558.39502"
+            timestampString = "420010209.607721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -360,12 +362,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarRent/CarDetailViewController.m"
-            timestampString = "419941558.39502"
+            timestampString = "420010209.607721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-tableView:numberOfRowsInSection:"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-retriveReviews"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -376,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarRent/CarDetailViewController.m"
-            timestampString = "419941558.39502"
+            timestampString = "420010209.607721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>

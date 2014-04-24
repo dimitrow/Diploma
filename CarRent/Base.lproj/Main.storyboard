@@ -61,6 +61,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="clientNameLabel" destination="Zhg-ve-WU7" id="Xog-jK-sVc"/>
+                        <outlet property="titleMain" destination="yZW-Hp-fz3" id="Paa-f7-3wb"/>
                         <segue destination="r15-4U-rOU" kind="modal" identifier="loginSegue" id="m7z-Va-50l"/>
                     </connections>
                 </viewController>
@@ -97,7 +98,9 @@
                             <outlet property="delegate" destination="JIe-UU-R70" id="Qlo-iJ-Z8q"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Cars List" id="ktm-bg-VzB"/>
+                    <navigationItem key="navigationItem" title="55555" id="ktm-bg-VzB">
+                        <barButtonItem key="backBarButtonItem" title=" " id="2tL-aS-jI0"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="carsTableView" destination="J7e-Xl-Wew" id="e5M-pX-1OI"/>
                         <segue destination="oOD-va-2B0" kind="push" identifier="showCarDetail" id="N7Q-Lp-0QS"/>
@@ -107,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="2258" y="807"/>
         </scene>
-        <!--Car Detail View Controller - Car Detail-->
+        <!--Car Detail View Controller-->
         <scene sceneID="BBG-VV-csc">
             <objects>
                 <viewController id="oOD-va-2B0" customClass="CarDetailViewController" sceneMemberID="viewController">
@@ -205,7 +208,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.32916945019999999" green="0.51886085370000001" blue="0.59984799209999995" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Car Detail" id="p3S-wD-rr3">
+                    <navigationItem key="navigationItem" id="p3S-wD-rr3">
                         <barButtonItem key="backBarButtonItem" title=" " id="1MR-7H-Wum"/>
                     </navigationItem>
                     <connections>

@@ -16,6 +16,7 @@
 #define FONT_ULTRA_LIGHT [UIFont fontWithName:@"HelveticaNeue-UltraLight"  size:22.0];
 #define FONT_LIGHT [UIFont fontWithName:@"HelveticaNeue-Light"  size:18.0];
 
+#define FONT_TITLE [UIFont fontWithName:@"Deftone Stylus"  size:37.0];
 
 #define ERROR @"Error"
 #define AW_BT_FAIL @"Retry"

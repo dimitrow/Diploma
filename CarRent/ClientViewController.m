@@ -40,7 +40,8 @@
 {
     
     [super viewDidLoad];
-    
+    _titleMain.font = FONT_TITLE;
+    _titleMain.text = @"Personal";
 
 
 }
