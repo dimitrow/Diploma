@@ -46,5 +46,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>20db.otf</string>
+		<string>HamburgerHeaven.ttf</string>
+		<string>DAYPBL__.ttf</string>
+		<string>Diner-Regular.ttf</string>
+		<string>DEFTONE.ttf</string>
+	</array>
 </dict>
 </plist>

@@ -23,9 +23,13 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.topItem.title = @"";
     _fullName.text = _car.carName;
-    self.title = _car.carName;
+    self.title = @"Description";//_car.carName;
     [self retrivePictures];
     [self retriveReviews];
+    
+    
+    UIFont *mainTitleFont = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:35];
+    UIFont *authorTitleFont = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:10];
     
 //    _mainPicture.layer.cornerRadius = 10.0;
 //    _mainPicture.layer.masksToBounds = YES;
@@ -117,9 +121,9 @@
     
     _reviewBack = (UIView *)[cell viewWithTag:500];
     _reviewBack.layer.cornerRadius = 10.0f;
-    _reviewBack.layer.borderWidth = 1.5f;
-    _reviewBack.backgroundColor = COLOR_REVIEW_BACK;
-    _reviewBack.layer.borderColor = COLOR_MAIN_BLUE.CGColor;
+    //_reviewBack.layer.borderWidth = 1.5f;
+    _reviewBack.backgroundColor = [UIColor colorWithRed:0.329 green:0.518 blue:0.600 alpha:0.15];
+    //_reviewBack.layer.borderColor = COLOR_MAIN_BLUE.CGColor;
     
     UILabel *comment = (UILabel *)[cell viewWithTag:556];
       comment.text = @"TEST";

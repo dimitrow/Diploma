@@ -24,6 +24,10 @@
     [[UITabBar appearance] setBarTintColor:COLOR_MAIN_BLUE];
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     [PFImageView class];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, [UIFont fontWithName:@"Deftone Stylus"  size:40.0], NSFontAttributeName, nil]];
+    
+    NSLog(@"%@", [UIFont familyNames]);
     return YES;
 }
 							
