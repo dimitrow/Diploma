@@ -156,8 +156,7 @@
         car.carName = [NSString stringWithFormat:@"%@ \"%@\"", brandName, modelName ];
         car.mainPicture = modelImage;
         car.carID = objectID;
-        NSLog(@"%@", car.carID);
-                
+        
         destViewController.car = car;
         
     }

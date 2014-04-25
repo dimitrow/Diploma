@@ -23,7 +23,7 @@
     [super viewDidLoad];
     //self.navigationController.navigationBar.topItem.title = @"Description";
     _fullName.text = _car.carName;
-    self.title = @"Description";
+    self.title = @"Description  _";
     [self retrivePictures];
     [self retriveReviews];
     
@@ -99,10 +99,24 @@
     
     [carsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
-         _reviews = [objects valueForKey:@"review"];
+         _reviews = objects; //[objects valueForKey:@"review"];
+         
+         for (PFObject *user in objects) {
+             PFQuery *userQuery = [PFQuery queryWithClassName:@"User"];
+             [userQuery whereKey:@"user" equalTo:user];
+             [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                 NSLog(@"!!!!!%@", objects);
+             }];
+             
+         }
+         
+         [_reviews objectForKey:[PFObject objectWithoutDataWithClassName:@"User" objectId:[_reviews valueForKey:@"user"]]];
+         [_reviews ]
+         
+         // po [[_reviews valueForKey:@"user"] objectAtIndex:1]
+         // po [[[objects objectAtIndex:0] allKeys]
         [_reviewsTable reloadData];
      }];
-
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -115,22 +129,25 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReviewCell" forIndexPath:indexPath];
     
-    //NSString * modelName = [[_vehicles allKeys] objectAtIndex:indexPath.section];
-    //NSArray * vehicles = [[_vehicles objectForKey:modelName] valueForKey:@"modelName"];
-    
     _reviewBack = (UIView *)[cell viewWithTag:500];
     _reviewBack.layer.cornerRadius = 10.0f;
     _reviewBack.backgroundColor = [UIColor colorWithRed:0.329 green:0.518 blue:0.600 alpha:0.15];
-
+    
+//    NSString *userName = [[[_reviews objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"modelName"] objectAtIndex:_indexPath.row];
     
     UILabel *comment = (UILabel *)[cell viewWithTag:556];
-      comment.text = @"TEST";
-    comment.text = ([_reviews count] == 0) ?  @"Sorry, there's no comments yet" : @"TEST";
     
-    //NSLog(@"!!!!! %i", [[_reviews allKeys] count]);
+    //PFObject *nickName = [[_reviews valueForKey:@"user"]objectAtIndex:indexPath.row];
+    //NSString *nickName = [[_reviews valueForKey:@"user"]objectAtIndex:indexPath.row];
+    
+    comment.text = ([_reviews count] == 0) ?  @"Sorry, there's no comments at the moment" : @"Tssssssss"; //[_reviews objectAtIndex:indexPath.row];
+    
+    //NSLog(@"!!!!! %@",[_reviews objectAtIndex:indexPath.row]);
     
     cell.textLabel.font = FONT_LIGHT;
     cell.textLabel.textColor = COLOR_MAIN_BLUE;
+    
+    //thumbImage.file =  [_pics objectAtIndex:indexPath.row];
     
     //cell.textLabel.text = [[_reviews valueForKey:@"review" ] objectAtIndex:indexPath.row];
 //    NSString * modelName = [[_vehicles allKeys] objectAtIndex:indexPath.section];
