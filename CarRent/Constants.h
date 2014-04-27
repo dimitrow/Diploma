@@ -13,10 +13,10 @@
 #define COLOR_MAIN_BLUE [UIColor colorWithRed:0.329 green:0.518 blue:0.600 alpha:1.0]
 #define COLOR_REVIEW_BACK [UIColor colorWithRed:0.771 green:0.948 blue:0.448 alpha:1.0]
 
-#define FONT_ULTRA_LIGHT [UIFont fontWithName:@"HelveticaNeue-UltraLight"  size:22.0];
+#define FONT_ULTRA_LIGHT [UIFont fontWithName:@"HamburgerHeaven"  size:32.0];
 #define FONT_LIGHT [UIFont fontWithName:@"HelveticaNeue-Light"  size:18.0];
 
-#define FONT_TITLE [UIFont fontWithName:@"Deftone Stylus"  size:37.0];
+#define FONT_TITLE [UIFont fontWithName:@"Deftone Stylus"  size:25.0];
 
 #define ERROR @"Error"
 #define AW_BT_FAIL @"Retry"

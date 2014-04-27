@@ -15,6 +15,7 @@
 {
     NSArray *_pics;
     NSDictionary *_reviews;
+    NSArray *_clients;
 }
 
 @property (strong, nonatomic) IBOutlet UILabel *fullName;

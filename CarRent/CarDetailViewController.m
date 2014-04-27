@@ -24,13 +24,9 @@
     //self.navigationController.navigationBar.topItem.title = @"Description";
     _fullName.text = _car.carName;
     self.title = @"Description  _";
+    //[self retriveClients];
     [self retrivePictures];
     [self retriveReviews];
-    
-    
-    UIFont *mainTitleFont = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:35];
-    UIFont *authorTitleFont = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:10];
-
     
     
 //    _mainPicture.layer.cornerRadius = 10.0;
@@ -91,6 +87,18 @@
 
 }
 
+//- (void)retriveClients
+//{
+//    PFQuery *clientsQuery = [PFQuery queryWithClassName:@"User"];
+//    //[clientsQuery whereKey:@"vehicle" equalTo:[PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID]];
+//    //[clientsQuery setCachePolicy:kPFCachePolicyCacheThenNetwork];
+//    _clients = [[clientsQuery findObjects] valueForKey:@"username"];
+////    [clientsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+////     {
+////         _clients = objects;
+////     }];
+//}
+
 - (void)retriveReviews
 {
     PFQuery *carsQuery = [PFQuery queryWithClassName:@"Review"];
@@ -99,63 +107,55 @@
     
     [carsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
-         _reviews = objects; //[objects valueForKey:@"review"];
+         _reviews = objects;
          
-         for (PFObject *user in objects) {
-             PFQuery *userQuery = [PFQuery queryWithClassName:@"User"];
-             [userQuery whereKey:@"user" equalTo:user];
-             [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                 NSLog(@"!!!!!%@", objects);
-             }];
+         //for (PFObject *cars in _reviews) {
+             PFQuery *clientsQuery = [PFQuery queryWithClassName:@"Vehicle"];
+             //[clientsQuery whereKey:@"objectId" equalTo:[_reviews valueForKey:@"vehicle"]];
+             _clients = [clientsQuery findObjects];
              
-         }
+         //}
          
-         [_reviews objectForKey:[PFObject objectWithoutDataWithClassName:@"User" objectId:[_reviews valueForKey:@"user"]]];
-         [_reviews ]
-         
-         // po [[_reviews valueForKey:@"user"] objectAtIndex:1]
-         // po [[[objects objectAtIndex:0] allKeys]
         [_reviewsTable reloadData];
      }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return ([_reviews count] == 0) ? 1 : [_reviews count];
-
+    NSArray *reviewCells = [_reviews valueForKey:@"review"];
+    return ([reviewCells count] >= 1) ? [reviewCells count] : 1;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReviewCell" forIndexPath:indexPath];
     
+    UILabel *comment = (UILabel *)[cell viewWithTag:556];
+    UILabel *timeStamp = (UILabel *)[cell viewWithTag:557];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"MMMM, dd, YYYY, hh:mm a"];
+    NSTimeZone *tz = [NSTimeZone localTimeZone];
+    [df setTimeZone:tz];
+    
+    if ([[_reviews valueForKey:@"review"] count] >= 1) {
+        timeStamp.text = [df stringFromDate:[[_reviews valueForKey:@"createdAt"] objectAtIndex:indexPath.row]];
+        comment.text = [[_reviews valueForKey:@"review"] objectAtIndex:indexPath.row];
+    } else {
+        timeStamp.text = @"";
+        comment.text = @"Sorry, there's no comments at the moment";
+    }
+    
     _reviewBack = (UIView *)[cell viewWithTag:500];
     _reviewBack.layer.cornerRadius = 10.0f;
     _reviewBack.backgroundColor = [UIColor colorWithRed:0.329 green:0.518 blue:0.600 alpha:0.15];
     
-//    NSString *userName = [[[_reviews objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"modelName"] objectAtIndex:_indexPath.row];
-    
-    UILabel *comment = (UILabel *)[cell viewWithTag:556];
-    
-    //PFObject *nickName = [[_reviews valueForKey:@"user"]objectAtIndex:indexPath.row];
-    //NSString *nickName = [[_reviews valueForKey:@"user"]objectAtIndex:indexPath.row];
-    
-    comment.text = ([_reviews count] == 0) ?  @"Sorry, there's no comments at the moment" : @"Tssssssss"; //[_reviews objectAtIndex:indexPath.row];
-    
-    //NSLog(@"!!!!! %@",[_reviews objectAtIndex:indexPath.row]);
     
     cell.textLabel.font = FONT_LIGHT;
     cell.textLabel.textColor = COLOR_MAIN_BLUE;
     
-    //thumbImage.file =  [_pics objectAtIndex:indexPath.row];
-    
-    //cell.textLabel.text = [[_reviews valueForKey:@"review" ] objectAtIndex:indexPath.row];
-//    NSString * modelName = [[_vehicles allKeys] objectAtIndex:indexPath.section];
-//    NSArray * vehicles = [[_vehicles objectForKey:modelName] valueForKey:@"modelName"];
-//    
-//    cell.textLabel.font = FONT_LIGHT;
-//    cell.textLabel.textColor = COLOR_MAIN_BLUE;
-//    cell.textLabel.text = [vehicles objectAtIndex:indexPath.row];
+    //NSString *userName = [[_reviews valueForKey:@"user"] objectAtIndex:indexPath.row];
     
     return cell;
 

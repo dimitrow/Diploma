@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 
 @interface LoginViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *titleMain;
 
 @end
 
@@ -20,7 +21,7 @@
     [super viewDidLoad];
     _userTextField.text = @"U'Gene";
     _passWordTextField.text = @"receiver";
-    
+    _titleMain.font = FONT_TITLE;
 
 
 }
