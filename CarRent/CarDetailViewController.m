@@ -109,12 +109,16 @@
      {
          _reviews = objects;
          
-         //for (PFObject *cars in _reviews) {
-             PFQuery *clientsQuery = [PFQuery queryWithClassName:@"Vehicle"];
-             //[clientsQuery whereKey:@"objectId" equalTo:[_reviews valueForKey:@"vehicle"]];
+         for (PFObject *client in objects) {
+             PFQuery *clientsQuery = [PFQuery queryWithClassName:@"User"];
+             //[clientsQuery whereKey:@"modelName" equalTo:client];
              _clients = [clientsQuery findObjects];
+//             [clientsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//                 _clients = objects;
+//                 NSLog(@"%@", _clients);
+//             }];
              
-         //}
+         }
          
         [_reviewsTable reloadData];
      }];

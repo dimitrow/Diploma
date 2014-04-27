@@ -122,19 +122,19 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 50;
+    return 25;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(9.0, 0, tableView.frame.size.width, 50.0)];
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(9.0, 0, tableView.frame.size.width, 25.0)];
     header.backgroundColor = [UIColor clearColor];
     
     UILabel *headerTitle = [[UILabel alloc] initWithFrame:header.frame];
     headerTitle.font = FONT_ULTRA_LIGHT;
     
     headerTitle.text = [[_vehicles allKeys]objectAtIndex:section];
-    headerTitle.textColor = [UIColor blackColor];
+    headerTitle.textColor = [UIColor darkGrayColor];
     
     [header addSubview:headerTitle];
     
