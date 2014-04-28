@@ -24,7 +24,7 @@
     //self.navigationController.navigationBar.topItem.title = @"Description";
     _fullName.text = _car.carName;
     self.title = @"Description  _";
-    //[self retriveClients];
+    [self tempQuery];
     [self retrivePictures];
     [self retriveReviews];
     
@@ -87,17 +87,20 @@
 
 }
 
-//- (void)retriveClients
-//{
-//    PFQuery *clientsQuery = [PFQuery queryWithClassName:@"User"];
-//    //[clientsQuery whereKey:@"vehicle" equalTo:[PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID]];
-//    //[clientsQuery setCachePolicy:kPFCachePolicyCacheThenNetwork];
-//    _clients = [[clientsQuery findObjects] valueForKey:@"username"];
-////    [clientsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-////     {
-////         _clients = objects;
-////     }];
-//}
+- (void)tempQuery
+{
+//    PFQuery *carsQuery = [PFQuery queryWithClassName:@"Review"];
+//    [carsQuery whereKey:@"vehicle" equalTo:[PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID]];
+//    
+//    PFQuery *userQuery = [PFUser query];
+//    
+//    //[carsQuery whereKey:@"user" matchesKey:@"username" inQuery:userQuery];
+//    [carsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//    
+//        _reviews = objects;
+//        
+//    }];
+}
 
 - (void)retriveReviews
 {
@@ -109,19 +112,23 @@
      {
          _reviews = objects;
          
-         for (PFObject *client in objects) {
-             PFQuery *clientsQuery = [PFQuery queryWithClassName:@"User"];
-             //[clientsQuery whereKey:@"modelName" equalTo:client];
-             _clients = [clientsQuery findObjects];
-//             [clientsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//                 _clients = objects;
-//                 NSLog(@"%@", _clients);
-//             }];
+         for (PFUser *client in objects) {
+             PFQuery *clientsQuery = [PFUser query];
+             
+             //[clientsQuery whereKey:@"username" equalTo:<#(id)#>];
+             [clientsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                 _clients = objects;
+
+                 [_reviews setValue:[_clients valueForKey:@"username"] forKey:@"user"];
+                 //NSLog(@"%@", _reviews);
+             }];
              
          }
          
         [_reviewsTable reloadData];
      }];
+    
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
