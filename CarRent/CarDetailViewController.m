@@ -112,14 +112,14 @@
      {
          _reviews = objects;
          
-         for (PFUser *client in objects) {
+         for (PFUser *client in _reviews) {
              PFQuery *clientsQuery = [PFUser query];
              
-             //[clientsQuery whereKey:@"username" equalTo:<#(id)#>];
+             [clientsQuery whereKey:[PFUser user] equalTo: [_reviews valueForKey:@"user"]];
              [clientsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                  _clients = objects;
 
-                 [_reviews setValue:[_clients valueForKey:@"username"] forKey:@"user"];
+                 //[_reviews setValue:[_clients valueForKey:@"username"] forKey:@"user"];
                  //NSLog(@"%@", _reviews);
              }];
              
