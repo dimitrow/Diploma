@@ -112,20 +112,31 @@
      {
          _reviews = objects;
          
-         for (PFUser *client in objects) {
+         for (PFObject *review in objects) {
+             PFUser *user = [review valueForKey:@"user"]; //[@"user"];
              PFQuery *clientsQuery = [PFUser query];
-             
-             //[clientsQuery whereKey:@"username" equalTo:<#(id)#>];
-             [clientsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                 _clients = objects;
-
-                 [_reviews setValue:[_clients valueForKey:@"username"] forKey:@"user"];
-                 //NSLog(@"%@", _reviews);
+             [clientsQuery getObjectInBackgroundWithId:user.objectId block:^(PFObject *object, NSError *error) {
+                 [_reviews setValue:object[@"username"] forKey:@"user"];
+                 [_reviewsTable reloadData];
              }];
+             
+             
+//             [clientsQuery whereKey:@"objectId" equalTo:user.objectId];
+//             
+//             
+//             PFQuery *new = [PFQuery queryWithClassName:@"User"];
+//             
+//             [clientsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//                 NSLog(@"%@",objects[0][@"username"]);
+////                 _clients = objects;
+////
+////                 [_reviews setValue:[_clients valueForKey:@"username"] forKey:@"user"];
+////                 //NSLog(@"%@", _reviews);
+//             }];
              
          }
          
-        [_reviewsTable reloadData];
+
      }];
     
     
@@ -153,6 +164,10 @@
     if ([[_reviews valueForKey:@"review"] count] >= 1) {
         timeStamp.text = [df stringFromDate:[[_reviews valueForKey:@"createdAt"] objectAtIndex:indexPath.row]];
         comment.text = [[_reviews valueForKey:@"review"] objectAtIndex:indexPath.row];
+        
+        NSLog(@"%@",[_reviews valueForKey:@"user"]);
+
+        
     } else {
         timeStamp.text = @"";
         comment.text = @"Sorry, there's no comments at the moment";
