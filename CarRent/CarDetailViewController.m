@@ -26,7 +26,7 @@
     self.title = @"Description  _";
     [self tempQuery];
     [self retrivePictures];
-    [self retriveReviews];
+    //[self retriveReviews];
     
     
 //    _mainPicture.layer.cornerRadius = 10.0;
@@ -112,24 +112,13 @@
      {
          _reviews = objects;
          
-<<<<<<< HEAD
-         for (PFUser *client in _reviews) {
-             PFQuery *clientsQuery = [PFUser query];
-             
-             [clientsQuery whereKey:[PFUser user] equalTo: [_reviews valueForKey:@"user"]];
-             [clientsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                 _clients = objects;
-
-                 //[_reviews setValue:[_clients valueForKey:@"username"] forKey:@"user"];
-                 //NSLog(@"%@", _reviews);
-=======
          for (PFObject *review in objects) {
              PFUser *user = [review valueForKey:@"user"]; //[@"user"];
              PFQuery *clientsQuery = [PFUser query];
              [clientsQuery getObjectInBackgroundWithId:user.objectId block:^(PFObject *object, NSError *error) {
                  [_reviews setValue:object[@"username"] forKey:@"user"];
                  [_reviewsTable reloadData];
->>>>>>> 4da68b35b6504799cc710e6ce80b7e6716021a5c
+                 NSLog(@"%@",[_reviews valueForKey:@"user"]);
              }];
              
              
@@ -147,11 +136,7 @@
 //             }];
              
          }
-         
-
      }];
-    
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -173,11 +158,15 @@
     NSTimeZone *tz = [NSTimeZone localTimeZone];
     [df setTimeZone:tz];
     
+    [self retriveReviews];
+
+    
     if ([[_reviews valueForKey:@"review"] count] >= 1) {
         timeStamp.text = [df stringFromDate:[[_reviews valueForKey:@"createdAt"] objectAtIndex:indexPath.row]];
         comment.text = [[_reviews valueForKey:@"review"] objectAtIndex:indexPath.row];
-        
-        NSLog(@"%@",[_reviews valueForKey:@"user"]);
+        //comment.text = [[_reviews objectAtIndex:indexPath.row] valueForKey:@"user"];
+
+       // NSLog(@"%@",[_reviews valueForKey:@"user"]);
 
         
     } else {

@@ -14,7 +14,7 @@
 @interface CarDetailViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *_pics;
-    NSDictionary *_reviews;
+    NSArray *_reviews;
     NSDictionary *_clients;
 }
 
