@@ -20,14 +20,12 @@
 {
     [PFUser currentUser];
     if ([PFUser currentUser]) {
-        NSLog(@"welcome dude");
         _clientNameLabel.textColor = COLOR_MAIN_BLUE;
         _clientNameLabel.text = [NSString stringWithFormat:@"%@ %@",
                                  [[PFUser currentUser] valueForKey:@"firstName"],
                                  [[PFUser currentUser] valueForKey:@"lastName"]];
         
     } else {
-        NSLog(@"get the fuck over there");
         _clientNameLabel.text = [NSString stringWithFormat:@"%@ %@",
                                  [[PFUser currentUser] valueForKey:@"---"],
                                  [[PFUser currentUser] valueForKey:@"---"]];

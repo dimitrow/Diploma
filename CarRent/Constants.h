@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#define COLOR_WRONG_INPUT [UIColor colorWithRed:0.932 green:0.123 blue:0.123 alpha:1.0]
-#define COLOR_CORRECT_INPUT [UIColor colorWithRed:0.432 green:0.677 blue:0.123 alpha:1.0]
+#define COLOR_WRONG_INPUT [UIColor colorWithRed:0.932 green:0.123 blue:0.123 alpha:0.12]
+#define COLOR_CORRECT_INPUT [UIColor colorWithRed:0.432 green:0.677 blue:0.123 alpha:0.12]
 #define COLOR_MAIN_BLUE [UIColor colorWithRed:0.329 green:0.518 blue:0.600 alpha:1.0]
 #define COLOR_REVIEW_BACK [UIColor colorWithRed:0.771 green:0.948 blue:0.448 alpha:1.0]
 
