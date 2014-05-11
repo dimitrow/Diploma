@@ -10,6 +10,7 @@
 #import "Car.h"
 #import "Constants.h"
 #import "GalleryRootViewController.h"
+#import "ReviewViewController.h"
 
 @interface CarDetailViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate>
 {
@@ -17,6 +18,10 @@
     NSArray *_reviews;
     NSDictionary *_clients;
 }
+
+- (void)retriveReviews;
+
+- (IBAction)addComment:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UILabel *fullName;
 @property (weak, nonatomic) IBOutlet PFImageView *collectionCellImage;

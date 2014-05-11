@@ -11,6 +11,7 @@
 @interface CarDetailViewController ()
 {
     NSIndexPath *_indexPath;
+    UIRefreshControl *_refresh;
 }
 
 @end
@@ -21,23 +22,17 @@
 {
     
     [super viewDidLoad];
-    //self.navigationController.navigationBar.topItem.title = @"Description";
     _fullName.text = _car.carName;
-    self.title = @"Description  _";
+    self.title = @"Car Details.";
     [self retrivePictures];
-    [self retriveReviews];
+    [self.tabBarController.tabBar isHidden];
+    [self performSelector:@selector(retriveReviews)];
+
     
-    
-//    _mainPicture.layer.cornerRadius = 10.0;
-//    _mainPicture.layer.masksToBounds = YES;
-//    _mainPicture.layer.borderWidth = 2.0;
-//    _mainPicture.layer.borderColor = COLOR_MAIN_BLUE.CGColor;
-    
-//    _mainPictureBack.backgroundColor = [UIColor colorWithRed:.4 green:.4 blue:.4 alpha:.4];
-//    _mainPictureBack.layer.cornerRadius = 15.0;
-//    _mainPictureBack.layer.masksToBounds = YES;
-//    _mainPictureBack.layer.borderWidth = 2.0;
-//    _mainPictureBack.layer.borderColor = COLOR_MAIN_BLUE.CGColor;
+    _refresh = [[UIRefreshControl alloc] init];
+    [_refresh addTarget:self
+                action:@selector(retriveReviews)  forControlEvents:UIControlEventValueChanged];
+    [_reviewsTable addSubview:_refresh];
     
 }
 
@@ -86,11 +81,10 @@
 
 }
 
-
-
 - (void)retriveReviews
 {
     PFQuery *carsQuery = [PFQuery queryWithClassName:@"Review"];
+    [carsQuery orderByDescending:@"createdAt"];
     [carsQuery whereKey:@"vehicle" equalTo:[PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID]];
     [carsQuery includeKey:@"user"];
     [carsQuery setCachePolicy:kPFCachePolicyCacheThenNetwork];
@@ -101,7 +95,13 @@
          
          [_reviewsTable reloadData];
      }];
-    
+    [self performSelector:@selector(stopRefresh) withObject:nil afterDelay:0.5];
+
+}
+
+- (void)stopRefresh
+{
+    [_refresh endRefreshing];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -130,10 +130,9 @@
         comment.text = [[_reviews valueForKey:@"review"] objectAtIndex:indexPath.row];
         
         NSString *firstName = [[[_reviews valueForKey:@"user"] valueForKey:@"firstName"] objectAtIndex:indexPath.row];
-        NSString *nickName = [[[_reviews valueForKey:@"user"] valueForKey:@"username"] objectAtIndex:indexPath.row];
         NSString *lastName = [[[_reviews valueForKey:@"user"] valueForKey:@"lastName"] objectAtIndex:indexPath.row];
         
-        userStamp.text = [NSString stringWithFormat:@"%@ \"%@\" %@", firstName, nickName, lastName];
+        userStamp.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 
 
         
@@ -162,8 +161,16 @@
         _car.pictures = _pics;
         destViewController.car = _car;
         
+    } else {
+        ReviewViewController *destViewController = segue.destinationViewController;
+        destViewController.car = _car;
+
     }
 }
 
 
+- (IBAction)addComment:(id)sender
+{
+    
+}
 @end

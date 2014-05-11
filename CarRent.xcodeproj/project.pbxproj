@@ -43,6 +43,8 @@
 		16246B301908668500CB812E /* DEFTONE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16246B2F1908668500CB812E /* DEFTONE.ttf */; };
 		16246B321908671100CB812E /* 20db.otf in Resources */ = {isa = PBXBuildFile; fileRef = 16246B311908671100CB812E /* 20db.otf */; };
 		16246B341908678C00CB812E /* DAYPBL__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16246B331908678C00CB812E /* DAYPBL__.ttf */; };
+		168CAE5E191A5F8500BBF265 /* NavRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168CAE5D191A5F8500BBF265 /* NavRootViewController.m */; };
+		168CAE61191B6BA500BBF265 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168CAE60191B6BA500BBF265 /* ReviewViewController.m */; };
 		169E0FDA18FDD6F9003286B0 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E0FD918FDD6F9003286B0 /* PageContentViewController.m */; };
 		16EF480718FD970200173EDD /* GalleryRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF480618FD970200173EDD /* GalleryRootViewController.m */; };
 		4490B36118DF7808006EE32F /* UITextField+Customised.m in Sources */ = {isa = PBXBuildFile; fileRef = 4490B36018DF7808006EE32F /* UITextField+Customised.m */; };
@@ -106,6 +108,10 @@
 		16246B2F1908668500CB812E /* DEFTONE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DEFTONE.ttf; sourceTree = "<group>"; };
 		16246B311908671100CB812E /* 20db.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 20db.otf; sourceTree = "<group>"; };
 		16246B331908678C00CB812E /* DAYPBL__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DAYPBL__.ttf; sourceTree = "<group>"; };
+		168CAE5C191A5F8500BBF265 /* NavRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavRootViewController.h; sourceTree = "<group>"; };
+		168CAE5D191A5F8500BBF265 /* NavRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavRootViewController.m; sourceTree = "<group>"; };
+		168CAE5F191B6BA500BBF265 /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
+		168CAE60191B6BA500BBF265 /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
 		169E0FD818FDD6F9003286B0 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
 		169E0FD918FDD6F9003286B0 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		16EF480518FD970200173EDD /* GalleryRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryRootViewController.h; path = ../GalleryRootViewController.h; sourceTree = "<group>"; };
@@ -201,6 +207,8 @@
 				4490B36018DF7808006EE32F /* UITextField+Customised.m */,
 				04B34F1018D829D500CD0A3F /* AppDelegate.h */,
 				04B34F1118D829D500CD0A3F /* AppDelegate.m */,
+				168CAE5C191A5F8500BBF265 /* NavRootViewController.h */,
+				168CAE5D191A5F8500BBF265 /* NavRootViewController.m */,
 				0477D63819052F0100F200B2 /* TabRootViewController.h */,
 				0477D63919052F0100F200B2 /* TabRootViewController.m */,
 				04B34F3C18D82BBF00CD0A3F /* CarsListTableViewController.h */,
@@ -219,6 +227,8 @@
 				169E0FD918FDD6F9003286B0 /* PageContentViewController.m */,
 				16EF480518FD970200173EDD /* GalleryRootViewController.h */,
 				16EF480618FD970200173EDD /* GalleryRootViewController.m */,
+				168CAE5F191B6BA500BBF265 /* ReviewViewController.h */,
+				168CAE60191B6BA500BBF265 /* ReviewViewController.m */,
 				04B34F1C18D829D500CD0A3F /* Images.xcassets */,
 				04B34F0818D829D500CD0A3F /* Supporting Files */,
 			);
@@ -377,7 +387,9 @@
 				4490B36118DF7808006EE32F /* UITextField+Customised.m in Sources */,
 				0477D63A19052F0100F200B2 /* TabRootViewController.m in Sources */,
 				040DABDF18D887B40041372F /* LoginViewController.m in Sources */,
+				168CAE61191B6BA500BBF265 /* ReviewViewController.m in Sources */,
 				04B34F1218D829D500CD0A3F /* AppDelegate.m in Sources */,
+				168CAE5E191A5F8500BBF265 /* NavRootViewController.m in Sources */,
 				043D3C3218F431C800750854 /* CarDetailViewController.m in Sources */,
 				04B34F0E18D829D500CD0A3F /* main.m in Sources */,
 				04B34F3B18D82AE300CD0A3F /* ClientViewController.m in Sources */,

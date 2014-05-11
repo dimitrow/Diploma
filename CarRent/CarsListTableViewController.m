@@ -34,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"Our Cars";
+    self.navigationItem.title = [NSString stringWithFormat:@"Our Cars."];
 
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
@@ -158,6 +158,7 @@
         car.carID = objectID;
         
         destViewController.car = car;
+        destViewController.hidesBottomBarWhenPushed = YES;
         
     }
 }
