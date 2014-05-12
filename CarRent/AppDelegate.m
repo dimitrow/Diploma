@@ -22,7 +22,7 @@
     [[UINavigationBar appearance] setBarTintColor:COLOR_MAIN_BLUE];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setBarTintColor:COLOR_MAIN_BLUE];
-    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance] setTintColor:COLOR_MAIN_WHITE];
     [PFImageView class];
     
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"Deftone Stylus"  size:30.0], NSFontAttributeName, nil]];
