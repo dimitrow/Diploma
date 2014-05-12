@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *clientNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *titleMain;
+@property (strong, nonatomic) IBOutlet UIImageView *clientPic;
 
+- (IBAction)makeOrder:(id)sender;
 
 @end

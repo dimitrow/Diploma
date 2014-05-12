@@ -101,7 +101,6 @@
          
          BOOL avaliability = [[[[objects valueForKey:@"vehicle"] valueForKey:@"isAvaliable"] firstObject] boolValue];
          (avaliability == YES) ? (_avaliability.backgroundColor = COLOR_AVAL) : (_avaliability.backgroundColor = COLOR_BUSY);
-         //(_car.isAvaliable == YES) ? (_avaliability.backgroundColor = COLOR_AVAL) : (_avaliability.backgroundColor = COLOR_BUSY);
          
          [_reviewsTable reloadData];
      }];
@@ -125,10 +124,10 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReviewCell" forIndexPath:indexPath];
     
-    UILabel *comment = (UILabel *)[cell viewWithTag:556];
+    UILabel *reviewItSelf = (UILabel *)[cell viewWithTag:556];
     UILabel *timeStamp = (UILabel *)[cell viewWithTag:557];
     UILabel *userStamp = (UILabel *)[cell viewWithTag:558];
-    comment.textAlignment = NSTextAlignmentLeft;
+    reviewItSelf.textAlignment = NSTextAlignmentLeft;
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"MMMM, dd, YYYY, hh:mm a"];
@@ -137,7 +136,7 @@
     
     if ([[_reviews valueForKey:@"review"] count] >= 1) {
         timeStamp.text = [df stringFromDate:[[_reviews valueForKey:@"createdAt"] objectAtIndex:indexPath.row]];
-        comment.text = [[_reviews valueForKey:@"review"] objectAtIndex:indexPath.row];
+        reviewItSelf.text = [[_reviews valueForKey:@"review"] objectAtIndex:indexPath.row];
         
         NSString *firstName = [[[_reviews valueForKey:@"user"] valueForKey:@"firstName"] objectAtIndex:indexPath.row];
         NSString *lastName = [[[_reviews valueForKey:@"user"] valueForKey:@"lastName"] objectAtIndex:indexPath.row];
@@ -146,8 +145,8 @@
         
     } else {
         timeStamp.text = @"";
-        comment.text = @"Sorry, there's no comments at the moment";
-        comment.textAlignment = NSTextAlignmentCenter;
+        reviewItSelf.text = @"Sorry, there's no comments at the moment";
+        reviewItSelf.textAlignment = NSTextAlignmentCenter;
         userStamp.text = @"";
 
     }

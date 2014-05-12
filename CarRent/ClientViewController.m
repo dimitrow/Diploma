@@ -8,6 +8,7 @@
 
 #import "ClientViewController.h"
 #import "Constants.h"
+#import "OrderViewController.h"
 
 @interface ClientViewController ()
 
@@ -40,8 +41,10 @@
     [super viewDidLoad];
     _titleMain.font = FONT_TITLE;
     _titleMain.text = @"Personal";
-
-
+    
+    _clientPic.layer.shadowColor = [UIColor blackColor].CGColor;
+    _clientPic.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+    _clientPic.layer.shadowOpacity = 0.9;
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,4 +64,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)makeOrder:(id)sender
+{
+    [self performSegueWithIdentifier:@"makeOrderFromMain" sender:self];
+}
 @end

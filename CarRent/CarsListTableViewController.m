@@ -100,6 +100,7 @@
     
     NSString *modelName = [[_vehicles allKeys] objectAtIndex:indexPath.section];
     NSArray *vehicles = [[_vehicles objectForKey:modelName] valueForKey:@"modelName"];
+    //NSArray *avaliability = [[_vehicles objectForKey:modelName] valueForKey:@"isAvaliable"];
     
     BOOL isAvaliable = [[[[_vehicles objectForKey:modelName] valueForKey:@"isAvaliable"] objectAtIndex:indexPath.row] boolValue];
     

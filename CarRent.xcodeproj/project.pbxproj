@@ -12,6 +12,8 @@
 		04339F7918D9DACA008BCD87 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04339F7818D9DACA008BCD87 /* RegistrationViewController.m */; };
 		043D3C3218F431C800750854 /* CarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043D3C3118F431C800750854 /* CarDetailViewController.m */; };
 		0477D63A19052F0100F200B2 /* TabRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477D63919052F0100F200B2 /* TabRootViewController.m */; };
+		0488874B192101D400D7117D /* Pip_Boy_Alright.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0488874A192101D400D7117D /* Pip_Boy_Alright.jpg */; };
+		0488874E192106CB00D7117D /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488874D192106CB00D7117D /* OrderViewController.m */; };
 		04B34F0218D829D500CD0A3F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B34F0118D829D500CD0A3F /* Foundation.framework */; };
 		04B34F0418D829D500CD0A3F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B34F0318D829D500CD0A3F /* CoreGraphics.framework */; };
 		04B34F0618D829D500CD0A3F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B34F0518D829D500CD0A3F /* UIKit.framework */; };
@@ -70,6 +72,9 @@
 		043D3C3118F431C800750854 /* CarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarDetailViewController.m; sourceTree = "<group>"; };
 		0477D63819052F0100F200B2 /* TabRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabRootViewController.h; sourceTree = "<group>"; };
 		0477D63919052F0100F200B2 /* TabRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabRootViewController.m; sourceTree = "<group>"; };
+		0488874A192101D400D7117D /* Pip_Boy_Alright.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Pip_Boy_Alright.jpg; sourceTree = "<group>"; };
+		0488874C192106CB00D7117D /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
+		0488874D192106CB00D7117D /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		04B34EFE18D829D500CD0A3F /* CarRent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarRent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B34F0118D829D500CD0A3F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04B34F0318D829D500CD0A3F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -229,6 +234,8 @@
 				16EF480618FD970200173EDD /* GalleryRootViewController.m */,
 				168CAE5F191B6BA500BBF265 /* ReviewViewController.h */,
 				168CAE60191B6BA500BBF265 /* ReviewViewController.m */,
+				0488874C192106CB00D7117D /* OrderViewController.h */,
+				0488874D192106CB00D7117D /* OrderViewController.m */,
 				04B34F1C18D829D500CD0A3F /* Images.xcassets */,
 				04B34F0818D829D500CD0A3F /* Supporting Files */,
 			);
@@ -267,6 +274,7 @@
 		16246B2A19085DEF00CB812E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0488874A192101D400D7117D /* Pip_Boy_Alright.jpg */,
 				16246B331908678C00CB812E /* DAYPBL__.ttf */,
 				16246B311908671100CB812E /* 20db.otf */,
 				16246B2F1908668500CB812E /* DEFTONE.ttf */,
@@ -363,6 +371,7 @@
 				16246B2E19085ECB00CB812E /* HamburgerHeaven.ttf in Resources */,
 				04B34F1518D829D500CD0A3F /* Main.storyboard in Resources */,
 				16246B321908671100CB812E /* 20db.otf in Resources */,
+				0488874B192101D400D7117D /* Pip_Boy_Alright.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D8320018F685720082B044 /* Car.m in Sources */,
+				0488874E192106CB00D7117D /* OrderViewController.m in Sources */,
 				04B34F3E18D82BBF00CD0A3F /* CarsListTableViewController.m in Sources */,
 				169E0FDA18FDD6F9003286B0 /* PageContentViewController.m in Sources */,
 				4490B36118DF7808006EE32F /* UITextField+Customised.m in Sources */,
