@@ -23,11 +23,18 @@
     
     [super viewDidLoad];
     _fullName.text = _car.carName;
+    _releaseYear.text = _car.releaseYear;
+    _mpg.text = _car.mpg;
+    
+    (_car.isAvaliable == YES) ? (_avaliability.backgroundColor = COLOR_AVAL) : (_avaliability.backgroundColor = COLOR_BUSY);
+    
     self.title = @"Car Details.";
     [self retrivePictures];
     [self.tabBarController.tabBar isHidden];
     [self performSelector:@selector(retriveReviews)];
-
+    
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(retriveReviews) name:@"review" object:nil];
     
     _refresh = [[UIRefreshControl alloc] init];
     [_refresh addTarget:self
@@ -44,7 +51,6 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     _car.photoIndex = (NSInteger *)indexPath.row;
-    NSLog(@"selected %ld", (long)indexPath.row);
     [self performSegueWithIdentifier:@"showPictures" sender:self];
     
 }
@@ -71,7 +77,6 @@
     PFQuery *carsQuery = [PFQuery queryWithClassName:@"Pictures"];
     [carsQuery whereKey:@"vehicle" equalTo:[PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID]];
     [carsQuery setCachePolicy:kPFCachePolicyCacheThenNetwork];
-    
     [carsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {         
          _pics = [objects valueForKey:@"photo"];
@@ -87,11 +92,16 @@
     [carsQuery orderByDescending:@"createdAt"];
     [carsQuery whereKey:@"vehicle" equalTo:[PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID]];
     [carsQuery includeKey:@"user"];
+    [carsQuery includeKey:@"vehicle"];
     [carsQuery setCachePolicy:kPFCachePolicyCacheThenNetwork];
     
     [carsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
          _reviews = objects;
+         
+         BOOL avaliability = [[[[objects valueForKey:@"vehicle"] valueForKey:@"isAvaliable"] firstObject] boolValue];
+         (avaliability == YES) ? (_avaliability.backgroundColor = COLOR_AVAL) : (_avaliability.backgroundColor = COLOR_BUSY);
+         //(_car.isAvaliable == YES) ? (_avaliability.backgroundColor = COLOR_AVAL) : (_avaliability.backgroundColor = COLOR_BUSY);
          
          [_reviewsTable reloadData];
      }];
@@ -133,8 +143,6 @@
         NSString *lastName = [[[_reviews valueForKey:@"user"] valueForKey:@"lastName"] objectAtIndex:indexPath.row];
         
         userStamp.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
-
-
         
     } else {
         timeStamp.text = @"";
@@ -146,7 +154,6 @@
     
     _reviewBack = (UIView *)[cell viewWithTag:500];
     _reviewBack.backgroundColor = [UIColor colorWithRed:0.329 green:0.518 blue:0.600 alpha:0.12];
-    
     
     cell.textLabel.font = FONT_LIGHT;
     cell.textLabel.textColor = COLOR_MAIN_BLUE;

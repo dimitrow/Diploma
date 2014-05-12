@@ -24,12 +24,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self performSelector:@selector(retriveData)];
-    
     [_carsTableView reloadData];
-    //[self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, [UIFont fontWithName:@"HelveticaNeue-CondensedBold"  size:25.0], NSFontAttributeName, nil]];
-    
 }
-
 
 - (void)viewDidLoad
 {
@@ -57,7 +53,7 @@
 {
     _vehicles = [NSMutableDictionary dictionary];
     PFQuery *retriveVehicles = [PFQuery queryWithClassName:@"Brands"];
-    [retriveVehicles orderByAscending:@"brandName"];
+    //[retriveVehicles orderByAscending:@"brandName"];
     [retriveVehicles setCachePolicy:kPFCachePolicyCacheThenNetwork];
 
     [retriveVehicles findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
@@ -67,7 +63,7 @@
         
         for (PFObject *brand in objects) {
              PFQuery *carsQuery = [PFQuery queryWithClassName:@"Vehicle"];
-            [carsQuery orderByAscending:@"modelName"];
+            //[carsQuery orderByAscending:@"modelName"];
             [carsQuery whereKey:@"brandName" equalTo:brand];
             [carsQuery setCachePolicy:kPFCachePolicyCacheThenNetwork];
 
@@ -100,14 +96,28 @@
 {
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    UIView *avaliabilitySign = (UIView *)[cell viewWithTag:15];
+    
+    NSString *modelName = [[_vehicles allKeys] objectAtIndex:indexPath.section];
+    NSArray *vehicles = [[_vehicles objectForKey:modelName] valueForKey:@"modelName"];
+    
+    BOOL isAvaliable = [[[[_vehicles objectForKey:modelName] valueForKey:@"isAvaliable"] objectAtIndex:indexPath.row] boolValue];
+    
+    //(_car.isAvaliable == YES) ? (_avaliability.backgroundColor = COLOR_AVAL) : (_avaliability.backgroundColor = COLOR_BUSY);
+    
+    (isAvaliable == YES) ? (avaliabilitySign.backgroundColor = COLOR_AVAL) : (avaliabilitySign.backgroundColor = COLOR_BUSY);
+    
+//    if ([avaliability objectAtIndex:indexPath] == 1) {
+//        NSLog(@"I'm FREE");
+//    } else {
+//        NSLog(@"BUSY");
+//    }
+    
 
-    NSString * modelName = [[_vehicles allKeys] objectAtIndex:indexPath.section];
-    NSArray * vehicles = [[_vehicles objectForKey:modelName] valueForKey:@"modelName"];
-
+    
     cell.textLabel.font = FONT_LIGHT;
     cell.textLabel.textColor = COLOR_MAIN_BLUE;
     cell.textLabel.text = [vehicles objectAtIndex:indexPath.row];
-    
     
     return cell;
 }
@@ -132,8 +142,8 @@
     
     UILabel *headerTitle = [[UILabel alloc] initWithFrame:header.frame];
     headerTitle.font = FONT_ULTRA_LIGHT;
-    
-    headerTitle.text = [[_vehicles allKeys]objectAtIndex:section];
+    //NSArray *sortedTitles = [[_vehicles allKeys] sortedArrayUsingSelector: @selector(caseInsensitiveCompare:)];
+    headerTitle.text = [[_vehicles allKeys] objectAtIndex:section];
     headerTitle.textColor = [UIColor darkGrayColor];
     
     [header addSubview:headerTitle];
@@ -145,17 +155,24 @@
     if ([segue.identifier isEqualToString:@"showCarDetail"]) {
 
         CarDetailViewController *destViewController = segue.destinationViewController;;
+        Car *car = [[Car alloc] init];
         
         NSString *modelName = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"modelName"] objectAtIndex:_indexPath.row];
         NSString *objectID = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"objectId"] objectAtIndex:_indexPath.row];
         NSString *brandName = [[_vehicles allKeys] objectAtIndex:_indexPath.section];
-        PFFile *modelImage = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"imageMain"] objectAtIndex:_indexPath.row];
-
-        Car *car = [[Car alloc] init];
+        NSString *year = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"releaseYear"] objectAtIndex:_indexPath.row];
+        NSString *mpg = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"mpg"] objectAtIndex:_indexPath.row];
+        BOOL isAvaliable = [[[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"isAvaliable"] objectAtIndex:_indexPath.row] boolValue];
+        
+        //PFFile *modelImage = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"imageMain"] objectAtIndex:_indexPath.row];
+        //car.mainPicture = modelImage;
+        
         
         car.carName = [NSString stringWithFormat:@"%@ \"%@\"", brandName, modelName ];
-        car.mainPicture = modelImage;
+        car.mpg = mpg;
         car.carID = objectID;
+        car.releaseYear = year;
+        car.isAvaliable = isAvaliable;
         
         destViewController.car = car;
         destViewController.hidesBottomBarWhenPushed = YES;
@@ -170,7 +187,6 @@
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
     return UIInterfaceOrientationPortrait;
 }
-
 
 @end
 

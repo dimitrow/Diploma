@@ -21,13 +21,12 @@
     [super viewDidLoad];
     _reviewText.backgroundColor = [UIColor colorWithRed:0.329 green:0.518 blue:0.600 alpha:0.12];
 
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
 - (IBAction)leaveReview:(id)sender
@@ -39,9 +38,17 @@
         review[@"review"] = _reviewText.text;
         review[@"user"] = [PFUser currentUser];
         review[@"vehicle"] = [PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID];
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc postNotificationName:@"review" object:nil];
+         
         
         [review saveInBackground];
     }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"review" object:nil];
 }
 
 - (IBAction)cancel:(id)sender

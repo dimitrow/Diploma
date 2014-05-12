@@ -88,6 +88,13 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uio-qb-DBd" id="G9Z-Zo-LEu">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view tag="15" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P7u-8a-6u6">
+                                            <rect key="frame" x="0.0" y="0.0" width="4" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                             </tableViewCell>
@@ -122,10 +129,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUu-MY-6gQ">
-                                <rect key="frame" x="20" y="152" width="280" height="33"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUu-MY-6gQ">
+                                <rect key="frame" x="10" y="147" width="280" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ara-VV-WRN">
+                                <rect key="frame" x="240" y="165" width="70" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yN3-uW-Bd3">
+                                <rect key="frame" x="240" y="180" width="70" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -218,6 +239,11 @@
                                     <outlet property="delegate" destination="oOD-va-2B0" id="ZsK-WT-SBp"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N5A-T5-PBi">
+                                <rect key="frame" x="0.0" y="246" width="320" height="4"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.32916945019999999" green="0.51886085370000001" blue="0.59984799209999995" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -225,14 +251,16 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="1MR-7H-Wum"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0Ba-11-ZJh">
                             <connections>
-                                <action selector="addComment:" destination="oOD-va-2B0" id="QNZ-Hp-zyB"/>
                                 <segue destination="hth-Ha-ZPD" kind="modal" identifier="writeReview" modalTransitionStyle="coverVertical" id="Thq-lA-uvu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="avaliability" destination="N5A-T5-PBi" id="6Ao-N8-Vf9"/>
                         <outlet property="carsStrapView" destination="Ocu-UG-fPm" id="Fbr-Dt-oco"/>
                         <outlet property="fullName" destination="cUu-MY-6gQ" id="NX6-gA-lEf"/>
+                        <outlet property="mpg" destination="yN3-uW-Bd3" id="tVX-IG-ILM"/>
+                        <outlet property="releaseYear" destination="Ara-VV-WRN" id="QWn-ee-Q1R"/>
                         <outlet property="reviewsTable" destination="5F5-ua-JfN" id="MBi-S7-mRO"/>
                         <segue destination="ImG-0D-ERM" kind="modal" identifier="showPictures" modalTransitionStyle="crossDissolve" id="T4s-p6-ggm"/>
                     </connections>

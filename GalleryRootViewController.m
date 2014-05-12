@@ -21,7 +21,6 @@
     _pageImages = _car.pictures;
     
     
-    // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
     self.pageViewController.dataSource = self;
     
@@ -29,7 +28,6 @@
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
-    // Change the size of page view controller
     self.pageViewController.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + 44, self.view.frame.size.width,  self.view.frame.size.height - 40);
     
     [self addChildViewController:_pageViewController];
@@ -46,14 +44,8 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-//- (IBAction)startWalkthrough:(id)sender {
-//    PageContentViewController *startingViewController = [self viewControllerAtIndex:2];
-//    NSArray *viewControllers = @[startingViewController];
-//    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
-//}
+}
 
 - (PageContentViewController *)viewControllerAtIndex:(NSUInteger)index
 {

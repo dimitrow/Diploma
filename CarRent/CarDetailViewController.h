@@ -24,6 +24,10 @@
 - (IBAction)addComment:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UILabel *fullName;
+@property (strong, nonatomic) IBOutlet UILabel *releaseYear;
+@property (strong, nonatomic) IBOutlet UILabel *mpg;
+@property (strong, nonatomic) IBOutlet UIView *avaliability;
+
 @property (weak, nonatomic) IBOutlet PFImageView *collectionCellImage;
 @property (strong, nonatomic) IBOutlet UICollectionView *carsStrapView;
 @property (strong, nonatomic) IBOutlet UIView *reviewBack;
