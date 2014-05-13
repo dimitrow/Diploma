@@ -34,7 +34,9 @@
 - (IBAction)logIn:(id)sender
 {
     dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        [PFUser logInWithUsernameInBackground:self.userTextField.text password:self.passWordTextField.text block:^(PFUser *user, NSError *error) {
+        [PFUser logInWithUsernameInBackground:self.userTextField.text
+                                     password:self.passWordTextField.text
+                                        block:^(PFUser *user, NSError *error) {
             if (user) {
                 
                 [self dismissViewControllerAnimated:YES completion:nil];

@@ -13,5 +13,7 @@
 @interface OrderViewController : UIViewController
 
 - (IBAction)cancel:(id)sender;
+- (IBAction)getTheCar:(id)sender;
+
 
 @end
