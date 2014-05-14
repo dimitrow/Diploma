@@ -8,7 +8,7 @@
 
 #import "ClientViewController.h"
 #import "Constants.h"
-#import "OrderViewController.h"
+
 
 @interface ClientViewController ()
 
@@ -64,8 +64,4 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)makeOrder:(id)sender
-{
-    [self performSegueWithIdentifier:@"makeOrderFromMain" sender:self];
-}
 @end

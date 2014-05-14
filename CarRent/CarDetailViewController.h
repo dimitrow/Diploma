@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import "GalleryRootViewController.h"
 #import "ReviewViewController.h"
+#import "OrderViewController.h"
 
 @interface CarDetailViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate>
 {
@@ -21,7 +22,10 @@
 
 - (void)retriveReviews;
 
-- (IBAction)addComment:(id)sender;
+- (IBAction)writeReview:(id)sender;
+- (IBAction)makeOrder:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UIButton *orderButton;
 
 @property (strong, nonatomic) IBOutlet UILabel *fullName;
 @property (strong, nonatomic) IBOutlet UILabel *releaseYear;

@@ -38,9 +38,9 @@
         review[@"review"] = _reviewText.text;
         review[@"user"] = [PFUser currentUser];
         review[@"vehicle"] = [PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID];
+        
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc postNotificationName:@"review" object:nil];
-         
         
         [review saveInBackground];
     }];

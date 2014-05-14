@@ -26,17 +26,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)cancel:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -45,5 +34,28 @@
 - (IBAction)getTheCar:(id)sender
 {
     
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+        PFObject *order = [PFObject objectWithClassName:@"Orders"];
+        PFObject *vehicle = [PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID];
+        
+        order[@"startDate"] = [NSDate date];
+        order[@"user"] = [PFUser currentUser];
+        order[@"vehicle"] = vehicle;
+        
+        
+        vehicle[@"isAvaliable"] = @NO;
+        
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc postNotificationName:@"review" object:nil];
+        
+        [order saveInBackground];
+    }];
 }
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"review" object:nil];
+}
+
 @end

@@ -47,16 +47,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAG-BN-KwY">
-                                <rect key="frame" x="20" y="469" width="80" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Order!">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="makeOrder:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="ahI-Rc-jxW"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Pip_Boy_Alright.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jI0-b2-HKM">
                                 <rect key="frame" x="20" y="71" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -75,7 +65,6 @@
                         <outlet property="clientNameLabel" destination="Zhg-ve-WU7" id="Xog-jK-sVc"/>
                         <outlet property="clientPic" destination="jI0-b2-HKM" id="bca-vz-BuE"/>
                         <segue destination="r15-4U-rOU" kind="modal" identifier="loginSegue" id="m7z-Va-50l"/>
-                        <segue destination="UCU-N8-EjB" kind="modal" identifier="makeOrderFromMain" id="dOE-ep-YWE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
@@ -110,6 +99,9 @@
                                 <state key="normal" title="get it!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="getTheCar:" destination="UCU-N8-EjB" eventType="touchUpInside" id="gc0-xf-iMV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -117,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k2T-HA-A8t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1828" y="-109"/>
+            <point key="canvasLocation" x="3233" y="1141"/>
         </scene>
         <!--Cars List Table View Controller - Company Cars-->
         <scene sceneID="R8G-5r-yQh">
@@ -295,12 +287,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Li2-Ml-g2n">
-                                <rect key="frame" x="10" y="180" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeK-9i-J5d">
+                                <rect key="frame" x="10" y="212" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Get it now!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="makeOrder:" destination="oOD-va-2B0" eventType="touchUpInside" id="B3n-9z-Gxx"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.32916945019999999" green="0.51886085370000001" blue="0.59984799209999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -309,7 +305,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="1MR-7H-Wum"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0Ba-11-ZJh">
                             <connections>
-                                <segue destination="hth-Ha-ZPD" kind="modal" identifier="writeReview" modalTransitionStyle="coverVertical" id="Thq-lA-uvu"/>
+                                <action selector="writeReview:" destination="oOD-va-2B0" id="kAC-tT-Hc4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -318,9 +314,12 @@
                         <outlet property="carsStrapView" destination="Ocu-UG-fPm" id="Fbr-Dt-oco"/>
                         <outlet property="fullName" destination="cUu-MY-6gQ" id="NX6-gA-lEf"/>
                         <outlet property="mpg" destination="yN3-uW-Bd3" id="tVX-IG-ILM"/>
+                        <outlet property="orderButton" destination="oeK-9i-J5d" id="hoh-EQ-UIm"/>
                         <outlet property="releaseYear" destination="Ara-VV-WRN" id="QWn-ee-Q1R"/>
                         <outlet property="reviewsTable" destination="5F5-ua-JfN" id="MBi-S7-mRO"/>
                         <segue destination="ImG-0D-ERM" kind="modal" identifier="showPictures" modalTransitionStyle="crossDissolve" id="T4s-p6-ggm"/>
+                        <segue destination="UCU-N8-EjB" kind="modal" identifier="makeOrder" id="jLa-ON-2nv"/>
+                        <segue destination="hth-Ha-ZPD" kind="modal" identifier="writeReview" id="ERY-uA-TfB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PM6-eH-Uy0" userLabel="First Responder" sceneMemberID="firstResponder"/>

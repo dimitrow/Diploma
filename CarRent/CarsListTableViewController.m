@@ -61,6 +61,8 @@
         _brands = [objects valueForKey:@"brandName"];
         [_carsTableView reloadData];
         
+#warning fix "for" loop, it takes 23 requests to server to update tableview
+        
         for (PFObject *brand in objects) {
              PFQuery *carsQuery = [PFQuery queryWithClassName:@"Vehicle"];
             //[carsQuery orderByAscending:@"modelName"];
@@ -100,21 +102,10 @@
     
     NSString *modelName = [[_vehicles allKeys] objectAtIndex:indexPath.section];
     NSArray *vehicles = [[_vehicles objectForKey:modelName] valueForKey:@"modelName"];
-    //NSArray *avaliability = [[_vehicles objectForKey:modelName] valueForKey:@"isAvaliable"];
     
     BOOL isAvaliable = [[[[_vehicles objectForKey:modelName] valueForKey:@"isAvaliable"] objectAtIndex:indexPath.row] boolValue];
     
-    //(_car.isAvaliable == YES) ? (_avaliability.backgroundColor = COLOR_AVAL) : (_avaliability.backgroundColor = COLOR_BUSY);
-    
     (isAvaliable == YES) ? (avaliabilitySign.backgroundColor = COLOR_AVAL) : (avaliabilitySign.backgroundColor = COLOR_BUSY);
-    
-//    if ([avaliability objectAtIndex:indexPath] == 1) {
-//        NSLog(@"I'm FREE");
-//    } else {
-//        NSLog(@"BUSY");
-//    }
-    
-
     
     cell.textLabel.font = FONT_LIGHT;
     cell.textLabel.textColor = COLOR_MAIN_BLUE;
@@ -143,7 +134,7 @@
     
     UILabel *headerTitle = [[UILabel alloc] initWithFrame:header.frame];
     headerTitle.font = FONT_ULTRA_LIGHT;
-    //NSArray *sortedTitles = [[_vehicles allKeys] sortedArrayUsingSelector: @selector(caseInsensitiveCompare:)];
+
     headerTitle.text = [[_vehicles allKeys] objectAtIndex:section];
     headerTitle.textColor = [UIColor darkGrayColor];
     
@@ -164,11 +155,7 @@
         NSString *year = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"releaseYear"] objectAtIndex:_indexPath.row];
         NSString *mpg = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"mpg"] objectAtIndex:_indexPath.row];
         BOOL isAvaliable = [[[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"isAvaliable"] objectAtIndex:_indexPath.row] boolValue];
-        
-        //PFFile *modelImage = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"imageMain"] objectAtIndex:_indexPath.row];
-        //car.mainPicture = modelImage;
-        
-        
+
         car.carName = [NSString stringWithFormat:@"%@ \"%@\"", brandName, modelName ];
         car.mpg = mpg;
         car.carID = objectID;

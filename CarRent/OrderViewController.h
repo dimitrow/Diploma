@@ -12,6 +12,8 @@
 
 @interface OrderViewController : UIViewController
 
+@property (nonatomic, strong) Car *car;
+
 - (IBAction)cancel:(id)sender;
 - (IBAction)getTheCar:(id)sender;
 

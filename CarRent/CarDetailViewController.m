@@ -26,7 +26,11 @@
     _releaseYear.text = _car.releaseYear;
     _mpg.text = _car.mpg;
     
-    (_car.isAvaliable == YES) ? (_avaliability.backgroundColor = COLOR_AVAL) : (_avaliability.backgroundColor = COLOR_BUSY);
+    //(_car.isAvaliable) ? (_avaliability.backgroundColor = COLOR_AVAL) : (_avaliability.backgroundColor = COLOR_BUSY);
+    if (!_car.isAvaliable) {
+        (_orderButton.hidden = YES);
+        (_avaliability.backgroundColor = COLOR_BUSY);
+    }
     
     self.title = @"Car Details.";
     [self retrivePictures];
@@ -108,6 +112,16 @@
 
 }
 
+- (IBAction)writeReview:(id)sender
+{
+    [self performSegueWithIdentifier:@"writeReview" sender:self];
+}
+
+- (IBAction)makeOrder:(id)sender
+{
+    [self performSegueWithIdentifier:@"makeOrder" sender:self];
+}
+
 - (void)stopRefresh
 {
     [_refresh endRefreshing];
@@ -167,15 +181,15 @@
         _car.pictures = _pics;
         destViewController.car = _car;
         
-    } else {
+    } else if([segue.identifier isEqualToString:@"writeReview"]) {
         ReviewViewController *destViewController = segue.destinationViewController;
         destViewController.car = _car;
 
+    }  else if([segue.identifier isEqualToString:@"makeOrder"]) {
+        ReviewViewController *destViewController = segue.destinationViewController;
+        destViewController.car = _car;
     }
 }
 
-- (IBAction)addComment:(id)sender
-{
-    
-}
+
 @end
