@@ -108,4 +108,14 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"review" object:nil];
 }
 
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return (UIInterfaceOrientationMaskPortrait);
+}
+
 @end

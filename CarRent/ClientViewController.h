@@ -11,10 +11,14 @@
 #import "LoginViewController.h"
 
 
-@interface ClientViewController : UIViewController 
+@interface ClientViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *clientNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *titleMain;
 @property (strong, nonatomic) IBOutlet UIImageView *clientPic;
+
+@property (strong, nonatomic) IBOutlet UITableView *ordersTable;
+- (IBAction)resetVehicleStaus:(id)sender;
+
 
 @end
