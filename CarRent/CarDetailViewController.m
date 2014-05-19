@@ -25,13 +25,7 @@
     _fullName.text = _car.carName;
     _releaseYear.text = _car.releaseYear;
     _mpg.text = _car.mpg;
-    
-    //(_car.isAvaliable) ? (_avaliability.backgroundColor = COLOR_AVAL) : (_avaliability.backgroundColor = COLOR_BUSY);
-    if (!_car.isAvaliable) {
-        (_orderButton.hidden = YES);
-        (_avaliability.backgroundColor = COLOR_BUSY);
-    }
-    
+        
     self.title = @"Car Details.";
     [self retrivePictures];
     [self.tabBarController.tabBar isHidden];
@@ -39,11 +33,24 @@
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(retriveReviews) name:@"review" object:nil];
+    [nc addObserver:self selector:@selector(changeAvaliability) name:@"busy" object:nil];
     
     _refresh = [[UIRefreshControl alloc] init];
     [_refresh addTarget:self
-                action:@selector(retriveReviews)  forControlEvents:UIControlEventValueChanged];
+                 action:@selector(retriveReviews)
+       forControlEvents:UIControlEventValueChanged];
+    
     [_reviewsTable addSubview:_refresh];
+    
+}
+
+- (void)changeAvaliability
+{
+    
+    _car.isAvaliable = NO;
+    (_avaliability.backgroundColor = COLOR_BUSY);
+    (_orderButton.hidden = YES);
+    
     
 }
 
@@ -78,12 +85,25 @@
 
 - (void)retrivePictures
 {
+    
     PFQuery *carsQuery = [PFQuery queryWithClassName:@"Pictures"];
     [carsQuery whereKey:@"vehicle" equalTo:[PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID]];
     [carsQuery setCachePolicy:kPFCachePolicyCacheThenNetwork];
+    [carsQuery includeKey:@"vehicle"];
     [carsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {         
          _pics = [objects valueForKey:@"photo"];
+         
+         BOOL avaliability = [[[[objects valueForKey:@"vehicle"] valueForKey:@"isAvaliable"] firstObject] boolValue];
+         
+         if (avaliability == NO) {
+             (_avaliability.backgroundColor = COLOR_BUSY);
+             (_orderButton.hidden = YES);
+         } else {
+             (_avaliability.backgroundColor = COLOR_AVAL);
+             (_orderButton.hidden = NO);
+         }
+                  
          [self.carsStrapView reloadData];
 
      }];
@@ -103,8 +123,6 @@
      {
          _reviews = objects;
          
-         BOOL avaliability = [[[[objects valueForKey:@"vehicle"] valueForKey:@"isAvaliable"] firstObject] boolValue];
-         (avaliability == YES) ? (_avaliability.backgroundColor = COLOR_AVAL) : (_avaliability.backgroundColor = COLOR_BUSY);
          
          [_reviewsTable reloadData];
      }];

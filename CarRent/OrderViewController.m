@@ -7,6 +7,7 @@
 //
 
 #import "OrderViewController.h"
+#import "Constants.h"
 
 @interface OrderViewController ()
 {
@@ -34,7 +35,7 @@
     _textFieldFrom.delegate = self;
     
     _dateFormatter = [[NSDateFormatter alloc] init];
-    [_dateFormatter setDateFormat:@"MM-dd-yyyy"];
+    [_dateFormatter setDateFormat:@"MMMM, dd, YYYY"];
     
     NSTimeZone *tz = [NSTimeZone localTimeZone];
     [_dateFormatter setTimeZone:tz];
@@ -51,7 +52,6 @@
 {
     UIDatePicker *picker = (UIDatePicker*)sender;
     
-    //[_dateFormatter setDateFormat:@"MMMM, dd, YYYY"];
     NSString *datePicked = [_dateFormatter stringFromDate:picker.date];
     
     UITextField *activeTextField = (UITextField*)[self.view viewWithTag:textFieldTag];
@@ -82,6 +82,7 @@
 
 - (IBAction)getTheCar:(id)sender
 {
+    if ((_textFieldFrom.text.length && _textFieldTo.text.length) != 0){
     
     [self dismissViewControllerAnimated:YES completion:^{
         
@@ -98,14 +99,19 @@
         
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc postNotificationName:@"review" object:nil];
-        
+        [nc postNotificationName:@"busy" object:nil];
         [order saveInBackground];
     }];
+    } else {
+        NSString *message = @"You have to choose date when you want to get this car for ride";
+        ERROR_ALERT(ERROR, message, AW_BT_FAIL);
+    }
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"review" object:nil];
+    //[[NSNotificationCenter defaultCenter] removeObserver:self name:@"review" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(BOOL)shouldAutorotate

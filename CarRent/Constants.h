@@ -17,8 +17,8 @@
 #define COLOR_REVIEW_BACK [UIColor colorWithRed:0.771 green:0.948 blue:0.448 alpha:1.0]
 #define COLOR_MAIN_WHITE [UIColor colorWithRed:0.978 green:0.972 blue:0.946 alpha:1.0]
 
-#define FONT_ULTRA_LIGHT [UIFont fontWithName:@"HamburgerHeaven"  size:15.0];
-#define FONT_LIGHT [UIFont fontWithName:@"HelveticaNeue-Light"  size:18.0];
+#define FONT_ULTRA_LIGHT [UIFont fontWithName:@"HamburgerHeaven"  size:19.0];
+#define FONT_LIGHT [UIFont fontWithName:@"HelveticaNeue-UltraLight"  size:18.0];
 
 #define FONT_TITLE [UIFont fontWithName:@"Deftone Stylus"  size:25.0];
 

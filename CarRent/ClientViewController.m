@@ -22,13 +22,19 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [PFUser currentUser];
+
+    [self retriveProfilePicture];
+    [self getOrders];
+    
     if ([PFUser currentUser]) {
         _clientNameLabel.textColor =[UIColor whiteColor];
         _clientNameLabel.text = [NSString stringWithFormat:@"%@ %@",
                                  [[PFUser currentUser] valueForKey:@"firstName"],
                                  [[PFUser currentUser] valueForKey:@"lastName"]];
-        
+        if (_clientPic.file == nil) {
+            _clientPic.image = [UIImage imageNamed:@"userTempPic.jpg"];
+        }
+
     } else {
         _clientNameLabel.text = [NSString stringWithFormat:@"%@ %@",
                                  [[PFUser currentUser] valueForKey:@"---"],
@@ -40,32 +46,58 @@
 
 - (void)viewDidLoad
 {
-    
     [super viewDidLoad];
+    [PFUser currentUser];
+    
     _titleMain.font = FONT_TITLE;
     _titleMain.text = @"Personal";
     
     _clientPic.layer.cornerRadius = _clientPic.frame.size.height / 2;
     _clientPic.layer.masksToBounds = YES;
-//    _clientPic.layer.shadowColor = [UIColor blackColor].CGColor;
-//    _clientPic.layer.shadowOffset = CGSizeMake(0.0, 0.0);
-//    _clientPic.layer.shadowOpacity = 0.9;
     
-    [self getOrders];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[_orders valueForKey:@"objectId" ] count];
+    
+    NSArray *rows = [_orders valueForKey:@"objectId"];
+    return  ([rows count] >= 1) ? [rows count] : 1;
+}
+
+- (void)retriveProfilePicture
+{
+    _clientPic.file = [[PFUser currentUser] objectForKey:@"profilePicture"];
+    [_clientPic loadInBackground];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"MMMM, dd, YYYY"];
+    NSTimeZone *tz = [NSTimeZone localTimeZone];
+    [df setTimeZone:tz];
+    
+
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderCell" forIndexPath:indexPath];
-    UILabel *orderNumber = (UILabel *)[cell viewWithTag:1984];
+    UILabel *orderNumber = (UILabel *)[cell viewWithTag:1985];
+    UILabel *dateLabel = (UILabel *)[cell viewWithTag:1984];
     
-    orderNumber.text = [[_orders valueForKey:@"objectId"] objectAtIndex:indexPath.row];
+    if ([[_orders valueForKey:@"objectId"] count] >= 1) {
+        
+        NSString *startDate = [df stringFromDate:[[_orders valueForKey:@"startDate"] objectAtIndex:indexPath.row]];
+        NSString *endDate = [df stringFromDate:[[_orders valueForKey:@"endDate"] objectAtIndex:indexPath.row]];
+        NSString *orderNum = [[_orders valueForKey:@"objectId"] objectAtIndex:indexPath.row];
+
+        
+        dateLabel.text = [NSString stringWithFormat:@"Car reserved\nfrom %@ til %@", startDate, endDate];
+        orderNumber.text =  [NSString stringWithFormat:@"Order #: %@", orderNum];
+    } else {
+        dateLabel.text = [NSString stringWithFormat:@"You have no one order yet"];
+        orderNumber.text = @"";
+    }
     
+
     
     return cell;
 }
@@ -83,8 +115,6 @@
     [ordersQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         _orders = objects;
-        
-        NSLog(@"%@", _orders);
         [_ordersTable reloadData];
     }];
 }

@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *clientNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *titleMain;
-@property (strong, nonatomic) IBOutlet UIImageView *clientPic;
+@property (strong, nonatomic) IBOutlet PFImageView *clientPic;
 
 @property (strong, nonatomic) IBOutlet UITableView *ordersTable;
 - (IBAction)resetVehicleStaus:(id)sender;

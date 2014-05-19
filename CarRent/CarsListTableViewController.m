@@ -107,7 +107,7 @@
     
     (isAvaliable == YES) ? (avaliabilitySign.backgroundColor = COLOR_AVAL) : (avaliabilitySign.backgroundColor = COLOR_BUSY);
     
-    cell.textLabel.font = FONT_LIGHT;
+    cell.textLabel.font = FONT_ULTRA_LIGHT;
     cell.textLabel.textColor = COLOR_MAIN_BLUE;
     cell.textLabel.text = [vehicles objectAtIndex:indexPath.row];
     
@@ -133,7 +133,7 @@
     header.backgroundColor = [UIColor clearColor];
     
     UILabel *headerTitle = [[UILabel alloc] initWithFrame:header.frame];
-    headerTitle.font = FONT_ULTRA_LIGHT;
+    headerTitle.font = FONT_LIGHT;
 
     headerTitle.text = [[_vehicles allKeys] objectAtIndex:section];
     headerTitle.textColor = [UIColor darkGrayColor];

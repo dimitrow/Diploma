@@ -7,6 +7,7 @@
 //
 
 #import "ReviewViewController.h"
+#import "Constants.h"
 
 @interface ReviewViewController ()
 {
@@ -31,6 +32,7 @@
 
 - (IBAction)leaveReview:(id)sender
 {
+    if (_reviewText.text.length != 0){
     
     [self dismissViewControllerAnimated:YES completion:^{
         
@@ -44,6 +46,10 @@
         
         [review saveInBackground];
     }];
+    } else {
+        NSString *message = @"Review can not be empty";
+        ERROR_ALERT(ERROR, message, AW_BT_FAIL);
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
