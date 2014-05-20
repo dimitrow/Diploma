@@ -109,7 +109,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
             endingLineNumber = "116"
-            landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkName = "-writeReview:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -189,8 +189,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
             endingLineNumber = "136"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkName = "@implementation CarDetailViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -205,7 +205,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
             endingLineNumber = "128"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkName = "-stopRefresh"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
