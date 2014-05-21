@@ -177,8 +177,21 @@
         
         NSString *firstName = [[[_reviews valueForKey:@"user"] valueForKey:@"firstName"] objectAtIndex:indexPath.row];
         NSString *lastName = [[[_reviews valueForKey:@"user"] valueForKey:@"lastName"] objectAtIndex:indexPath.row];
-        userThumb.file = [[[_reviews valueForKey:@"user"] valueForKey:@"profilePicture"] objectAtIndex:indexPath.row];
+        //userThumb.file = [[[_reviews valueForKey:@"user"] valueForKey:@"profilePicture"] objectAtIndex:indexPath.row];
         userStamp.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+        
+        
+        if ([[[_reviews valueForKey:@"user"] valueForKey:@"profilePicture"] objectAtIndex:indexPath.row]) {
+            NSLog(@"Empty");
+        } else {
+            NSLog(@"I'm here");
+        }
+        
+//        if (userThumb.file == nil) {
+//            userThumb.image = [UIImage imageNamed:@"userTempPic.jpg"];
+//        } else {
+//            userThumb.file = [[[_reviews valueForKey:@"user"] valueForKey:@"profilePicture"] objectAtIndex:indexPath.row];
+//        }
         
     } else {
         timeStamp.text = @"";
