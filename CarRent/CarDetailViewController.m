@@ -159,6 +159,11 @@
     UILabel *reviewItSelf = (UILabel *)[cell viewWithTag:556];
     UILabel *timeStamp = (UILabel *)[cell viewWithTag:557];
     UILabel *userStamp = (UILabel *)[cell viewWithTag:558];
+    PFImageView *userThumb = (PFImageView *)[cell viewWithTag:222];
+    
+    userThumb.layer.cornerRadius = userThumb.frame.size.height / 2;
+    userThumb.layer.masksToBounds = YES;
+    
     reviewItSelf.textAlignment = NSTextAlignmentLeft;
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -172,7 +177,7 @@
         
         NSString *firstName = [[[_reviews valueForKey:@"user"] valueForKey:@"firstName"] objectAtIndex:indexPath.row];
         NSString *lastName = [[[_reviews valueForKey:@"user"] valueForKey:@"lastName"] objectAtIndex:indexPath.row];
-        
+        userThumb.file = [[[_reviews valueForKey:@"user"] valueForKey:@"profilePicture"] objectAtIndex:indexPath.row];
         userStamp.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
         
     } else {
