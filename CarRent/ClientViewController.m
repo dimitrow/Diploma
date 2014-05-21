@@ -153,4 +153,14 @@
 
 }
 
+- (IBAction)getPicture:(id)sender
+{
+    //Open a UIImagePickerController to select the picture
+    UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+    imgPicker.delegate = self;
+    imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self.navigationController presentModalViewController:imgPicker animated:YES];
+}
+
 @end

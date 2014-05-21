@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
             endingLineNumber = "122"
-            landmarkName = "-getOrders"
+            landmarkName = "-logOut:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
