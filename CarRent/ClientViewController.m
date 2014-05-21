@@ -159,8 +159,17 @@
     UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
     imgPicker.delegate = self;
     imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imgPicker.allowsEditing = YES;
+    [self presentViewController:imgPicker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    _clientPic.file = info[UIImagePickerControllerEditedImage];
+    [[PFUser currentUser] setObject:_clientPic.file forKey:@"profilePicture"];
+    //_clientPic.image = chosenImage;
     
-    [self.navigationController presentModalViewController:imgPicker animated:YES];
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
