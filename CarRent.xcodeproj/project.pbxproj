@@ -207,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				04B34F1318D829D500CD0A3F /* Main.storyboard */,
-				4490B36518DF7D63006EE32F /* Constants.h */,
 				4490B35F18DF7808006EE32F /* UITextField+Customised.h */,
 				4490B36018DF7808006EE32F /* UITextField+Customised.m */,
 				04B34F1018D829D500CD0A3F /* AppDelegate.h */,
@@ -220,6 +219,7 @@
 				04B34F3D18D82BBF00CD0A3F /* CarsListTableViewController.m */,
 				043D3C3018F431C800750854 /* CarDetailViewController.h */,
 				043D3C3118F431C800750854 /* CarDetailViewController.m */,
+				4490B36518DF7D63006EE32F /* Constants.h */,
 				04D831FE18F685720082B044 /* Car.h */,
 				04D831FF18F685720082B044 /* Car.m */,
 				04B34F3918D82AE300CD0A3F /* ClientViewController.h */,
