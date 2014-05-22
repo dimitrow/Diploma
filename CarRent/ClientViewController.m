@@ -24,24 +24,26 @@
 {
 
     [self retriveProfilePicture];
-    [self getOrders];
+    
     
     if ([PFUser currentUser]) {
         _clientNameLabel.textColor =[UIColor whiteColor];
         _clientNameLabel.text = [NSString stringWithFormat:@"%@ %@",
                                  [[PFUser currentUser] valueForKey:@"firstName"],
                                  [[PFUser currentUser] valueForKey:@"lastName"]];
+        [self getOrders];
         if (_clientPic.file == nil) {
             _clientPic.image = [UIImage imageNamed:@"userTempPic.jpg"];
         }
-
+        
     } else {
         _clientNameLabel.text = [NSString stringWithFormat:@"%@ %@",
                                  [[PFUser currentUser] valueForKey:@"---"],
                                  [[PFUser currentUser] valueForKey:@"---"]];
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
-
+        
     }
+    
 }
 
 - (void)viewDidLoad
@@ -55,6 +57,7 @@
     _clientPic.layer.cornerRadius = _clientPic.frame.size.height / 2;
     _clientPic.layer.masksToBounds = YES;
     
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -133,7 +136,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self getOrders];
+    //[self getOrders];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -155,7 +158,6 @@
 
 - (IBAction)getPicture:(id)sender
 {
-    //Open a UIImagePickerController to select the picture
     UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
     imgPicker.delegate = self;
     imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -165,11 +167,36 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    _clientPic.file = info[UIImagePickerControllerEditedImage];
-    [[PFUser currentUser] setObject:_clientPic.file forKey:@"profilePicture"];
-    //_clientPic.image = chosenImage;
+    NSString *fileName = [self genRandStringLength:10];
+    
+    UIImage *tempImage = (UIImage *)info[UIImagePickerControllerEditedImage];
+    _clientPic.image = tempImage;
+    
+    NSData *imageData = UIImageJPEGRepresentation(_clientPic.image, 0.6f);
+    
+    NSString *fullName = [NSString stringWithFormat:@"%@.png", fileName];
+    PFFile *imageFile = [PFFile fileWithName:fullName data:imageData];
+    [[PFUser currentUser] setObject:imageFile forKey:@"profilePicture"];
+
+    
+    [[PFUser currentUser] saveInBackground];
+
     
     [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)uploadPicture:(NSData *)image
+{
+    
+}
+
+- (NSString *)genRandStringLength:(int)len {
+    static NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    for (int i=0; i<len; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random() % [letters length]]];
+    }
+    return randomString;
 }
 
 @end
