@@ -14,6 +14,10 @@
     UIDatePicker *_datePicker;
     NSDateFormatter *_dateFormatter;
     NSInteger textFieldTag;
+    NSArray *ordersData;
+    
+    NSDate *rentStart;
+    NSDate *rentEnd;
 }
 @property (strong, nonatomic) IBOutlet UIButton *getItTitle;
 @property (strong, nonatomic) IBOutlet UIButton *cancelTitle;
@@ -41,11 +45,22 @@
     [_dateFormatter setTimeZone:tz];
     
     NSDate *startDate = [NSDate date];
-    NSDate *endDate = [_dateFormatter dateFromString:@"12-31-2020"];
+    NSDate *endDate = [_dateFormatter dateFromString:@"12, 31, 2020"];
     [_datePicker setMinimumDate:startDate];
     [_datePicker setMaximumDate:endDate];
     [_textFieldFrom setInputView:_datePicker];
     [_textFieldTo setInputView:_datePicker];
+}
+
+- (void)retriveCars
+{
+    PFQuery *dataCheck = [PFQuery queryWithClassName:@"Orders"];
+    //[dataCheck includeKey:@"vehicle"];
+    [dataCheck whereKey:@"vehicle" equalTo:[PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID]];
+    [dataCheck findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        ordersData = objects;
+    }];
+    NSLog(@"%@", ordersData);
 }
 
 -(void)updateTextField:(id)sender
@@ -57,6 +72,14 @@
     UITextField *activeTextField = (UITextField*)[self.view viewWithTag:textFieldTag];
     activeTextField.text = datePicked;
     
+    if (textFieldTag == 911){
+        rentStart = picker.date;
+    } else if (textFieldTag == 912) {
+        rentEnd = picker.date;
+    }
+    
+    //[self retriveCars];
+
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
@@ -72,7 +95,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)cancel:(id)sender
@@ -84,28 +106,34 @@
 {
     if ((_textFieldFrom.text.length && _textFieldTo.text.length) != 0){
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        
         PFObject *order = [PFObject objectWithClassName:@"Orders"];
         PFObject *vehicle = [PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID];
         
-        order[@"startDate"] = [_dateFormatter dateFromString:_textFieldFrom.text];
-        order[@"endDate"] = [_dateFormatter dateFromString:_textFieldTo.text];
+        order[@"startDate"] = rentStart;
+        order[@"endDate"] = rentEnd;
         order[@"user"] = [PFUser currentUser];
         order[@"vehicle"] = vehicle;
-        
-        
+                
         vehicle[@"isAvaliable"] = @NO;
         
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc postNotificationName:@"review" object:nil];
         [nc postNotificationName:@"busy" object:nil];
         [order saveInBackground];
+        
+        
+        
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+
     }];
+        
     } else {
         NSString *message = @"You have to choose date when you want to get this car for ride";
         ERROR_ALERT(ERROR, message, AW_BT_FAIL);
     }
+    [self retriveCars];
+
 }
 
 - (void) viewWillDisappear:(BOOL)animated

@@ -47,9 +47,9 @@
 - (void)changeAvaliability
 {
     
-    _car.isAvaliable = NO;
+    //_car.isAvaliable = NO;
     (_avaliability.backgroundColor = COLOR_BUSY);
-    (_orderButton.hidden = YES);
+    //(_orderButton.hidden = YES);
     
     
 }
@@ -98,7 +98,7 @@
          
          if (avaliability == NO) {
              (_avaliability.backgroundColor = COLOR_BUSY);
-             (_orderButton.hidden = YES);
+             //(_orderButton.hidden = YES);
          } else {
              (_avaliability.backgroundColor = COLOR_AVAL);
              (_orderButton.hidden = NO);
@@ -181,11 +181,11 @@
         userStamp.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
         
         
-        if ([[[_reviews valueForKey:@"user"] valueForKey:@"profilePicture"] objectAtIndex:indexPath.row]) {
-            NSLog(@"Empty");
-        } else {
-            NSLog(@"I'm here");
-        }
+//        if ([[[_reviews valueForKey:@"user"] valueForKey:@"profilePicture"] objectAtIndex:indexPath.row]) {
+//            NSLog(@"Empty");
+//        } else {
+//            NSLog(@"I'm here");
+//        }
         
 //        if (userThumb.file == nil) {
 //            userThumb.image = [UIImage imageNamed:@"userTempPic.jpg"];
