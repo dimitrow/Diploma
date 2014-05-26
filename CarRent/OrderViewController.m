@@ -30,6 +30,8 @@
 {
     [super viewDidLoad];
     
+    [self retriveOrdersData];
+    
     _datePicker = [[UIDatePicker alloc]init];
     [_datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
     _datePicker.datePickerMode = UIDatePickerModeDate;
@@ -45,22 +47,24 @@
     [_dateFormatter setTimeZone:tz];
     
     NSDate *startDate = [NSDate date];
-    NSDate *endDate = [_dateFormatter dateFromString:@"12, 31, 2020"];
+    NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:(60*60*24*90)];
     [_datePicker setMinimumDate:startDate];
     [_datePicker setMaximumDate:endDate];
     [_textFieldFrom setInputView:_datePicker];
     [_textFieldTo setInputView:_datePicker];
 }
 
-- (void)retriveCars
+- (void)retriveOrdersData
 {
     PFQuery *dataCheck = [PFQuery queryWithClassName:@"Orders"];
     //[dataCheck includeKey:@"vehicle"];
+    [dataCheck orderByAscending:@"startDate"];
     [dataCheck whereKey:@"vehicle" equalTo:[PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID]];
     [dataCheck findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
         ordersData = objects;
+        
     }];
-    NSLog(@"%@", ordersData);
 }
 
 -(void)updateTextField:(id)sender
@@ -74,12 +78,12 @@
     
     if (textFieldTag == 911){
         rentStart = picker.date;
+        
+
     } else if (textFieldTag == 912) {
         rentEnd = picker.date;
     }
     
-    //[self retriveCars];
-
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
@@ -123,22 +127,56 @@
         
         
         
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-
-    }];
+        [self dismissViewControllerAnimated:YES completion:nil];
         
     } else {
         NSString *message = @"You have to choose date when you want to get this car for ride";
         ERROR_ALERT(ERROR, message, AW_BT_FAIL);
     }
-    [self retriveCars];
 
+}
+
+- (IBAction)checkCar:(id)sender
+{
+    [self retriveOrdersData];
+
+    
+    for (int i = 0; i < [ordersData count]; i++) {
+        
+        NSComparisonResult startWithStart = [rentStart compare:[[ordersData valueForKey:@"startDate"] objectAtIndex:i]];
+        NSComparisonResult endWithStart = [rentEnd compare:[[ordersData valueForKey:@"startDate"] objectAtIndex:i]];
+        NSComparisonResult endWithEnd = [rentEnd compare:[[ordersData valueForKey:@"endDate"] objectAtIndex:i]];
+
+        
+        if (i == 0) {
+            if ((startWithStart == NSOrderedAscending) && (endWithStart == NSOrderedAscending)) {
+                NSLog(@"Thank you! You can use this car from %@ til %@", rentStart, rentEnd);
+                break;
+            } else if ((endWithStart == NSOrderedDescending) && (endWithEnd == NSOrderedAscending)){
+                NSLog(@"Sorry, seems that car gonna be busy this time(from %@ to %@)", [[ordersData valueForKey:@"startDate"] objectAtIndex:i],[[ordersData valueForKey:@"endDate"] objectAtIndex:i]);
+                break;
+            } else {
+                continue;
+            }
+        } else {
+            
+            NSComparisonResult startWithEnd = [rentStart compare:[[ordersData valueForKey:@"endDate"] objectAtIndex:i - 1]];
+            
+            if ((startWithStart == NSOrderedAscending) && (startWithEnd == NSOrderedDescending) && (endWithStart == NSOrderedAscending)){
+                NSLog(@"Thank you! You can use this car from %@ til %@", rentStart, rentEnd);
+                break;
+            } else if ((endWithStart == NSOrderedDescending) && (endWithEnd == NSOrderedAscending)){
+                NSLog(@"Sorry, seems that car gonna be busy this time(from %@ to %@)", [[ordersData valueForKey:@"startDate"] objectAtIndex:i], [[ordersData valueForKey:@"endDate"] objectAtIndex:i]);
+                break;
+            } else {
+                continue;
+            }
+        }
+    }
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
-    //[[NSNotificationCenter defaultCenter] removeObserver:self name:@"review" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

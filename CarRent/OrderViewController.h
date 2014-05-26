@@ -24,6 +24,7 @@
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)getTheCar:(id)sender;
+- (IBAction)checkCar:(id)sender;
 
 
 @end
