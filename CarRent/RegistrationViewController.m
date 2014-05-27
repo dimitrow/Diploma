@@ -16,6 +16,7 @@
     BOOL _passOK;
     BOOL _mailOK;
     BOOL _dateOK;
+    PFFile *imageFile;
 }
 
 @end
@@ -64,6 +65,7 @@
     [user setObject:self.regLastName.text forKey:@"lastName"];
     [user setObject:self.regMail.text forKey:@"email"];
     [user setObject:_datePicker.date forKey:@"birthDate"];
+    [user setObject:imageFile forKey:@"profilePicture"];
     
     NSArray *checkArray = @[@(_uNameOK), @(_passOK), @(_mailOK), @(_dateOK)];
     
@@ -72,6 +74,7 @@
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 
+                [user saveInBackground];
                 [self dismissViewControllerAnimated:YES completion:nil];
                 
             } else {
@@ -87,6 +90,32 @@
         ERROR_ALERT(ERROR, message, AW_BT_FAIL);
     }
 }
+
+- (IBAction)uploadPicture:(id)sender
+{
+    UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+    imgPicker.delegate = self;
+    imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imgPicker.allowsEditing = YES;
+    [self presentViewController:imgPicker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSString *fileName = [self genRandStringLength:10];
+    
+    UIImage *tempImage = (UIImage *)info[UIImagePickerControllerEditedImage];
+    //_clientPic.image = tempImage;
+    
+    NSData *imageData = UIImageJPEGRepresentation(tempImage, 0.6f);
+    
+    NSString *fullName = [NSString stringWithFormat:@"%@.png", fileName];
+    imageFile = [PFFile fileWithName:fullName data:imageData];
+    
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 -(void)updateTextField:(id)sender
 {
@@ -230,6 +259,15 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (NSString *)genRandStringLength:(int)len {
+    static NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    for (int i=0; i<len; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random() % [letters length]]];
+    }
+    return randomString;
 }
 
 @end

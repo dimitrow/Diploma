@@ -146,13 +146,12 @@
         NSComparisonResult startWithStart = [rentStart compare:[[ordersData valueForKey:@"startDate"] objectAtIndex:i]];
         NSComparisonResult endWithStart = [rentEnd compare:[[ordersData valueForKey:@"startDate"] objectAtIndex:i]];
         NSComparisonResult endWithEnd = [rentEnd compare:[[ordersData valueForKey:@"endDate"] objectAtIndex:i]];
-
         
         if (i == 0) {
             if ((startWithStart == NSOrderedAscending) && (endWithStart == NSOrderedAscending)) {
                 NSLog(@"Thank you! You can use this car from %@ til %@", rentStart, rentEnd);
                 break;
-            } else if ((endWithStart == NSOrderedDescending) && (endWithEnd == NSOrderedAscending)){
+            } else if ((endWithStart == NSOrderedDescending) || (endWithEnd == NSOrderedAscending)){
                 NSLog(@"Sorry, seems that car gonna be busy this time(from %@ to %@)", [[ordersData valueForKey:@"startDate"] objectAtIndex:i],[[ordersData valueForKey:@"endDate"] objectAtIndex:i]);
                 break;
             } else {

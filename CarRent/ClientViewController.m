@@ -90,11 +90,11 @@
         
         NSString *startDate = [df stringFromDate:[[_orders valueForKey:@"startDate"] objectAtIndex:indexPath.row]];
         NSString *endDate = [df stringFromDate:[[_orders valueForKey:@"endDate"] objectAtIndex:indexPath.row]];
-        NSString *orderNum = [[_orders valueForKey:@"objectId"] objectAtIndex:indexPath.row];
-
+        NSString *modelName = [[[_orders valueForKey:@"vehicle"] valueForKey:@"modelName"] objectAtIndex:indexPath.row];
+        NSString *brandName = [[[[_orders valueForKey:@"vehicle"] valueForKey:@"brandName"] valueForKey:@"brandName" ] objectAtIndex:indexPath.row];
         
         dateLabel.text = [NSString stringWithFormat:@"Car reserved\nfrom %@ til %@", startDate, endDate];
-        orderNumber.text =  [NSString stringWithFormat:@"Order #: %@", orderNum];
+        orderNumber.text =  [NSString stringWithFormat:@"%@ %@", brandName, modelName];
     } else {
         dateLabel.text = [NSString stringWithFormat:@"You have no one order yet"];
         orderNumber.text = @"";
@@ -115,6 +115,7 @@
     PFQuery *ordersQuery = [PFQuery queryWithClassName:@"Orders"];
     [ordersQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     [ordersQuery includeKey:@"vehicle"];
+    [ordersQuery includeKey:@"vehicle.brandName"];
     [ordersQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         _orders = objects;
@@ -183,11 +184,6 @@
 
     
     [picker dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)uploadPicture:(NSData *)image
-{
-    
 }
 
 - (NSString *)genRandStringLength:(int)len {

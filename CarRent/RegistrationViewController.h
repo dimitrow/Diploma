@@ -11,7 +11,7 @@
 #import "UITextField+Customised.h"
 #import "Constants.h"
 
-@interface RegistrationViewController : UITableViewController <UITextFieldDelegate>
+@interface RegistrationViewController : UITableViewController <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *regUserName;
 @property (strong, nonatomic) IBOutlet UITextField *regPassWord;
@@ -25,5 +25,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *regBirthDate;
 
 - (IBAction)signButton:(UIBarButtonItem *)sender;
+- (IBAction)uploadPicture:(id)sender;
 
 @end
