@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *carName;
 @property (nonatomic, strong) NSString *releaseYear;
 @property (nonatomic, strong) NSString *mpg;
+@property (nonatomic, strong) NSString *mileage;
 @property (nonatomic, strong) NSString *carID;
 @property (nonatomic, assign) BOOL isAvaliable;
 //@property (nonatomic, strong) PFFile *mainPicture;

@@ -154,10 +154,12 @@
         NSString *brandName = [[_vehicles allKeys] objectAtIndex:_indexPath.section];
         NSString *year = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"releaseYear"] objectAtIndex:_indexPath.row];
         NSString *mpg = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"mpg"] objectAtIndex:_indexPath.row];
+        NSString *mileage = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"mileage"] objectAtIndex:_indexPath.row];
         BOOL isAvaliable = [[[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"isAvaliable"] objectAtIndex:_indexPath.row] boolValue];
 
         car.carName = [NSString stringWithFormat:@"%@ \"%@\"", brandName, modelName ];
         car.mpg = mpg;
+        car.mileage = mileage;
         car.carID = objectID;
         car.releaseYear = year;
         car.isAvaliable = isAvaliable;

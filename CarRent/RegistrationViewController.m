@@ -155,8 +155,7 @@
 {
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(9.0, 0, tableView.frame.size.width, 30.0)];
     header.backgroundColor = [UIColor whiteColor];
-    
-    
+        
     NSArray *tiles = @[@"Required Data", @"Personal Info"];
     UILabel *headerTitle = [[UILabel alloc] initWithFrame:header.frame];
     headerTitle.font = FONT_ULTRA_LIGHT;
