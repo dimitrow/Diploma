@@ -123,9 +123,8 @@
     [carsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
          _reviews = objects;
-         
-         
          [_reviewsTable reloadData];
+         
      }];
     [self performSelector:@selector(stopRefresh) withObject:nil afterDelay:0.5];
 
@@ -181,13 +180,12 @@
         PFFile *userPicture = [[[_reviews valueForKey:@"user"] valueForKey:@"profilePicture"] objectAtIndex:indexPath.row];
         userThumb.layer.cornerRadius = userThumb.frame.size.height / 2;
         userThumb.layer.masksToBounds = YES;
-        //userThumb.file = [[[_reviews valueForKey:@"user"] valueForKey:@"profilePicture"] objectAtIndex:indexPath.row];
         [NSNull null];
         
         if (![userPicture isKindOfClass:[NSNull class]]) {
-        
-            NSLog(@"%@", userPicture.class);
             userThumb.file = userPicture;
+        } else {
+            userThumb.image = [UIImage imageNamed:@"userTempPic.jpg"];
         }
     
     } else {
