@@ -13,6 +13,7 @@
 @interface ClientViewController ()
 {
     NSArray *_orders;
+    NSIndexPath *_indexPath;
 }
 
 
@@ -71,6 +72,14 @@
 {
     _clientPic.file = [[PFUser currentUser] objectForKey:@"profilePicture"];
     [_clientPic loadInBackground];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    _indexPath = indexPath;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"OrderDetails" sender:self];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -133,12 +142,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //[self getOrders];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (IBAction)resetVehicleStaus:(id)sender

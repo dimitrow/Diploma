@@ -18,7 +18,6 @@
 @property (nonatomic, strong) NSString *mileage;
 @property (nonatomic, strong) NSString *carID;
 @property (nonatomic, assign) BOOL isAvaliable;
-//@property (nonatomic, strong) PFFile *mainPicture;
 @property (nonatomic, strong) NSArray *pictures;
 @property (nonatomic, assign) NSInteger *photoIndex;
 
