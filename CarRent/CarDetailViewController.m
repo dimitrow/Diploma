@@ -25,6 +25,7 @@
     _fullName.text = _car.carName;
     _releaseYear.text = _car.releaseYear;
     _mpg.text = _car.mpg;
+    _mileage.text = _car.mileage;
         
     self.title = @"Car Details.";
     [self retrivePictures];
@@ -122,9 +123,8 @@
     [carsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
          _reviews = objects;
-         
-         
          [_reviewsTable reloadData];
+         
      }];
     [self performSelector:@selector(stopRefresh) withObject:nil afterDelay:0.5];
 
@@ -159,10 +159,6 @@
     UILabel *reviewItSelf = (UILabel *)[cell viewWithTag:556];
     UILabel *timeStamp = (UILabel *)[cell viewWithTag:557];
     UILabel *userStamp = (UILabel *)[cell viewWithTag:558];
-    PFImageView *userThumb = (PFImageView *)[cell viewWithTag:222];
-    
-    userThumb.layer.cornerRadius = userThumb.frame.size.height / 2;
-    userThumb.layer.masksToBounds = YES;
     
     reviewItSelf.textAlignment = NSTextAlignmentLeft;
     
@@ -177,22 +173,21 @@
         
         NSString *firstName = [[[_reviews valueForKey:@"user"] valueForKey:@"firstName"] objectAtIndex:indexPath.row];
         NSString *lastName = [[[_reviews valueForKey:@"user"] valueForKey:@"lastName"] objectAtIndex:indexPath.row];
-        //userThumb.file = [[[_reviews valueForKey:@"user"] valueForKey:@"profilePicture"] objectAtIndex:indexPath.row];
         userStamp.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
         
         
-//        if ([[[_reviews valueForKey:@"user"] valueForKey:@"profilePicture"] objectAtIndex:indexPath.row]) {
-//            NSLog(@"Empty");
-//        } else {
-//            NSLog(@"I'm here");
-//        }
+        PFImageView *userThumb = (PFImageView *)[cell viewWithTag:222];
+        PFFile *userPicture = [[[_reviews valueForKey:@"user"] valueForKey:@"profilePicture"] objectAtIndex:indexPath.row];
+        userThumb.layer.cornerRadius = userThumb.frame.size.height / 2;
+        userThumb.layer.masksToBounds = YES;
+        [NSNull null];
         
-//        if (userThumb.file == nil) {
-//            userThumb.image = [UIImage imageNamed:@"userTempPic.jpg"];
-//        } else {
-//            userThumb.file = [[[_reviews valueForKey:@"user"] valueForKey:@"profilePicture"] objectAtIndex:indexPath.row];
-//        }
-        
+        if (![userPicture isKindOfClass:[NSNull class]]) {
+            userThumb.file = userPicture;
+        } else {
+            userThumb.image = [UIImage imageNamed:@"userTempPic.jpg"];
+        }
+    
     } else {
         timeStamp.text = @"";
         reviewItSelf.text = @"Sorry, there's no comments at the moment";

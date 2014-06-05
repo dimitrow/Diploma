@@ -50,6 +50,8 @@
 		16EF480718FD970200173EDD /* GalleryRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF480618FD970200173EDD /* GalleryRootViewController.m */; };
 		4490B36118DF7808006EE32F /* UITextField+Customised.m in Sources */ = {isa = PBXBuildFile; fileRef = 4490B36018DF7808006EE32F /* UITextField+Customised.m */; };
 		E60022571929EDC4007489AA /* userTempPic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E60022561929EDC4007489AA /* userTempPic.jpg */; };
+		E6C0556E193F554A00843EC4 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C0556D193F554A00843EC4 /* HistoryViewController.m */; };
+		E6C05571193F58D600843EC4 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C05570193F58D600843EC4 /* Order.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,10 @@
 		4490B36018DF7808006EE32F /* UITextField+Customised.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Customised.m"; sourceTree = "<group>"; };
 		4490B36518DF7D63006EE32F /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		E60022561929EDC4007489AA /* userTempPic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = userTempPic.jpg; sourceTree = "<group>"; };
+		E6C0556C193F554A00843EC4 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		E6C0556D193F554A00843EC4 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		E6C0556F193F58D600843EC4 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		E6C05570193F58D600843EC4 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +213,11 @@
 			isa = PBXGroup;
 			children = (
 				04B34F1318D829D500CD0A3F /* Main.storyboard */,
+				04D831FE18F685720082B044 /* Car.h */,
+				04D831FF18F685720082B044 /* Car.m */,
+				E6C0556F193F58D600843EC4 /* Order.h */,
+				E6C05570193F58D600843EC4 /* Order.m */,
+				4490B36518DF7D63006EE32F /* Constants.h */,
 				4490B35F18DF7808006EE32F /* UITextField+Customised.h */,
 				4490B36018DF7808006EE32F /* UITextField+Customised.m */,
 				04B34F1018D829D500CD0A3F /* AppDelegate.h */,
@@ -219,11 +230,10 @@
 				04B34F3D18D82BBF00CD0A3F /* CarsListTableViewController.m */,
 				043D3C3018F431C800750854 /* CarDetailViewController.h */,
 				043D3C3118F431C800750854 /* CarDetailViewController.m */,
-				4490B36518DF7D63006EE32F /* Constants.h */,
-				04D831FE18F685720082B044 /* Car.h */,
-				04D831FF18F685720082B044 /* Car.m */,
 				04B34F3918D82AE300CD0A3F /* ClientViewController.h */,
 				04B34F3A18D82AE300CD0A3F /* ClientViewController.m */,
+				E6C0556C193F554A00843EC4 /* HistoryViewController.h */,
+				E6C0556D193F554A00843EC4 /* HistoryViewController.m */,
 				04339F7718D9DACA008BCD87 /* RegistrationViewController.h */,
 				04339F7818D9DACA008BCD87 /* RegistrationViewController.m */,
 				040DABDD18D887B40041372F /* LoginViewController.h */,
@@ -391,8 +401,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D8320018F685720082B044 /* Car.m in Sources */,
+				E6C05571193F58D600843EC4 /* Order.m in Sources */,
 				0488874E192106CB00D7117D /* OrderViewController.m in Sources */,
 				04B34F3E18D82BBF00CD0A3F /* CarsListTableViewController.m in Sources */,
+				E6C0556E193F554A00843EC4 /* HistoryViewController.m in Sources */,
 				169E0FDA18FDD6F9003286B0 /* PageContentViewController.m in Sources */,
 				4490B36118DF7808006EE32F /* UITextField+Customised.m in Sources */,
 				0477D63A19052F0100F200B2 /* TabRootViewController.m in Sources */,
