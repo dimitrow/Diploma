@@ -8,7 +8,7 @@
 
 #import "ClientViewController.h"
 #import "Constants.h"
-
+#import "HistoryViewController.h"
 
 @interface ClientViewController ()
 {
@@ -196,6 +196,36 @@
         [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random() % [letters length]]];
     }
     return randomString;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"OrderDetails"]) {
+        
+        HistoryViewController *destViewController = segue.destinationViewController;;
+        Order *order = [[Order alloc] init];
+        
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"MMMM, dd, YYYY"];
+        NSTimeZone *tz = [NSTimeZone localTimeZone];
+        [df setTimeZone:tz];
+        
+        NSString *startDate = [df stringFromDate:[[_orders valueForKey:@"startDate"] objectAtIndex:_indexPath.row]];
+        NSString *endDate = [df stringFromDate:[[_orders valueForKey:@"endDate"] objectAtIndex:_indexPath.row]];
+        NSString *modelName = [[[_orders valueForKey:@"vehicle"] valueForKey:@"modelName"] objectAtIndex:_indexPath.row];
+        NSString *brandName = [[[[_orders valueForKey:@"vehicle"] valueForKey:@"brandName"] valueForKey:@"brandName" ] objectAtIndex:_indexPath.row];
+        NSString *orderDate = [NSString stringWithFormat:@"Current car was reserved\nfrom %@ til %@", startDate, endDate];
+        NSString *carName =  [NSString stringWithFormat:@"%@ %@", brandName, modelName];
+        NSString *orderID = [[_orders valueForKey:@"objectId"] objectAtIndex:_indexPath.row];
+        
+        order.orderID = orderID;
+        order.carFullName = carName;
+        order.orderDate = orderDate;
+        
+        destViewController.order = order;
+        destViewController.hidesBottomBarWhenPushed = YES;
+        
+        
+    }
 }
 
 @end

@@ -2,7 +2,7 @@
 //  CarDetailViewController.m
 //  CarRent
 //
-//  Created by U'Gene on 4/8/14.
+//  Created by Eugene Dimitrow on 4/8/14.
 //  Copyright (c) 2014 RockyTurtle. All rights reserved.
 //
 
