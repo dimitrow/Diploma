@@ -9,7 +9,9 @@
 #import "HistoryViewController.h"
 
 @interface HistoryViewController ()
-
+{
+    NSArray *_picture;
+}
 
 
 @end
@@ -25,7 +27,7 @@
     _carName.text = _order.carFullName;
     _orderDate.text = _order.orderDate;
     _orderNumber.text = [NSString stringWithFormat:@"Order #:%@", _order.orderID];
-    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,10 +42,12 @@
 -(void)getMainPicture
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Pictures"];
-    [query includeKey:@"vehicle.objectId"];
+    [query whereKey:@"vehicle" equalTo:[PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_order.carID]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
        
-        NSLog(@"%@", [[objects valueForKey:@"vehicle"]valueForKey:@"objectId"]);
+        _picture = [objects valueForKey:@"photo"];
+        _carPicture.file = [_picture firstObject];
+        [_carPicture loadInBackground];
     }];
     
 }

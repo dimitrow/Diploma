@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *carName;
 @property (weak, nonatomic) IBOutlet UILabel *orderDate;
 @property (weak, nonatomic) IBOutlet UILabel *orderNumber;
+@property (strong, nonatomic) IBOutlet PFImageView *carPicture;
 
 @end

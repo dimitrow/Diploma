@@ -14,6 +14,7 @@
 {
     NSArray *_orders;
     NSIndexPath *_indexPath;
+
 }
 
 
@@ -23,9 +24,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-
     [self retriveProfilePicture];
-    
     
     if ([PFUser currentUser]) {
         _clientNameLabel.textColor =[UIColor whiteColor];
@@ -57,7 +56,6 @@
     
     _clientPic.layer.cornerRadius = _clientPic.frame.size.height / 2;
     _clientPic.layer.masksToBounds = YES;
-    
 
 }
 
@@ -167,6 +165,12 @@
     imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     imgPicker.allowsEditing = YES;
     [self presentViewController:imgPicker animated:YES completion:nil];
+
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [viewController.navigationItem setTitle:@"Choose A Photo."];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -216,7 +220,9 @@
         NSString *orderDate = [NSString stringWithFormat:@"Current car was reserved\nfrom %@ til %@", startDate, endDate];
         NSString *carName =  [NSString stringWithFormat:@"%@ %@", brandName, modelName];
         NSString *orderID = [[_orders valueForKey:@"objectId"] objectAtIndex:_indexPath.row];
+        NSString *carID = [[[_orders valueForKey:@"vehicle"] valueForKey:@"objectId"] objectAtIndex:_indexPath.row];
         
+        order.carID = carID;
         order.orderID = orderID;
         order.carFullName = carName;
         order.orderDate = orderDate;
@@ -227,5 +233,7 @@
         
     }
 }
+
+
 
 @end

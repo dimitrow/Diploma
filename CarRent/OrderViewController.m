@@ -52,6 +52,15 @@
     [_datePicker setMaximumDate:endDate];
     [_textFieldFrom setInputView:_datePicker];
     [_textFieldTo setInputView:_datePicker];
+    
+    self.getItTitle.userInteractionEnabled = NO;
+    self.getItTitle.tintColor = [UIColor lightTextColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    UIAlertView *welcomeAlert = [[UIAlertView alloc] initWithTitle:nil message:@"Please enter a date, when you will need to get this car, after it, make an availiability check" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [welcomeAlert show];
 }
 
 - (void)retriveOrdersData
@@ -150,6 +159,10 @@
         if (i == 0) {
             if ((startWithStart == NSOrderedAscending) && (endWithStart == NSOrderedAscending)) {
                 NSLog(@"Thank you! You can use this car from %@ til %@", rentStart, rentEnd);
+                
+                self.getItTitle.userInteractionEnabled = YES;
+                self.getItTitle.tintColor = [UIColor blueColor];
+                
                 break;
             } else if ((endWithStart == NSOrderedDescending) || (endWithEnd == NSOrderedAscending)){
                 NSLog(@"Sorry, seems that car gonna be busy this time(from %@ to %@)", [[ordersData valueForKey:@"startDate"] objectAtIndex:i],[[ordersData valueForKey:@"endDate"] objectAtIndex:i]);
@@ -163,6 +176,10 @@
             
             if ((startWithStart == NSOrderedAscending) && (startWithEnd == NSOrderedDescending) && (endWithStart == NSOrderedAscending)){
                 NSLog(@"Thank you! You can use this car from %@ til %@", rentStart, rentEnd);
+                
+                self.getItTitle.userInteractionEnabled = YES;
+                self.getItTitle.tintColor = [UIColor blueColor];
+                
                 break;
             } else if ((endWithStart == NSOrderedDescending) && (endWithEnd == NSOrderedAscending)){
                 NSLog(@"Sorry, seems that car gonna be busy this time(from %@ to %@)", [[ordersData valueForKey:@"startDate"] objectAtIndex:i], [[ordersData valueForKey:@"endDate"] objectAtIndex:i]);
