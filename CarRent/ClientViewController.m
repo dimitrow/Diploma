@@ -8,7 +8,7 @@
 
 #import "ClientViewController.h"
 #import "Constants.h"
-#import "Order.h"
+#import "HistoryViewController.h"
 
 @interface ClientViewController ()
 {
@@ -109,6 +109,8 @@
         orderNumber.text = @"";
     }
     
+
+    
     return cell;
 }
 
@@ -199,25 +201,29 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"OrderDetails"]) {
         
-        HistoryViewController *destViewController = segue.destinationViewController;        
+        HistoryViewController *destViewController = segue.destinationViewController;;
         Order *order = [[Order alloc] init];
         
-//        NSString *modelName = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"modelName"] objectAtIndex:_indexPath.row];
-//        NSString *objectID = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"objectId"] objectAtIndex:_indexPath.row];
-//        NSString *brandName = [[_vehicles allKeys] objectAtIndex:_indexPath.section];
-//        NSString *year = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"releaseYear"] objectAtIndex:_indexPath.row];
-//        NSString *mpg = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"mpg"] objectAtIndex:_indexPath.row];
-//        NSString *mileage = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"mileage"] objectAtIndex:_indexPath.row];
-//        BOOL isAvaliable = [[[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"isAvaliable"] objectAtIndex:_indexPath.row] boolValue];
-//        
-//        car.carName = [NSString stringWithFormat:@"%@ \"%@\"", brandName, modelName ];
-//        car.mpg = mpg;
-//        car.mileage = mileage;
-//        car.carID = objectID;
-//        car.releaseYear = year;
-//        car.isAvaliable = isAvaliable;
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"MMMM, dd, YYYY"];
+        NSTimeZone *tz = [NSTimeZone localTimeZone];
+        [df setTimeZone:tz];
+        
+        NSString *startDate = [df stringFromDate:[[_orders valueForKey:@"startDate"] objectAtIndex:_indexPath.row]];
+        NSString *endDate = [df stringFromDate:[[_orders valueForKey:@"endDate"] objectAtIndex:_indexPath.row]];
+        NSString *modelName = [[[_orders valueForKey:@"vehicle"] valueForKey:@"modelName"] objectAtIndex:_indexPath.row];
+        NSString *brandName = [[[[_orders valueForKey:@"vehicle"] valueForKey:@"brandName"] valueForKey:@"brandName" ] objectAtIndex:_indexPath.row];
+        NSString *orderDate = [NSString stringWithFormat:@"Current car was reserved\nfrom %@ til %@", startDate, endDate];
+        NSString *carName =  [NSString stringWithFormat:@"%@ %@", brandName, modelName];
+        NSString *orderID = [[_orders valueForKey:@"objectId"] objectAtIndex:_indexPath.row];
+        
+        order.orderID = orderID;
+        order.carFullName = carName;
+        order.orderDate = orderDate;
         
         destViewController.order = order;
+        destViewController.hidesBottomBarWhenPushed = YES;
+        
         
     }
 }
