@@ -8,7 +8,7 @@
 
 #import "ClientViewController.h"
 #import "Constants.h"
-
+#import "Order.h"
 
 @interface ClientViewController ()
 {
@@ -109,8 +109,6 @@
         orderNumber.text = @"";
     }
     
-
-    
     return cell;
 }
 
@@ -196,6 +194,32 @@
         [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random() % [letters length]]];
     }
     return randomString;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"OrderDetails"]) {
+        
+        HistoryViewController *destViewController = segue.destinationViewController;        
+        Order *order = [[Order alloc] init];
+        
+//        NSString *modelName = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"modelName"] objectAtIndex:_indexPath.row];
+//        NSString *objectID = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"objectId"] objectAtIndex:_indexPath.row];
+//        NSString *brandName = [[_vehicles allKeys] objectAtIndex:_indexPath.section];
+//        NSString *year = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"releaseYear"] objectAtIndex:_indexPath.row];
+//        NSString *mpg = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"mpg"] objectAtIndex:_indexPath.row];
+//        NSString *mileage = [[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"mileage"] objectAtIndex:_indexPath.row];
+//        BOOL isAvaliable = [[[[_vehicles objectForKey:[[_vehicles allKeys] objectAtIndex:_indexPath.section]] valueForKey:@"isAvaliable"] objectAtIndex:_indexPath.row] boolValue];
+//        
+//        car.carName = [NSString stringWithFormat:@"%@ \"%@\"", brandName, modelName ];
+//        car.mpg = mpg;
+//        car.mileage = mileage;
+//        car.carID = objectID;
+//        car.releaseYear = year;
+//        car.isAvaliable = isAvaliable;
+        
+        destViewController.order = order;
+        
+    }
 }
 
 @end
