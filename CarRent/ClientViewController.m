@@ -170,7 +170,7 @@
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    [viewController.navigationItem setTitle:@"Choose A Photo."];
+    [viewController.navigationItem setTitle:@"Choose Photo."];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -229,7 +229,6 @@
         
         destViewController.order = order;
         destViewController.hidesBottomBarWhenPushed = YES;
-        
         
     }
 }

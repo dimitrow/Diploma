@@ -8,6 +8,7 @@
 
 #import "OrderViewController.h"
 #import "Constants.h"
+#import <EventKit/EventKit.h>
 
 @interface OrderViewController ()
 {
@@ -15,9 +16,13 @@
     NSDateFormatter *_dateFormatter;
     NSInteger textFieldTag;
     NSArray *ordersData;
+    NSDictionary *vehicleData;
     
     NSDate *rentStart;
     NSDate *rentEnd;
+    
+    EKEventStore *_eventStore;
+    
 }
 @property (strong, nonatomic) IBOutlet UIButton *getItTitle;
 @property (strong, nonatomic) IBOutlet UIButton *cancelTitle;
@@ -31,6 +36,8 @@
     [super viewDidLoad];
     
     [self retriveOrdersData];
+    [self getCarData];
+    
     
     _datePicker = [[UIDatePicker alloc]init];
     [_datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
@@ -63,15 +70,26 @@
     [welcomeAlert show];
 }
 
+- (void)getCarData
+{
+    PFQuery *carData = [PFQuery queryWithClassName:@"Vehicle"];
+    [carData includeKey:@"brandName"];
+    //[carData whereKey:@"objectId" equalTo:_car.carID];
+    [carData getObjectInBackgroundWithId:_car.carID block:^(PFObject *object, NSError *error) {
+        vehicleData = (NSDictionary *)object;
+    }];
+}
+
 - (void)retriveOrdersData
 {
     PFQuery *dataCheck = [PFQuery queryWithClassName:@"Orders"];
-    //[dataCheck includeKey:@"vehicle"];
+    [dataCheck includeKey:@"vehicle"];
     [dataCheck orderByAscending:@"startDate"];
     [dataCheck whereKey:@"vehicle" equalTo:[PFObject objectWithoutDataWithClassName:@"Vehicle" objectId:_car.carID]];
     [dataCheck findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         ordersData = objects;
+
         
     }];
 }
@@ -117,6 +135,7 @@
 
 - (IBAction)getTheCar:(id)sender
 {
+
     if ((_textFieldFrom.text.length && _textFieldTo.text.length) != 0){
     
         PFObject *order = [PFObject objectWithClassName:@"Orders"];
@@ -127,16 +146,18 @@
         order[@"user"] = [PFUser currentUser];
         order[@"vehicle"] = vehicle;
                 
-        vehicle[@"isAvaliable"] = @NO;
+    //FIXME:        //vehicle[@"isAvaliable"] = @NO;  maybe add later if needed
         
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc postNotificationName:@"review" object:nil];
-        [nc postNotificationName:@"busy" object:nil];
+        
+        //[nc postNotificationName:@"busy" object:nil];
+        
         [order saveInBackground];
         
-        
-        
+        [self createAnEvent];
         [self dismissViewControllerAnimated:YES completion:nil];
+        
         
     } else {
         NSString *message = @"You have to choose date when you want to get this car for ride";
@@ -148,47 +169,116 @@
 - (IBAction)checkCar:(id)sender
 {
     [self retriveOrdersData];
-
     
-    for (int i = 0; i < [ordersData count]; i++) {
-        
-        NSComparisonResult startWithStart = [rentStart compare:[[ordersData valueForKey:@"startDate"] objectAtIndex:i]];
-        NSComparisonResult endWithStart = [rentEnd compare:[[ordersData valueForKey:@"startDate"] objectAtIndex:i]];
-        NSComparisonResult endWithEnd = [rentEnd compare:[[ordersData valueForKey:@"endDate"] objectAtIndex:i]];
-        
-        if (i == 0) {
-            if ((startWithStart == NSOrderedAscending) && (endWithStart == NSOrderedAscending)) {
-                NSLog(@"Thank you! You can use this car from %@ til %@", rentStart, rentEnd);
-                
-                self.getItTitle.userInteractionEnabled = YES;
-                self.getItTitle.tintColor = [UIColor blueColor];
-                
-                break;
-            } else if ((endWithStart == NSOrderedDescending) || (endWithEnd == NSOrderedAscending)){
-                NSLog(@"Sorry, seems that car gonna be busy this time(from %@ to %@)", [[ordersData valueForKey:@"startDate"] objectAtIndex:i],[[ordersData valueForKey:@"endDate"] objectAtIndex:i]);
-                break;
-            } else {
-                continue;
-            }
-        } else {
+    
+//    if (ordersData.count == 0){
+//        
+//        NSString *message = [NSString stringWithFormat:@"Successful, you can use this car from %@ til %@", rentStart, rentEnd];
+//
+//        ERROR_ALERT(CHECK_RES, message, AW_BT_SUC);
+//        
+//        self.getItTitle.userInteractionEnabled = YES;
+//        self.getItTitle.tintColor = [UIColor blueColor];
+//        
+//    }else{
+        for (int i = 0; i < [ordersData count]; i++) {
             
-            NSComparisonResult startWithEnd = [rentStart compare:[[ordersData valueForKey:@"endDate"] objectAtIndex:i - 1]];
+            NSComparisonResult startWithStart = [rentStart compare:[[ordersData valueForKey:@"startDate"] objectAtIndex:i]];
+            NSComparisonResult endWithStart = [rentEnd compare:[[ordersData valueForKey:@"startDate"] objectAtIndex:i]];
+            NSComparisonResult endWithEnd = [rentEnd compare:[[ordersData valueForKey:@"endDate"] objectAtIndex:i]];
             
-            if ((startWithStart == NSOrderedAscending) && (startWithEnd == NSOrderedDescending) && (endWithStart == NSOrderedAscending)){
-                NSLog(@"Thank you! You can use this car from %@ til %@", rentStart, rentEnd);
-                
-                self.getItTitle.userInteractionEnabled = YES;
-                self.getItTitle.tintColor = [UIColor blueColor];
-                
-                break;
-            } else if ((endWithStart == NSOrderedDescending) && (endWithEnd == NSOrderedAscending)){
-                NSLog(@"Sorry, seems that car gonna be busy this time(from %@ to %@)", [[ordersData valueForKey:@"startDate"] objectAtIndex:i], [[ordersData valueForKey:@"endDate"] objectAtIndex:i]);
-                break;
+            if (i == 0) {
+                if ((startWithStart == NSOrderedAscending) && (endWithStart == NSOrderedAscending)) {
+
+                    NSString *message = [NSString stringWithFormat:@"Successful, you can use this car from %@ til %@", rentStart, rentEnd];
+
+                    ERROR_ALERT(CHECK_RES, message, AW_BT_SUC);
+                    
+                    self.getItTitle.userInteractionEnabled = YES;
+                    self.getItTitle.tintColor = [UIColor blueColor];
+                    
+                    break;
+                } else if ((endWithStart == NSOrderedDescending) || (endWithEnd == NSOrderedAscending)){
+                    
+                    NSString *message = [NSString stringWithFormat:@"Sorry, seems that car gonna be busy this time(from %@ to %@)", [[ordersData valueForKey:@"startDate"] objectAtIndex:i],[[ordersData valueForKey:@"endDate"] objectAtIndex:i]];
+
+                    ERROR_ALERT(CHECK_RES, message, AW_BT_FAIL);
+                    
+                    break;
+                } else {
+                    continue;
+                }
             } else {
-                continue;
+                
+                NSComparisonResult startWithEnd = [rentStart compare:[[ordersData valueForKey:@"endDate"] objectAtIndex:i - 1]];
+                
+                if ((startWithStart == NSOrderedAscending) && (startWithEnd == NSOrderedDescending) && (endWithStart == NSOrderedAscending)){
+
+                    NSString *message = [NSString stringWithFormat:@"Successful, you can use this car from %@ til %@", rentStart, rentEnd];
+
+                    ERROR_ALERT(CHECK_RES, message, AW_BT_SUC);
+                    
+                    self.getItTitle.userInteractionEnabled = YES;
+                    self.getItTitle.tintColor = [UIColor blueColor];
+                    
+                    break;
+                } else if ((endWithStart == NSOrderedDescending) && (endWithEnd == NSOrderedAscending)){
+                    
+                    NSString *message = [NSString stringWithFormat:@"Sorry, seems that car gonna be busy this time(from %@ to %@)", [[ordersData valueForKey:@"startDate"] objectAtIndex:i],[[ordersData valueForKey:@"endDate"] objectAtIndex:i]];
+                    
+                    ERROR_ALERT(CHECK_RES, message, AW_BT_FAIL);
+                    
+                    break;
+                } else {
+                    continue;
+                }
             }
         }
+
+    //}
+    
+}
+
+- (void)createAnEvent
+{
+
+    EKEventStore *eventStore = [[EKEventStore alloc] init];
+    EKEvent *event = [EKEvent eventWithEventStore:eventStore];
+    
+    [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+        // handle access here
+    }];
+    
+    NSString *year = [[vehicleData valueForKey:@"releaseYear"] substringFromIndex:2];
+    NSString *brand = [[vehicleData valueForKey:@"brandName"] valueForKey:@"brandName"];
+    NSString *model = [vehicleData valueForKey:@"modelName"];
+    NSString *notes = [NSString stringWithFormat:@"You've rent '%@ %@ %@ on this day from Dimitrow &Co", year, brand, model];
+    
+    NSLog(@"%@", notes);
+    
+    event.title = @"Car Rent Event";
+    event.notes = notes;
+    event.startDate = [rentStart dateByAddingTimeInterval:-1800];
+    event.endDate = rentEnd;
+    event.availability = EKEventAvailabilityFree;
+    
+    NSTimeInterval alarmOffset = -1*60*60;//1 hour
+    EKAlarm *alarm = [EKAlarm alarmWithRelativeOffset:alarmOffset];
+    
+    [event addAlarm:alarm];
+    
+    [event setCalendar:[eventStore defaultCalendarForNewEvents]];
+    
+    NSError *err;
+    [eventStore saveEvent:event span:EKSpanThisEvent error:&err];
+    if (err == noErr) {
+        NSString *carName = [NSString stringWithFormat:@"'%@ %@ %@", year, brand, model];
+        NSString *message = [NSString stringWithFormat:@"An event has been added to your calendar in order to remind you about %@ you've just rented", carName];
+        NSString *title = @"";
+        ERROR_ALERT(title, message, AW_BT_SUC);
     }
+    //NSLog(@"Error From iCal : %@", [err description]);
+    
 }
 
 - (void) viewWillDisappear:(BOOL)animated

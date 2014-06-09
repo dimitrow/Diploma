@@ -23,6 +23,7 @@
 #define FONT_TITLE [UIFont fontWithName:@"Deftone Stylus"  size:25.0];
 
 #define ERROR @"Error"
+#define CHECK_RES @"Check Result"
 #define AW_BT_FAIL @"Retry"
 #define AW_BT_SUC @"OK"
 

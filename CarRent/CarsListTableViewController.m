@@ -98,14 +98,13 @@
 {
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    UIView *avaliabilitySign = (UIView *)[cell viewWithTag:15];
+    //UIView *avaliabilitySign = (UIView *)[cell viewWithTag:15];
     
     NSString *modelName = [[_vehicles allKeys] objectAtIndex:indexPath.section];
     NSArray *vehicles = [[_vehicles objectForKey:modelName] valueForKey:@"modelName"];
     
-    BOOL isAvaliable = [[[[_vehicles objectForKey:modelName] valueForKey:@"isAvaliable"] objectAtIndex:indexPath.row] boolValue];
-    
-    (isAvaliable == YES) ? (avaliabilitySign.backgroundColor = COLOR_AVAL) : (avaliabilitySign.backgroundColor = COLOR_BUSY);
+    //BOOL isAvaliable = [[[[_vehicles objectForKey:modelName] valueForKey:@"isAvaliable"] objectAtIndex:indexPath.row] boolValue];    
+    //(isAvaliable == YES) ? (avaliabilitySign.backgroundColor = COLOR_AVAL) : (avaliabilitySign.backgroundColor = COLOR_BUSY);
     
     cell.textLabel.font = FONT_ULTRA_LIGHT;
     cell.textLabel.textColor = COLOR_MAIN_BLUE;

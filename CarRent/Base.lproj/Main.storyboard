@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="WoF-7z-fot">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="WoF-7z-fot">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -156,7 +156,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Pip_Boy_Alright.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jI0-b2-HKM" customClass="PFImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jI0-b2-HKM" customClass="PFImageView">
                                 <rect key="frame" x="20" y="71" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -367,7 +367,7 @@
                                         <view tag="15" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P7u-8a-6u6">
                                             <rect key="frame" x="0.0" y="0.0" width="4" height="44"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -549,37 +549,22 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N5A-T5-PBi">
                                 <rect key="frame" x="0.0" y="246" width="320" height="4"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeK-9i-J5d">
-                                <rect key="frame" x="10" y="212" width="80" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Get it now!">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="makeOrder:" destination="oOD-va-2B0" eventType="touchUpInside" id="B3n-9z-Gxx"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.32916945019999999" green="0.51886085370000001" blue="0.59984799209999995" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="p3S-wD-rr3">
                         <barButtonItem key="backBarButtonItem" title=" " id="1MR-7H-Wum"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0Ba-11-ZJh">
-                            <connections>
-                                <action selector="writeReview:" destination="oOD-va-2B0" id="kAC-tT-Hc4"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="avaliability" destination="N5A-T5-PBi" id="6Ao-N8-Vf9"/>
                         <outlet property="carsStrapView" destination="Ocu-UG-fPm" id="Fbr-Dt-oco"/>
                         <outlet property="fullName" destination="cUu-MY-6gQ" id="NX6-gA-lEf"/>
                         <outlet property="mileage" destination="XK4-zN-BgI" id="ur5-Mp-OOh"/>
                         <outlet property="mpg" destination="yN3-uW-Bd3" id="tVX-IG-ILM"/>
-                        <outlet property="orderButton" destination="oeK-9i-J5d" id="hoh-EQ-UIm"/>
                         <outlet property="releaseYear" destination="Ara-VV-WRN" id="QWn-ee-Q1R"/>
                         <outlet property="reviewsTable" destination="5F5-ua-JfN" id="MBi-S7-mRO"/>
                         <segue destination="ImG-0D-ERM" kind="modal" identifier="showPictures" modalTransitionStyle="crossDissolve" id="T4s-p6-ggm"/>
@@ -1108,7 +1093,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Pip_Boy_Alright.jpg" width="150" height="150"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>

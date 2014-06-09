@@ -50,6 +50,9 @@
 		16EF480718FD970200173EDD /* GalleryRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF480618FD970200173EDD /* GalleryRootViewController.m */; };
 		4490B36118DF7808006EE32F /* UITextField+Customised.m in Sources */ = {isa = PBXBuildFile; fileRef = 4490B36018DF7808006EE32F /* UITextField+Customised.m */; };
 		E60022571929EDC4007489AA /* userTempPic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E60022561929EDC4007489AA /* userTempPic.jpg */; };
+		E6317EC91945A66900C31D88 /* orderImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E6317EC71945A66900C31D88 /* orderImg@2x.png */; };
+		E6317ECA1945A66900C31D88 /* reviewImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E6317EC81945A66900C31D88 /* reviewImg@2x.png */; };
+		E63AAE421945C48D00A12C60 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E63AAE411945C48D00A12C60 /* EventKit.framework */; };
 		E6C0556E193F554A00843EC4 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C0556D193F554A00843EC4 /* HistoryViewController.m */; };
 		E6C05571193F58D600843EC4 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C05570193F58D600843EC4 /* Order.m */; };
 /* End PBXBuildFile section */
@@ -126,6 +129,9 @@
 		4490B36018DF7808006EE32F /* UITextField+Customised.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Customised.m"; sourceTree = "<group>"; };
 		4490B36518DF7D63006EE32F /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		E60022561929EDC4007489AA /* userTempPic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = userTempPic.jpg; sourceTree = "<group>"; };
+		E6317EC71945A66900C31D88 /* orderImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orderImg@2x.png"; sourceTree = "<group>"; };
+		E6317EC81945A66900C31D88 /* reviewImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reviewImg@2x.png"; sourceTree = "<group>"; };
+		E63AAE411945C48D00A12C60 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		E6C0556C193F554A00843EC4 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		E6C0556D193F554A00843EC4 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		E6C0556F193F58D600843EC4 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
@@ -137,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E63AAE421945C48D00A12C60 /* EventKit.framework in Frameworks */,
 				040DABD918D87E740041372F /* libsqlite3.dylib in Frameworks */,
 				04B34F5218D82F0E00CD0A3F /* SystemConfiguration.framework in Frameworks */,
 				04B34F5018D82EFF00CD0A3F /* StoreKit.framework in Frameworks */,
@@ -190,6 +197,7 @@
 		04B34F0018D829D500CD0A3F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E63AAE411945C48D00A12C60 /* EventKit.framework */,
 				040DABD818D87E740041372F /* libsqlite3.dylib */,
 				04B34F4718D82ECE00CD0A3F /* libz.dylib */,
 				04B34F5118D82F0E00CD0A3F /* SystemConfiguration.framework */,
@@ -284,6 +292,8 @@
 		16246B2A19085DEF00CB812E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E6317EC71945A66900C31D88 /* orderImg@2x.png */,
+				E6317EC81945A66900C31D88 /* reviewImg@2x.png */,
 				E60022561929EDC4007489AA /* userTempPic.jpg */,
 				16246B331908678C00CB812E /* DAYPBL__.ttf */,
 				16246B311908671100CB812E /* 20db.otf */,
@@ -377,6 +387,8 @@
 				E60022571929EDC4007489AA /* userTempPic.jpg in Resources */,
 				04B34F0C18D829D500CD0A3F /* InfoPlist.strings in Resources */,
 				16246B341908678C00CB812E /* DAYPBL__.ttf in Resources */,
+				E6317ECA1945A66900C31D88 /* reviewImg@2x.png in Resources */,
+				E6317EC91945A66900C31D88 /* orderImg@2x.png in Resources */,
 				16246B301908668500CB812E /* DEFTONE.ttf in Resources */,
 				16246B2C19085E1200CB812E /* Diner-Regular.ttf in Resources */,
 				16246B2E19085ECB00CB812E /* HamburgerHeaven.ttf in Resources */,
