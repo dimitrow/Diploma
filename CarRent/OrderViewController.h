@@ -26,6 +26,4 @@
 - (IBAction)getTheCar:(id)sender;
 - (IBAction)checkCar:(id)sender;
 
-- (IBAction)createAnEvent:(id)sender;
-
 @end
