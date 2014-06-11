@@ -92,6 +92,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderCell" forIndexPath:indexPath];
     UILabel *orderNumber = (UILabel *)[cell viewWithTag:1985];
     UILabel *dateLabel = (UILabel *)[cell viewWithTag:1984];
+    UIView *costBack = (UIView *)[cell viewWithTag:14];
+    costBack.backgroundColor = [UIColor colorWithRed:0.329 green:0.518 blue:0.600 alpha:0.12];
+    costBack.layer.borderColor = [UIColor grayColor].CGColor;
+    costBack.layer.borderWidth = .5;
+    costBack.layer.cornerRadius = costBack.frame.size.height/2;
+    
+    UILabel *totalAmount = (UILabel *)[cell viewWithTag:15];
+    
+    
     
     if ([[_orders valueForKey:@"objectId"] count] >= 1) {
         
@@ -99,12 +108,16 @@
         NSString *endDate = [df stringFromDate:[[_orders valueForKey:@"endDate"] objectAtIndex:indexPath.row]];
         NSString *modelName = [[[_orders valueForKey:@"vehicle"] valueForKey:@"modelName"] objectAtIndex:indexPath.row];
         NSString *brandName = [[[[_orders valueForKey:@"vehicle"] valueForKey:@"brandName"] valueForKey:@"brandName" ] objectAtIndex:indexPath.row];
+        NSString *amount = [[_orders valueForKey:@"totalAmount"] objectAtIndex:indexPath.row];
         
+        totalAmount.text = [NSString stringWithFormat:@"%@", amount];
         dateLabel.text = [NSString stringWithFormat:@"Car reserved\nfrom %@ til %@", startDate, endDate];
         orderNumber.text =  [NSString stringWithFormat:@"%@ %@", brandName, modelName];
     } else {
         dateLabel.text = [NSString stringWithFormat:@"You have no one order yet"];
         orderNumber.text = @"";
+        totalAmount.text = @"";
+        [costBack isHidden];
     }
     
 
