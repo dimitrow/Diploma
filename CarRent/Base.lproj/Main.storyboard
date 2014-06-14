@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="WoF-7z-fot">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="WoF-7z-fot">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -58,7 +58,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dF8-Ie-UbA" customClass="PFImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dF8-Ie-UbA" customClass="PFImageView">
                                 <rect key="frame" x="0.0" y="128" width="320" height="263"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.32916945019999999" green="0.51886085370000001" blue="0.59984799209999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -141,17 +141,18 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Personal." id="1B3-bs-RG5">
-                                        <barButtonItem key="rightBarButtonItem" id="Ja7-HE-IEx">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lee-ab-EhG">
-                                                <rect key="frame" x="234" y="27" width="70" height="30"/>
+                                        <barButtonItem key="rightBarButtonItem" image="exit-50.png" id="Ja7-HE-IEx">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Lee-ab-EhG">
+                                                <rect key="frame" x="279" y="29" width="25" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="get out">
+                                                <state key="normal" image="exit-50.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="logOut:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="XE7-y3-OXT"/>
                                                 </connections>
                                             </button>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -209,7 +210,7 @@
                             <constraint firstItem="nkb-Wn-xaP" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" id="zAh-kz-MdF"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Personal Info" image="first" id="u1e-5L-l1D"/>
+                    <tabBarItem key="tabBarItem" title="Personal Info" image="user_male2-50.png" id="u1e-5L-l1D"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="clientNameLabel" destination="Zhg-ve-WU7" id="Xog-jK-sVc"/>
@@ -522,8 +523,8 @@
                                                     <rect key="frame" x="0.0" y="14" width="320" height="70"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="556" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="7" preferredMaxLayoutWidth="310" translatesAutoresizingMaskIntoConstraints="NO" id="f91-6N-cGR">
-                                                            <rect key="frame" x="5" y="0.0" width="310" height="54"/>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="556" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="7" preferredMaxLayoutWidth="248" translatesAutoresizingMaskIntoConstraints="NO" id="f91-6N-cGR">
+                                                            <rect key="frame" x="5" y="0.0" width="248" height="54"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1011,7 +1012,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Sign In." id="qrd-lx-a3O">
                         <barButtonItem key="backBarButtonItem" title=" " id="L6p-yI-rui"/>
-                        <barButtonItem key="rightBarButtonItem" image="first" id="Es6-Ni-VfT">
+                        <barButtonItem key="rightBarButtonItem" image="enter-50.png" id="Es6-Ni-VfT">
                             <connections>
                                 <action selector="signButton:" destination="aaB-lW-1N1" id="kEa-4G-BdV"/>
                             </connections>
@@ -1076,7 +1077,7 @@
         <scene sceneID="zq0-r3-x69">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TBI-Fk-6f1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Car List" image="second" id="cOe-zC-72m"/>
+                    <tabBarItem key="tabBarItem" title="Car List" image="taxi-50.png" id="cOe-zC-72m"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="w4M-Tc-Qa0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1093,8 +1094,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="enter-50.png" width="25" height="25"/>
+        <image name="exit-50.png" width="25" height="25"/>
+        <image name="taxi-50.png" width="25" height="25"/>
+        <image name="user_male2-50.png" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

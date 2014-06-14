@@ -44,8 +44,8 @@
     [_reviewsTable addSubview:_refresh];
     
 
-    UIImage *reviewButtonImg = [UIImage imageNamed:@"reviewImg.png"];
-    UIImage *orderButtonImg = [UIImage imageNamed:@"orderImg.png"];
+    UIImage *reviewButtonImg = [UIImage imageNamed:@"pen-50.png"];
+    UIImage *orderButtonImg = [UIImage imageNamed:@"card_in_use-50.png"];
     
     UIBarButtonItem *reviewButton = [[UIBarButtonItem alloc] initWithImage:reviewButtonImg style:UIBarButtonItemStylePlain target:self action:@selector(writeReview:)];
     UIBarButtonItem *orderButton = [[UIBarButtonItem alloc] initWithImage:orderButtonImg style:UIBarButtonItemStylePlain target:self action:@selector(makeOrder:)];

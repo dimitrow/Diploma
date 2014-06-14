@@ -44,6 +44,12 @@
 		16246B301908668500CB812E /* DEFTONE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16246B2F1908668500CB812E /* DEFTONE.ttf */; };
 		16246B321908671100CB812E /* 20db.otf in Resources */ = {isa = PBXBuildFile; fileRef = 16246B311908671100CB812E /* 20db.otf */; };
 		16246B341908678C00CB812E /* DAYPBL__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16246B331908678C00CB812E /* DAYPBL__.ttf */; };
+		163FC9F8194CF06B00744797 /* enter-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163FC9F6194CF06B00744797 /* enter-50@2x.png */; };
+		163FC9F9194CF06B00744797 /* exit-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163FC9F7194CF06B00744797 /* exit-50@2x.png */; };
+		163FC9FB194CF0A800744797 /* user_male2-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163FC9FA194CF0A800744797 /* user_male2-50@2x.png */; };
+		163FC9FD194CF1DC00744797 /* taxi-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163FC9FC194CF1DC00744797 /* taxi-50@2x.png */; };
+		163FC9FF194CF34F00744797 /* card_in_use-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163FC9FE194CF34F00744797 /* card_in_use-50@2x.png */; };
+		163FCA01194CF3D100744797 /* pen-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163FCA00194CF3D100744797 /* pen-50@2x.png */; };
 		168CAE5E191A5F8500BBF265 /* NavRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168CAE5D191A5F8500BBF265 /* NavRootViewController.m */; };
 		168CAE61191B6BA500BBF265 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168CAE60191B6BA500BBF265 /* ReviewViewController.m */; };
 		169E0FDA18FDD6F9003286B0 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E0FD918FDD6F9003286B0 /* PageContentViewController.m */; };
@@ -117,6 +123,12 @@
 		16246B2F1908668500CB812E /* DEFTONE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DEFTONE.ttf; sourceTree = "<group>"; };
 		16246B311908671100CB812E /* 20db.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 20db.otf; sourceTree = "<group>"; };
 		16246B331908678C00CB812E /* DAYPBL__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DAYPBL__.ttf; sourceTree = "<group>"; };
+		163FC9F6194CF06B00744797 /* enter-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "enter-50@2x.png"; sourceTree = "<group>"; };
+		163FC9F7194CF06B00744797 /* exit-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exit-50@2x.png"; sourceTree = "<group>"; };
+		163FC9FA194CF0A800744797 /* user_male2-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_male2-50@2x.png"; sourceTree = "<group>"; };
+		163FC9FC194CF1DC00744797 /* taxi-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "taxi-50@2x.png"; sourceTree = "<group>"; };
+		163FC9FE194CF34F00744797 /* card_in_use-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_in_use-50@2x.png"; sourceTree = "<group>"; };
+		163FCA00194CF3D100744797 /* pen-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pen-50@2x.png"; sourceTree = "<group>"; };
 		168CAE5C191A5F8500BBF265 /* NavRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavRootViewController.h; sourceTree = "<group>"; };
 		168CAE5D191A5F8500BBF265 /* NavRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavRootViewController.m; sourceTree = "<group>"; };
 		168CAE5F191B6BA500BBF265 /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
@@ -292,6 +304,12 @@
 		16246B2A19085DEF00CB812E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				163FCA00194CF3D100744797 /* pen-50@2x.png */,
+				163FC9FE194CF34F00744797 /* card_in_use-50@2x.png */,
+				163FC9FA194CF0A800744797 /* user_male2-50@2x.png */,
+				163FC9FC194CF1DC00744797 /* taxi-50@2x.png */,
+				163FC9F6194CF06B00744797 /* enter-50@2x.png */,
+				163FC9F7194CF06B00744797 /* exit-50@2x.png */,
 				E6317EC71945A66900C31D88 /* orderImg@2x.png */,
 				E6317EC81945A66900C31D88 /* reviewImg@2x.png */,
 				E60022561929EDC4007489AA /* userTempPic.jpg */,
@@ -386,10 +404,16 @@
 				04B34F1D18D829D500CD0A3F /* Images.xcassets in Resources */,
 				E60022571929EDC4007489AA /* userTempPic.jpg in Resources */,
 				04B34F0C18D829D500CD0A3F /* InfoPlist.strings in Resources */,
+				163FC9FF194CF34F00744797 /* card_in_use-50@2x.png in Resources */,
+				163FC9FD194CF1DC00744797 /* taxi-50@2x.png in Resources */,
+				163FC9F8194CF06B00744797 /* enter-50@2x.png in Resources */,
 				16246B341908678C00CB812E /* DAYPBL__.ttf in Resources */,
+				163FCA01194CF3D100744797 /* pen-50@2x.png in Resources */,
+				163FC9F9194CF06B00744797 /* exit-50@2x.png in Resources */,
 				E6317ECA1945A66900C31D88 /* reviewImg@2x.png in Resources */,
 				E6317EC91945A66900C31D88 /* orderImg@2x.png in Resources */,
 				16246B301908668500CB812E /* DEFTONE.ttf in Resources */,
+				163FC9FB194CF0A800744797 /* user_male2-50@2x.png in Resources */,
 				16246B2C19085E1200CB812E /* Diner-Regular.ttf in Resources */,
 				16246B2E19085ECB00CB812E /* HamburgerHeaven.ttf in Resources */,
 				04B34F1518D829D500CD0A3F /* Main.storyboard in Resources */,
