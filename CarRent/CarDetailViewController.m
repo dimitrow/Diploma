@@ -106,16 +106,16 @@
      {         
          _pics = [objects valueForKey:@"photo"];
          
-         BOOL avaliability = [[[[objects valueForKey:@"vehicle"] valueForKey:@"isAvaliable"] firstObject] boolValue];
+//         BOOL avaliability = [[[[objects valueForKey:@"vehicle"] valueForKey:@"isAvaliable"] firstObject] boolValue];
+//         
+//         if (avaliability == NO) {
+//             (_avaliability.backgroundColor = COLOR_BUSY);
+//             //(_orderButton.hidden = YES);
+//         } else {
+//             (_avaliability.backgroundColor = COLOR_AVAL);
+//             //(_orderButton.hidden = NO);
+//         }
          
-         if (avaliability == NO) {
-             (_avaliability.backgroundColor = COLOR_BUSY);
-             //(_orderButton.hidden = YES);
-         } else {
-             (_avaliability.backgroundColor = COLOR_AVAL);
-             (_orderButton.hidden = NO);
-         }
-                  
          [self.carsStrapView reloadData];
 
      }];

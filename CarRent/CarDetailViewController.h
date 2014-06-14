@@ -22,10 +22,8 @@
 
 - (void)retriveReviews;
 
-- (IBAction)writeReview:(id)sender;
-- (IBAction)makeOrder:(id)sender;
 
-@property (strong, nonatomic) IBOutlet UIButton *orderButton;
+//@property (strong, nonatomic) IBOutlet UIButton *orderButton;
 
 @property (strong, nonatomic) IBOutlet UILabel *fullName;
 @property (strong, nonatomic) IBOutlet UILabel *releaseYear;
