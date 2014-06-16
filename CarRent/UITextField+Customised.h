@@ -3,7 +3,6 @@
 //  CarRent
 //
 //  Created by Eugene Dimitrow on 3/24/14.
-//  Copyright (c) 2014 RockyTurtle. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -17,7 +16,5 @@
 - (BOOL)validatePasswordWithString:(NSString*)password;
 - (BOOL)validateUserNameWithString:(NSString*)userName;
 - (BOOL)validateNameWithString:(NSString*)name;
-
-
 
 @end

@@ -3,7 +3,6 @@
 //  CarRent
 //
 //  Created by Eugene Dimitrow on 3/18/14.
-//  Copyright (c) 2014 RockyTurtle. All rights reserved.
 //
 
 #import "ClientViewController.h"
@@ -14,9 +13,7 @@
 {
     NSArray *_orders;
     NSIndexPath *_indexPath;
-
 }
-
 
 @end
 
@@ -43,7 +40,6 @@
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
         
     }
-    
 }
 
 - (void)viewDidLoad
@@ -100,8 +96,6 @@
     
     UILabel *totalAmount = (UILabel *)[cell viewWithTag:15];
     
-    
-    
     if ([[_orders valueForKey:@"objectId"] count] >= 1) {
         
         NSString *startDate = [df stringFromDate:[[_orders valueForKey:@"startDate"] objectAtIndex:indexPath.row]];
@@ -119,8 +113,6 @@
         totalAmount.text = @"";
         [costBack isHidden];
     }
-    
-
     
     return cell;
 }
@@ -206,7 +198,8 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (NSString *)genRandStringLength:(int)len {
+- (NSString *)genRandStringLength:(int)len
+{
     static NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
     for (int i=0; i<len; i++) {
@@ -215,7 +208,8 @@
     return randomString;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if ([segue.identifier isEqualToString:@"OrderDetails"]) {
         
         HistoryViewController *destViewController = segue.destinationViewController;;
@@ -245,7 +239,5 @@
         
     }
 }
-
-
 
 @end

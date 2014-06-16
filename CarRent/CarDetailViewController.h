@@ -3,7 +3,6 @@
 //  CarRent
 //
 //  Created by Eugene Dimitrow on 4/8/14.
-//  Copyright (c) 2014 RockyTurtle. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -21,9 +20,6 @@
 }
 
 - (void)retriveReviews;
-
-
-//@property (strong, nonatomic) IBOutlet UIButton *orderButton;
 
 @property (strong, nonatomic) IBOutlet UILabel *fullName;
 @property (strong, nonatomic) IBOutlet UILabel *releaseYear;

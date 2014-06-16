@@ -3,7 +3,6 @@
 //  CarRent
 //
 //  Created by Eugene Dimitrow on 3/24/14.
-//  Copyright (c) 2014 RockyTurtle. All rights reserved.
 //
 
 #import "UITextField+Customised.h"
@@ -46,6 +45,5 @@
     NSPredicate *nameTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", nameSymbols];
     return [nameTest evaluateWithObject:name];
 }
-
 
 @end

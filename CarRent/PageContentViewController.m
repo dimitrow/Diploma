@@ -3,7 +3,6 @@
 //  CarRent
 //
 //  Created by Eugene Dimitrow on 4/16/14.
-//  Copyright (c) 2014 RockyTurtle. All rights reserved.
 //
 
 #import "PageContentViewController.h"
@@ -26,7 +25,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

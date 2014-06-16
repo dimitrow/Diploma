@@ -3,7 +3,6 @@
 //  CarRent
 //
 //  Created by Eugene Dimitrow on 5/12/14.
-//  Copyright (c) 2014 RockyTurtle. All rights reserved.
 //
 
 #import "OrderViewController.h"
@@ -38,7 +37,6 @@
     
     [self retriveOrdersData];
     [self getCarData];
-    
     
     _datePicker = [[UIDatePicker alloc]init];
     [_datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
@@ -91,7 +89,6 @@
     [dataCheck findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         ordersData = objects;
-
         
     }];
 }
@@ -108,7 +105,6 @@
     if (textFieldTag == 911){
         rentStart = picker.date;
         
-
     } else if (textFieldTag == 912) {
         rentEnd = picker.date;
         
@@ -122,10 +118,6 @@
             _total = price * rentDays;
             _costLabel.text = [NSString stringWithFormat:@"%.2f", _total];
         }
-        
-
-
-        
     }
 }
 
@@ -175,7 +167,6 @@
         [self createAnEvent];
         [self dismissViewControllerAnimated:YES completion:nil];
         
-        
     } else {
         NSString *message = @"You have to choose date when you want to get this car for ride";
         ERROR_ALERT(ERROR, message, AW_BT_FAIL);
@@ -186,7 +177,6 @@
 - (IBAction)checkCar:(id)sender
 {
     [self retriveOrdersData];
-    
     
     if (ordersData.count == 0){
         
@@ -246,16 +236,14 @@
                     self.getItTitle.tintColor = [UIColor blueColor];
                     
                     break;
-                } else { //if ((endWithStart == NSOrderedDescending) || (endWithEnd == NSOrderedAscending)){
+                } else {
                     
                     NSString *message = [NSString stringWithFormat:@"Sorry, seems that car gonna be busy this time(from %@ to %@)", [[ordersData valueForKey:@"startDate"] objectAtIndex:i],[[ordersData valueForKey:@"endDate"] objectAtIndex:i]];
                     
                     ERROR_ALERT(CHECK_RES, message, AW_BT_FAIL);
                     
                     break;
-                } //else {
-                    //continue;
-                //}
+                }
             }
         }
     }

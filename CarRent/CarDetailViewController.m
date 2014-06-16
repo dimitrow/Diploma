@@ -3,7 +3,6 @@
 //  CarRent
 //
 //  Created by Eugene Dimitrow on 4/8/14.
-//  Copyright (c) 2014 RockyTurtle. All rights reserved.
 //
 
 #import "CarDetailViewController.h"
@@ -216,7 +215,8 @@
     return cell;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if ([segue.identifier isEqualToString:@"showPictures"]) {
         
         GalleryRootViewController *destViewController = segue.destinationViewController;
@@ -232,6 +232,5 @@
         destViewController.car = _car;
     }
 }
-
 
 @end

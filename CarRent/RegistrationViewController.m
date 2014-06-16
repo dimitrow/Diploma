@@ -3,7 +3,6 @@
 //  CarRent
 //
 //  Created by Eugene Dimitrow on 3/19/14.
-//  Copyright (c) 2014 RockyTurtle. All rights reserved.
 //
 
 #import "RegistrationViewController.h"
